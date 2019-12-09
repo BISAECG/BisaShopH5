@@ -10,7 +10,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.bisa.health.shop</groupId>
-			<artifactId>bisa-shop-CN-basic</artifactId>
+			<artifactId>bisa-shop-h5-basic</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>

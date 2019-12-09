@@ -32,7 +32,7 @@
 
 		<dependency>
 			<groupId>com.bisa.health.shop</groupId>
-			<artifactId>bisa-shop-CN-service</artifactId>
+			<artifactId>bisa-shop-h5-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>

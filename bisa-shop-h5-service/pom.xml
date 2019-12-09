@@ -10,7 +10,7 @@
   	<dependencies>
 		<dependency>
 			<groupId>com.bisa.health.shop</groupId>
-			<artifactId>bisa-shop-CN-model</artifactId>
+			<artifactId>bisa-shop-h5-model</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
             <!-- 去除版本不一致的传递依赖包 -->
             <exclusions>
