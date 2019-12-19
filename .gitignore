@@ -11,9 +11,7 @@ target/
 .idea/
 *.jar
 logs/
-bisa-shop-h5-controller/config/
-bisa-shop-h5-controller/config/
-*/config/
-*/resources.properties
-*/pay.properties
-*/fdfs_client.conf
+**/config/
+**/resources.properties
+**/pay.properties
+**/fdfs_client.properties
