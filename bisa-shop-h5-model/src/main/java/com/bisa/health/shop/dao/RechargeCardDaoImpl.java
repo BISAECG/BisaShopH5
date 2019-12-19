@@ -53,4 +53,16 @@ public class RechargeCardDaoImpl extends BaseDao<RechargeCard> implements IRecha
 		String sql = "SELECT * FROM s_recharge_card WHERE card_num=? AND card_pwd=?";
 		return super.queryObjectBySql(sql, new Object[] { card_num,card_pwd }, RechargeCard.class);
 	}
+
+
+	@Override
+	public Pager<RechargeCard> getPageRechargeCard(int offset, int userId, String vKey, String vVal) {
+		String sql = "SELECT * " + "FROM s_recharge_card WHERE creator=?";
+
+		if (!StringUtils.isEmpty(vKey)) {
+			sql = "SELECT * FROM s_recharge_card WHERE  creator=? AND " + vKey + " LIKE '" + vVal + "%'";
+
+		}
+		return super.findBySql(sql,new Object[]{userId}, RechargeCard.class, true);
+	}
 }

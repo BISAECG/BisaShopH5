@@ -65,4 +65,11 @@ public class RechargeCardServiceImpl implements IRechargeCardService {
 		iRechargeCardDao.delete(id);
 	}
 
+
+
+	@Override
+	public Pager<RechargeCard> getPageRechargeCard(int offset, int userId, String vKey, String vVal) {
+		return iRechargeCardDao.getPageRechargeCard(offset, userId, vKey, vVal);
+	}
+
 }

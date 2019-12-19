@@ -32,10 +32,18 @@ public class PayDaoImpl extends BaseDao<Pay> implements IPayDao {
 		return super.findBySql(sql,null, Pay.class, true);
 	}
 
+	
 
 	@Override
 	public List<Pay> listPay() {
 		String sql = "SELECT * FROM s_pay";
 		return super.listBySql(sql, null, Pay.class);
+	}
+
+
+	@Override
+	public Pay getPatByOrderNum(String order_num) {
+		String sql = "SELECT * FROM s_pay WHERE order_num=?";
+		return super.queryObjectBySql(sql, new Object[] { order_num }, Pay.class);
 	}
 }

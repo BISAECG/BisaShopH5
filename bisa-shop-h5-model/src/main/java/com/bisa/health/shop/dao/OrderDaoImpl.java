@@ -45,4 +45,23 @@ public class OrderDaoImpl extends BaseDao<Order> implements IOrderDao {
 		String sql = "SELECT * FROM s_order WHERE order_num=?";
 		return super.queryObjectBySql(sql, new Object[] { num }, Order.class);
 	}
+
+
+	@Override
+	public Pager<Order> getPageOrder(int offset, int userId, String vKey, String vVal) {
+		String sql = "SELECT * " + "FROM s_order WHERE user_id=?";
+
+		if (!StringUtils.isEmpty(vKey)) {
+			sql = "SELECT * FROM s_order WHERE  user_id=? AND " + vKey + " LIKE '" + vVal + "%'";
+
+		}
+		return super.findBySql(sql,new Object[]{userId}, Order.class, true);
+	}
+
+
+	@Override
+	public Order loadByPyaID(String pay_id) {
+		String sql = "SELECT * FROM s_order WHERE pay_id=?";
+		return super.queryObjectBySql(sql, new Object[] { pay_id }, Order.class);
+	}
 }

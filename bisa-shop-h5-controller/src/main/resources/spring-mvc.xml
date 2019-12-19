@@ -40,7 +40,6 @@
 
     <!-- 当在web.xml 中 DispatcherServlet使用 <url-pattern>/</url-pattern> 映射时，能映射静态资源 -->
     <mvc:default-servlet-handler/>
-
     <!-- 静态资源映射 -->
     <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/"/>
  	<mvc:resources mapping="/html/**" location="/WEB-INF/html/"/>
@@ -108,6 +107,44 @@
         <!-- 默认HTTP状态码 -->
         <property name="defaultStatusCode" value="500"></property>
     </bean>
+    
+    		
+	<bean id="defaultKaptcha" class="com.google.code.kaptcha.impl.DefaultKaptcha">
+		<property name="config">
+			<bean class="com.google.code.kaptcha.util.Config">
+				<constructor-arg>
+					<props>
+						<!-- 验证码宽度 -->
+						<prop key="kaptcha.image.width">110</prop>
+						<!-- 验证码高度 -->
+						<prop key="kaptcha.image.height">40</prop>
+						<!-- 生成验证码内容范围 -->
+						<prop key="kaptcha.textproducer.char.string">0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ</prop>
+						<!-- 验证码个数 -->
+						<prop key="kaptcha.textproducer.char.length">4</prop>
+						<!-- 是否有边框 -->
+						<prop key="kaptcha.border">no</prop>
+						<!-- 边框颜色 -->
+						<prop key="kaptcha.border.color">105,179,90</prop>
+						<!-- 边框厚度 -->
+						<prop key="kaptcha.border.thickness">1</prop>
+						<!-- 验证码字体颜色 -->
+						<prop key="kaptcha.textproducer.font.color">black</prop>
+						<!-- 验证码字体大小 -->
+						<prop key="kaptcha.textproducer.font.size">30</prop>
+						<!-- 验证码所属字体样式 -->
+						<prop key="kaptcha.textproducer.font.names">楷体</prop>
+						<!-- 干扰线颜色 -->
+						<prop key="kaptcha.noise.color">black</prop>
+						<!-- 验证码文本字符间距 -->
+						<prop key="kaptcha.textproducer.char.space">3</prop>
+						<!-- 图片样式 :阴影-->
+						<prop key="kaptcha.obscurificator.impl">com.google.code.kaptcha.impl.ShadowGimpy</prop>
+					</props>
+				</constructor-arg>
+			</bean>
+		</property>
+	</bean>
 
     <import resource="spring-mvc-shiro.xml"/>
  	<import resource="spring-client-service.xml"/>

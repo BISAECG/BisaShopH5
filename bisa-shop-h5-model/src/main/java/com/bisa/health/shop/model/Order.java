@@ -84,7 +84,7 @@ public class Order implements Serializable {
 	/**
 	 * 订单状态
 	 */
-	private int order_status; //0正常 1失效
+	private int order_status; 
 	/**
 	 * 订单地址ID
 	 */
@@ -101,6 +101,12 @@ public class Order implements Serializable {
 	 */
 	private String order_phone;
 	
+	
+	/**
+	 * 地区
+	 */
+	private String order_area;
+	
 	/**
 	 * 收件人
 	 */
@@ -112,7 +118,7 @@ public class Order implements Serializable {
 	private int is_pay; //0未支付 1已支付
 	
 	/**
-	 * 是否支付
+	 * 支付类型
 	 */
 	private int pay_type; //0未支付 1已支付
 	
@@ -144,6 +150,16 @@ public class Order implements Serializable {
 	 */
 	private double emd_postage;
 	
+	
+	/**
+	 * 第三方支付ID
+	 */
+	private String pay_id;
+	
+	/**
+	 * 状态
+	 */
+	private int status=1;
 	
 	@Version
 	private int version;
@@ -316,18 +332,41 @@ public class Order implements Serializable {
 	public void setVersion(int version) {
 		this.version = version;
 	}
+	
+	
+	public String getOrder_area() {
+		return order_area;
+	}
+	public void setOrder_area(String order_area) {
+		this.order_area = order_area;
+	}
+	
+	public String getPay_id() {
+		return pay_id;
+	}
+	public void setPay_id(String pay_id) {
+		this.pay_id = pay_id;
+	}
+	
+	
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", user_id=" + user_id + ", goods_id=" + goods_id + ", goods_num=" + goods_num
 				+ ", goods_type=" + goods_type + ", goods_price=" + goods_price + ", goods_count=" + goods_count
 				+ ", order_num=" + order_num + ", order_total=" + order_total + ", order_price=" + order_price
 				+ ", order_status=" + order_status + ", address_id=" + address_id + ", order_address=" + order_address
-				+ ", order_phone=" + order_phone + ", order_name=" + order_name + ", is_pay=" + is_pay + ", pay_type="
-				+ pay_type + ", is_coupon=" + is_coupon + ", coupon_num=" + coupon_num + ", coupon_price="
-				+ coupon_price + ", ems_num=" + ems_num + ", ems_name=" + ems_name + ", emd_postage=" + emd_postage
-				+ ", version=" + version + ", c_time=" + c_time + "]";
+				+ ", order_phone=" + order_phone + ", order_area=" + order_area + ", order_name=" + order_name
+				+ ", is_pay=" + is_pay + ", pay_type=" + pay_type + ", is_coupon=" + is_coupon + ", coupon_num="
+				+ coupon_num + ", coupon_price=" + coupon_price + ", ems_num=" + ems_num + ", ems_name=" + ems_name
+				+ ", emd_postage=" + emd_postage + ", pay_id=" + pay_id + ", status=" + status + ", version=" + version
+				+ ", c_time=" + c_time + "]";
 	}
-
 	
 	
 	

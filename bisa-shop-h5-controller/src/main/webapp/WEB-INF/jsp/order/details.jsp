@@ -8,9 +8,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" href="Images/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon" />
-<link rel="bookmark" href="Images/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
+<link rel="bookmark" href="/favicon/favicon.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html;" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta charset="utf-8">
@@ -22,13 +22,18 @@
 <!-- description -->
 <meta name="renderer" content="webkit">
 <!-- base -->
-<link href="/resources/ctrl/layui/css/layui.css" rel="stylesheet">
+  <style type="text/css">
+  	.layui-form-label{
+  		width:110px !important;
+  	}
+    
+  </style>
 <link href="/resources/css/comm/base.css" rel="stylesheet">
 <link href="/resources/css/index/index.css" rel="stylesheet">
 <link href="/resources/css/shop/payment.css" rel="stylesheet">
+<link href="/resources/ctrl/layui/css/layui.css" rel="stylesheet">
 <script src="/resources/js/comm/jquery.min.js"></script>
 <script src="/resources/ctrl/layui/layui.js"></script>
-<script src="/resources/js/utils.js"></script>
 </head>
 <body>
 	<div id="header"></div>
@@ -45,7 +50,7 @@
 				<div class="col-md-4 col-md-offset-2 payRight">
 					<p class="payTitle" style="margin-bottom: 10px;">${goods.name}</p>
 					<p class="payPrice">
-						<span><spring:message code="price" />:</span> <span class="redInfo" >¥${goods.price}<input type="hidden" id="goods_price" name="goods_price" value="${goods.price}" ></span>
+						<span><spring:message code="price" />:</span> <span class="redInfo" ><spring:message code="pay.unit"/>${goods.price}<input type="hidden" id="goods_price" name="goods_price" value="${goods.price}" ></span>
 						<input type="hidden" name="goods_num" value="${goods.number}">
 						<input type="hidden" name="goods_id" value="${goods.id}">
 					</p>
@@ -66,7 +71,7 @@
 					</p>
 					<c:if test="${goods.type==GoodsTypeEnum.REAL.getValue()}">
 					<p class="payPostage">
-						<span><spring:message code="postage" />:</span> <span class="redInfo">¥50</span>
+						<span><spring:message code="postage" />:</span> <span class="redInfo"><spring:message code="pay.unit"/>50</span>
 						<input type="hidden" id="emd_postage" name="emd_postage" value="50">
 					</p>
 					</c:if>
@@ -104,21 +109,28 @@
 		       <input type="hidden" name="province" value="">
 		       <input type="hidden" name="county" value="">
 		       <input type="hidden" name="town" value="">
-		        <input type="hidden" name="is_default"  value="">
-		         <input type="hidden" name="address_label"  value="">
-		      <input type="text" name="consignee" required  lay-verify="required" lay-reqText="<spring:message code="addressee.emptu" />" placeholder="<spring:message code="addressee.input" /> autocomplete="off" class="layui-input">
+		        <input type="hidden" name="is_default"  value="1">
+		         <input type="hidden" name="address_label"  value="1">
+		      <input type="text" name="consignee" required  lay-verify="required" lay-reqText="<spring:message code='addressee.empty' />" placeholder='<spring:message code="addressee.input" />' autocomplete="off" class="layui-input">
 		    </div>
 		  </div>
+		  
 		  <div class="layui-form-item">
-		   <label class="layui-form-label"><spring:message code="tell" /></label>
-		    <div class="layui-input-block">
-		      <input type="text" name="phone" required  lay-verify="required" lay-reqText="<spring:message code="tell.empty" />" placeholder="<spring:message code="tell.input" />" autocomplete="off" class="layui-input">
+		   <label class="layui-form-label"><spring:message code="area" /></label>
+		    <div class="layui-input-inline">
+		      <select name="area" id="selectpicker"  lay-verify="required" >
+		      </select>
+		    </div>
+		      <label class="layui-form-label"><spring:message code="tell" /></label>
+		    <div class="layui-input-inline">
+		      <input type="text" name="phone" lay-verify="required" lay-reqText="<spring:message code='tell.empty' />"  placeholder="<spring:message code="tell.input" />" autocomplete="off" class="layui-input">
 		    </div>
 		  </div>
+		  
 		  <div class="layui-form-item">
 		    <label class="layui-form-label"><spring:message code="city" /></label>
 		    <div class="layui-input-block">
-		      <select name="city" id="city" lay-reqText="<spring:message code="city.empty" />" lay-verify="required" >
+		      <select name="city" id="city" lay-reqText="<spring:message code='city.empty' />" lay-verify="required" >
 		      </select>
 		    </div>
 		  </div>
@@ -126,7 +138,7 @@
 		  <div class="layui-form-item layui-form-text">
 		    <label class="layui-form-label"><spring:message code="address.details" /></label>
 		    <div class="layui-input-block">
-		      <textarea name="detail_address" lay-reqText="<spring:message code="address.details.empty" />" placeholder="<spring:message code="address.details.input" />" class="layui-textarea"></textarea>
+		      <textarea name="detail_address" lay-verify="required" lay-reqText="<spring:message code="address.details.empty" />" placeholder="<spring:message code="address.details.input" />" class="layui-textarea"></textarea>
 		    </div>
 		  </div>
 		  <div class="layui-form-item">
@@ -162,7 +174,7 @@
 				
 				var index=layer.load();
 				$('#addressMain')[0].reset();
-				var city=<spring:message code='city.lang' />;
+				var city=<spring:message code="city.lang" />;
 				$('#city').empty();
 				$(city).each(function(index,element){
 					$('#city').append("<option value="+element+">"+element+"</option>");
@@ -172,7 +184,7 @@
 				$.ajax({
 					type : "GET",
 					dataType: "json",
-					url : '/html/order/address',
+					url : '/order/ajax/address',
 					async:false,
 					success : function(data) {
 						layer.close(index);
@@ -188,7 +200,7 @@
 				addIndex=layer.open({
 	                  title: "<spring:message code='address' />"//弹框标题
 	                  , content:$('#address-form')//也可以是一个html
-	                  , area: ['600px', '420px']
+	                  , area: ['700px', '420px']
 	  		         ,closeBtn: 1
 	  		         ,shadeClose:true
 	  		         ,type: 1
@@ -203,14 +215,14 @@
 					type : "POST",
 					dataType: "json",
 					//contentType: "application/json;charset=UTF-8",
-					url : '/html/order/address',
+					url : '/order/ajax/address',
 					data : data.field,
 					success : function(obj) {
 						layer.close(index);
 						layer.close(addIndex);
 						if(obj.code=="${SysStatusCode.SUCCESS}"){
-							$('#order_address').val(data.field.city+data.field.detail_address);
-							$('#address_id').val(data.field.id);
+							$('#order_address').val(obj.data.city+obj.data.detail_address);
+							$('#address_id').val(obj.data.id);
 						}
 					},error:function(){
 						layer.close(index);
@@ -246,8 +258,8 @@
 				var d=parseFloat(order_price.val());
 				var z=parseFloat(goods_count.val());
 				order_total.val((a*z));
-				xPrice.html("¥"+(a*z));
-				xTotal.html("¥"+(a*z-xCoupan+c))
+				xPrice.html("<spring:message code="pay.unit"/>"+(a*z));
+				xTotal.html("<spring:message code="pay.unit"/>"+(a*z-xCoupan+c))
 				order_price.val(a*z-xCoupan+c);
 			}
 			//优惠券
@@ -262,13 +274,13 @@
 					type : "GET",
 					dataType: "json",
 					//contentType: "application/json;charset=UTF-8",
-					url : '/html/order/coupan',
+					url : '/order/ajax/coupan',
 					data : {coupon_num:coupon_num,order_total:order_total},
 					success : function(obj) {
 						layer.close(index);
 						if(obj.code=="${SysStatusCode.SUCCESS}"){
 							$('#coupon_price').val(obj.data);
-							$('#xCoupan').html('¥-'+obj.data);
+							$('#xCoupan').html('<spring:message code="pay.unit"/>-'+obj.data);
 							$('.payInfo').removeClass("dis-n");
 							ShopCart(obj.data);
 						}else{
@@ -287,5 +299,6 @@
 		});
 		
 	</script>
+	<script src="/resources/js/utils.js"></script>
 </body>
 </html>

@@ -50,8 +50,8 @@ public class GoodsCouponServiceImpl implements IGoodsCouponService {
 	}
 
 	@Override
-	public GoodsCoupon getGoodsCouponByNum(String num) {
-		return iGoodsCouponDao.getGoodsCouponByNum(num);
+	public GoodsCoupon getGoodsCouponByNum(String num,int status) {
+		return iGoodsCouponDao.getGoodsCouponByNum(num,status);
 	}
 
 }

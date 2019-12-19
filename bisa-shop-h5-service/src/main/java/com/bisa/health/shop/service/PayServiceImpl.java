@@ -49,4 +49,11 @@ public class PayServiceImpl implements IPayService {
 		iPayDao.delete(id);
 	}
 
+	@Override
+	public Pay getPatByOrderNum(String order_num) {
+		return iPayDao.getPatByOrderNum(order_num);
+	}
+	
+	
+
 }

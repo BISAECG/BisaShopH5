@@ -6,9 +6,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-CN">
 <head>
-    <link rel="icon" href="Images/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon" />
-    <link rel="bookmark" href="Images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="bookmark" href="/favicon/favicon.ico" type="image/x-icon" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -286,7 +286,10 @@
             }else if(layEvent == 'delete'){
                 // 删除
                 var id = data.id;
-                layer.confirm("<spring:message code='submit.delete' />", function (index) {
+                layer.confirm("<spring:message code='submit.delete' />", {
+      			  btn: ["<spring:message code='submit' />"] //按钮
+  			  ,title:"<spring:message code='warning'/>"
+  			}, function (index) {
                     $.ajax({
                         url: '/admin/page/ajax/'+id,
                         type: "DELETE",
@@ -302,7 +305,10 @@
                 });
             }else if(layEvent == 'generate'){
                 var id = data.id;
-                layer.confirm("<spring:message code='1064' />", function (index) {
+                layer.confirm("<spring:message code='1064' />", {
+      			  btn: ["<spring:message code='submit' />"] //按钮
+  			  ,title:"<spring:message code='tip'/>"
+  			},function (index) {
                     $.ajax({
                         url: '/admin/page/ajax/'+id,
                         type: "POST",

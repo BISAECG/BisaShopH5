@@ -26,7 +26,7 @@
 		auto-delete="false" exclusive="false">
 		<rabbit:queue-arguments> 
 			<entry key="x-message-ttl"> 
-				<value type="java.lang.Long">86400000</value> 
+				<value type="java.lang.Long">30000</value> 
 			</entry> 
 			<entry key="x-dead-letter-exchange" value="order_death_exchange" /> 
 			<entry key="x-dead-letter-routing-key" value="order_death_queue_key" />
@@ -56,20 +56,17 @@
 			connection-factory="mqConnectionFactory" message-converter="jsonMessageConverter" />
 
 		<!-- 定义监听队列的处理类 -->
-		<!--<bean id="queueListenter" class="com.bisa.health.shop.mqtt.OrderReceiverService" >
+		<bean id="queueListenter" class="com.bisa.health.shop.mqtt.OrderReceiverService" >
 			<property name="iMsgMqttKit" ref="mqttKit" />
-			<property name="check_order_url"  value="${check_order_url}" />
-			<property name="orderSurvivalTime" value="${order.survival.time}" />
-		</bean>-->
+		</bean>
 		
 		
-		<bean id="deathListenter" class="com.bisa.health.shop.mqtt.DeathCommReceiverService" />
-		
-<!--
-		<rabbit:listener-container
+		<bean id="deathListenter" class="com.bisa.health.shop.mqtt.DeathReceiverService" />
+
+		<rabbit:listener-container concurrency="2" prefetch="3"
 			connection-factory="mqConnectionFactory" acknowledge="manual">
 			<rabbit:listener queues="order_queue" ref="queueListenter" />
-		</rabbit:listener-container>-->
+		</rabbit:listener-container>
 		
 
 		<rabbit:listener-container

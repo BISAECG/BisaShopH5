@@ -52,6 +52,12 @@ public class Pay implements Serializable {
 	 */
 	private Date c_time;
 	
+	
+	/**
+	 * 第三方支付ID
+	 */
+	private String pay_id;
+	
     @Id
     @GeneratedValue
 	public int getId() {
@@ -101,11 +107,21 @@ public class Pay implements Serializable {
 	public void setC_time(Date c_time) {
 		this.c_time = c_time;
 	}
+	
+	
+	public String getPay_id() {
+		return pay_id;
+	}
+	public void setPay_id(String pay_id) {
+		this.pay_id = pay_id;
+	}
 	@Override
 	public String toString() {
 		return "Pay [id=" + id + ", user_id=" + user_id + ", pay_price=" + pay_price + ", goods_num=" + goods_num
-				+ ", order_num=" + order_num + ", pay_type=" + pay_type + ", c_time=" + c_time + "]";
+				+ ", order_num=" + order_num + ", pay_type=" + pay_type + ", c_time=" + c_time + ", pay_id=" + pay_id
+				+ "]";
 	}
+
 
 	
 	

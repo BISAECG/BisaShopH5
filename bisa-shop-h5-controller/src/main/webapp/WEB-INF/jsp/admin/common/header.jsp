@@ -7,17 +7,21 @@
 <!-- 头部导航部分 -->
 <div class="layui-header">
 	<div class="layui-logo pd-10 clear">
+		<a href="/index.html" target="_blank">
 		<img src="/resources/img/admin/logo.png" class="full-w pull-left">
+		</a>
 	</div>
 	<ul class="layui-nav layui-layout-left">
 		<li class="layui-nav-item"><a href="/admin/main" target="mainFrame"><spring:message code="1000" /></a></li>
 		<!-- 仅超级管理员可见 -->
-		<shiro:hasAnyRoles name="ROLE_ADMIN" >
+		<shiro:hasAnyRoles name="ROLE_ADMIN ,ROLE_CUSTOMER" >
 			<li class="layui-nav-item"><a href="/admin/goods/list" target="mainFrame"><spring:message code="2000" /></a></li>
+		</shiro:hasAnyRoles>
+		<shiro:hasAnyRoles name="ROLE_ADMIN ,ROLE_CUSTOMER, ROLE_STORE" >
 			<li class="layui-nav-item"><a href="/admin/order/list" target="mainFrame"><spring:message code="3000" /></a></li>
 		</shiro:hasAnyRoles>
 		
-		<shiro:hasAnyRoles name="ROLE_ADMIN, ROLE_CUSTOMER, ROLE_STORE">
+		<shiro:hasAnyRoles name="ROLE_ADMIN">
 			<li class="layui-nav-item"><a href="/admin/coupon/list" target="mainFrame"><spring:message code="4000" /></a></li>
 		</shiro:hasAnyRoles>
 

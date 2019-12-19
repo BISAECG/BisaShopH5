@@ -27,6 +27,8 @@ public class Address implements Serializable {
 	@NotBlank(message=SysErrorCode.RequestFormat)
     private String consignee;         // 收货人名字
 	@NotBlank(message=SysErrorCode.RequestFormat)
+	private String area;
+	@NotBlank(message=SysErrorCode.RequestFormat)
     private String phone;            // 收货人手机号码
     private String country;        // 国家
     private String province;        // 省
@@ -140,13 +142,23 @@ public class Address implements Serializable {
         this.is_default = is_default;
     }
 
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", user_id=" + user_id + ", consignee=" + consignee + ", phone=" + phone
-				+ ", country=" + country + ", province=" + province + ", city=" + city + ", county=" + county
+		return "Address [id=" + id + ", user_id=" + user_id + ", consignee=" + consignee + ", area=" + area + ", phone="
+				+ phone + ", country=" + country + ", province=" + province + ", city=" + city + ", county=" + county
 				+ ", town=" + town + ", detail_address=" + detail_address + ", address_label=" + address_label
 				+ ", is_default=" + is_default + "]";
 	}
+
+	
     
 
 

@@ -14,7 +14,7 @@ public interface IGoodsCouponService {
      * @param num
      * @return
      */
-    public GoodsCoupon getGoodsCouponByNum(String num);
+    public GoodsCoupon getGoodsCouponByNum(String num,int status);
 
     /**
      * 优惠券表的id,加载优惠券数据

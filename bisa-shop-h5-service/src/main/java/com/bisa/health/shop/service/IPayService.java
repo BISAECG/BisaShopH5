@@ -15,6 +15,14 @@ public interface IPayService {
      */
     public Pay getPayById(int id);
     
+    
+    /**
+     * 订单号码
+     * @param order_num
+     * @return
+     */
+	public Pay getPatByOrderNum(String order_num);
+    
      
      /**
       * 支付分页

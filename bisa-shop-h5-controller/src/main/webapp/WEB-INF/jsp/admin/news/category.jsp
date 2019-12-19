@@ -7,9 +7,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-CN">
 <head>
-    <link rel="icon" href="Images/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon" />
-    <link rel="bookmark" href="Images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="bookmark" href="/favicon/favicon.ico" type="image/x-icon" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -60,14 +60,14 @@
                 <div class="layui-form-item mb-0" pane="">
                     <div class="layui-input-block">
                         <div class="layui-inline">
-                        	<button type="button" id="addPage" class="layui-btn">新增新闻分类</button>
+                        	<button type="button" id="addPage" class="layui-btn"><spring:message code="5024" /></button>
                         </div>
                     </div>
                 </div>
         </div>
         <div style="padding:0px 30px 30px 30px;">
             <p class="f-18 pt-15 pb-15  col-8d969d">
-                	分类列表
+                	<spring:message code="list" />
             </p>
             <div class="clear pd-15 bg-fafafa bor bor-col-e8ebf2 min-w-1200">
                  <table id="table" lay-filter="table"></table>
@@ -80,11 +80,11 @@
 	                <input name="id" type="hidden" value="0" />
 	                 <input name="number" id="number" type="hidden" value="0" />
 	                <div class="layui-form-item ">
-	                    <label class="layui-form-label" style="width: 110px;padding-left:0px;">新闻分类名</label>
+	                    <label class="layui-form-label" style="width: 110px;padding-left:0px;"><spring:message code='5025' /></label>
 	                    <div class="layui-input-inline">
-	                        <input type="text" name="name"  lay-verify="required" placeholder="请输入商品分类名"  class="layui-input">
+	                        <input type="text" name="name"  lay-verify="required" placeholder="<spring:message code='5026' />"  class="layui-input">
 	                    </div>
-	                    <label class="layui-form-label " style="width: 110px;padding-left: 0px;">语言</label>
+	                    <label class="layui-form-label " style="width: 110px;padding-left: 0px;"><spring:message code='lang' /></label>
 	                    <div class="layui-input-inline">
 	                            <select id="language" name="language" lay-filter="language"  lay-verify="required">
 	                            </select>
@@ -151,9 +151,9 @@
                 [ //标题栏
                     {type: 'numbers'},
                     {field: 'id', title: 'id', width: '5%',sort: true, align: 'center'},
-                    {field: 'name', title: '新闻分类名字', width: '15%', align: 'center'},
-                    {field: 'language', title: '语言', width: '10%', align: 'center'},
-                    {field: 'super_id', title: '分类父ID',hide :true, align: 'center'},
+                    {field: 'name', title: '<spring:message code="5025" />', width: '15%', align: 'center'},
+                    {field: 'language', title: '<spring:message code='lang' />', width: '10%', align: 'center'},
+                    {field: 'super_id', title: '<spring:message code="2006" />',hide :true, align: 'center'},
                     {field: 'c_time', title:"<spring:message code='create.time' />", width: '15%', align: 'center'},
                     {fixed: 'right', title: "<spring:message code='lang' />", width: '30%', align: 'center', toolbar: '#barLang'},
                     {fixed: 'right', title: "<spring:message code='opt' />", width: '20%', align: 'center', toolbar: '#barDemo'}
@@ -175,7 +175,10 @@
            if(layEvent == 'delete'){
                 // 删除这里有个BUG就是单页删除完后需要手动刷新
                 var id = data.id;
-                layer.confirm("<spring:message code='submit.delete' />", function (index) {
+                layer.confirm("<spring:message code='submit.delete' />",{
+      			  btn: ["<spring:message code='submit' />"] //按钮
+  			  ,title:"<spring:message code='warning'/>"
+  			},function (index) {
                     $.ajax({
                         url: '/admin/news/ajax/category/del/'+id,
                         type: "DELETE",
