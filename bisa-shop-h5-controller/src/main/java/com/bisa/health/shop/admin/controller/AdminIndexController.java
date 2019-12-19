@@ -52,7 +52,6 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping(value = "/admin")
-@RequiresRoles(value = { "ROLE_ADMIN", "ROLE_CUSTOMER", "ROLE_STORE" }, logical = Logical.OR)
 public class AdminIndexController {
 
 	@Autowired
@@ -80,6 +79,7 @@ public class AdminIndexController {
 	/**
 	 * 进去 bisa 后台管理系统的主页
 	 */
+	@RequiresRoles(value = {"ROLE_ADMIN", "ROLE_CUSTOMER", "ROLE_STORE"}, logical = Logical.OR)
 	@RequestMapping(value = "/index")
 	public String index() {
 
@@ -89,38 +89,20 @@ public class AdminIndexController {
 	/**
 	 * 进去 bisa 后台管理系统的主页
 	 */
+	@RequiresRoles(value = {"ROLE_ADMIN", "ROLE_CUSTOMER", "ROLE_STORE"}, logical = Logical.OR)
 	@RequestMapping(value = "/main")
 	public String home() {
 		return "admin/config/main";
 	}
 
-	/**
-	 * 系统设置
-	 * 
-	 * @return
-	 */
-	@RequestMapping(value = "/config", method = RequestMethod.GET)
-	public String sysConfig() {
 
-		return "admin/config/config";
-	}
-
-	/**
-	 * 页面跳转设置
-	 * 
-	 * @return
-	 */
-	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String pageProfile() {
-
-		return "admin/config/profile";
-	}
 
 	/**
 	 * APP更新管理
 	 * 
 	 * @return
 	 */
+	@RequiresRoles(value = { "ROLE_ADMIN" })
 	@RequestMapping(value = "/client", method = RequestMethod.GET)
 	public String updateManagement() {
 
@@ -132,6 +114,7 @@ public class AdminIndexController {
 	 * 
 	 * @return
 	 */
+	@RequiresRoles(value = { "ROLE_ADMIN" })
 	@RequestMapping(value = "/ajax/uploadapp", method = RequestMethod.POST,produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public ResponseEntity<ResultData> updateManagementApp(@Validated AppUpdate appBean, BindingResult br) {
@@ -163,6 +146,7 @@ public class AdminIndexController {
 	 * @param br
 	 * @return
 	 */
+	@RequiresRoles(value = { "ROLE_ADMIN" })
 	@RequestMapping(value = "/ajax/uploadserver", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public ResponseEntity<ResultData> updateManagementServer(@Validated AppServer serverBean, BindingResult br) {
@@ -184,6 +168,7 @@ public class AdminIndexController {
 
 	@RequestMapping(value = "/ajax/app/list")
 	@ResponseBody
+	@RequiresRoles(value = { "ROLE_ADMIN" })
 	public Object listAppUpdate() {
 		SystemContext.setOrder("id");
 		Pager<AppUpdate> list = appUpdateService.page(SystemContext.getPageOffset());
@@ -192,6 +177,7 @@ public class AdminIndexController {
 
 	@RequestMapping(value = "/ajax/server/list")
 	@ResponseBody
+	@RequiresRoles(value = { "ROLE_ADMIN" })
 	public Object listServer(@RequestParam(defaultValue = "0") Integer page,
 			@RequestParam(defaultValue = "10") Integer limit) {
 
@@ -203,6 +189,7 @@ public class AdminIndexController {
 
 	@RequestMapping(value = "/ajax/server/delete")
 	@ResponseBody
+	@RequiresRoles(value = { "ROLE_ADMIN" })
 	public Object serverDelete(@RequestParam(defaultValue = "0") Integer id) {
 
 		AppServer appServer = serverUpdateService.loadByID(id);

@@ -57,7 +57,6 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping(value = "/admin/service")
-@RequiresRoles(value = {"ROLE_ADMIN", "ROLE_CUSTOMER", "ROLE_STORE"}, logical = Logical.OR)
 public class AdminServiceController {
 	
 	@Autowired
