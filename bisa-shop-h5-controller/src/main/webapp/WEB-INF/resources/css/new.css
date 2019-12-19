@@ -1,0 +1,86 @@
+.bg{
+    margin-bottom: 0.135rem;
+}
+.title {
+    font-size: 0.18rem;
+    border-bottom: 0.01rem solid #ECECEC;
+    padding-bottom: 0.2rem;
+    padding-top: 20px;
+}
+.title div{
+    display: inline-block;
+    width:9px;
+height:20px;
+background:rgba(32,71,146,1);
+}
+.title span{
+   font-size: 30px;color:rgba(15,10,10,1);
+}
+
+.top_news{
+    border-bottom: 0.01rem solid #ECECEC;
+}
+.top_news .title span:first-of-type {
+    line-height: 0.24rem;
+    font-size: 0.15rem;
+    display: inline-block;
+    color: black;
+}
+.top_news img{
+    margin-top: 20px;
+}
+.newRead{
+    margin-left: 0.1rem;
+}
+.titleTopping {
+    color: rgba(51, 51, 51, 1);
+    font-size: 0.22rem;
+    font-weight:bold;
+    line-height: 0.4rem;
+    margin-bottom: 0.16rem;
+}
+
+.new_con {
+    color: #666666;
+    font-size: 0.24rem;
+    line-height: 0.24rem;
+}
+.new_span{
+    margin-bottom: 0.2rem;
+}
+.new_span span {
+    font-size: 0.16rem;
+    color: #999999;
+    line-height: 0.4rem;
+}
+
+.timeOrdinary {
+    padding: 0;
+
+    text-align: left;
+}
+
+.timeOrdinary span {
+    background: linear-gradient(0deg, rgba(44, 106, 206, 1) 0%, rgba(47, 232, 230, 1) 100%);
+    box-shadow: 0rem 0.01rem 0.05rem 0rem rgba(53, 143, 238, 1);
+    font-size: 0.1rem;
+}
+.titleOrdinary {
+    font-size: 0.2rem;
+    color: #333333;
+    overflow: hidden;
+}
+
+.timeOrdinary .new_time {
+    font-size: 0.16rem;
+    padding: 0.03rem;
+}
+
+.more {
+    margin-top: 0.15rem;
+    font-size: 0.18rem;
+    color: #666666;
+}
+.more i{
+    margin-top: 0.05rem;
+}

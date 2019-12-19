@@ -1,0 +1,51 @@
+.successInfo{
+    margin: 0.8rem 0;
+}
+.successInfo div img{
+    width: 1.2rem;
+    height:1.2rem;
+    margin-bottom: 0.4rem;
+}
+.successInfo div p{
+    font-size:0.3rem;
+    color:#1E983D;
+    font-weight:bold;
+}
+
+.service{
+    border-bottom: 0.01rem solid #F1F1F1;
+}
+.service p:first-of-type{
+    color: #333333;
+    font-size: 0.26rem;
+}
+.service p:last-of-type span:first-of-type{
+    color: #333333;
+    font-size: 0.26rem;
+}
+.service p:last-of-type span:last-of-type{
+    color: rgba(207, 21, 24, 1);
+    font-size: 0.26rem;
+    margin-left: 0.1rem;
+}
+.success {
+    text-align: center;
+}
+.success a{
+    text-decoration: none;
+    font-size: 0.32rem;
+    font-weight:500;
+color:rgba(255,255,255,1);
+box-shadow:0rem 0.01rem 0.08rem 0rem rgba(53,146,208,1);
+border-radius:0.05rem;
+display: inline-block;
+padding: 0.14rem 0.2rem;
+width: 80%;
+}
+.success a:first-of-type{
+    background:rgba(56,134,186,1);
+    margin-bottom: 0.3rem;
+}
+.success a:last-of-type{
+    background:rgba(0,0,0,1);
+}

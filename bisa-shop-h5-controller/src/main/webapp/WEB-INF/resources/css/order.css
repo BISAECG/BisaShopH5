@@ -1,0 +1,42 @@
+
+.payImg img{
+    margin-bottom: 0.1rem;
+    margin-top: 0.2rem;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+.payInfo p{
+    margin: 0.05rem 0;
+}
+.payInfo p:nth-child(1){
+    font-size:0.3rem;color:#1E983D;font-weight:bold;
+}
+.payInfo p:nth-child(2){
+    font-size:0.24rem;color:#616161;
+}
+.payInfo p:nth-child(2) span{
+    color:#CF1518;
+}
+.payInfo p:nth-child(3){
+    font-size:0.24rem;color:#616161;font-weight:bold;
+}
+.payInfo p:nth-child(4){
+    font-size:0.24rem;color:#616161;font-weight:bold;margin-bottom: 0.2rem;
+}
+
+.payMethod{
+    margin-bottom: 1rem;
+}
+
+.payMethod .btnShop{
+    border-bottom: 0.01rem solid #e0e0e0;
+    margin-bottom: 0.2rem;
+}
+.payMethod div:nth-child(1){
+    border-top: 0.01rem solid #F1F1F1;
+}
+.payMethod div:nth-child(1) p{
+    padding: 0.1rem 0px;
+    height: 0.5rem;
+    font-size: 0.3rem;
+}

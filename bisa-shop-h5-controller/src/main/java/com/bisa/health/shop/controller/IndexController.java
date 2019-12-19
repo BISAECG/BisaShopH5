@@ -1,13 +1,10 @@
 package com.bisa.health.shop.controller;
 
-import com.bisa.health.client.entity.User;
 import com.bisa.health.common.entity.ResultData;
 import com.bisa.health.common.utils.PhoneTypeUtil;
-import com.bisa.health.shop.admin.util.JsonResult;
 import com.bisa.health.shop.component.InternationalizationUtil;
 import com.bisa.health.shop.entity.SysErrorCode;
 import com.bisa.health.shop.entity.SysStatusCode;
-import com.bisa.health.shop.model.News;
 
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+
 import javax.servlet.http.HttpServletRequest;
 
-import java.util.List;
 import java.util.Locale;
 
 /**
@@ -49,7 +45,7 @@ public class IndexController {
     	}
     	
     	model.addAttribute("lang",jumStr+i18nUtil.lang());
-        return "/index";
+        return "zh_CN/index";
     }
     
     /**

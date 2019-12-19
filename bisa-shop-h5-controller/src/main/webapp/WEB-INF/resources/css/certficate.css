@@ -1,0 +1,24 @@
+.certificate div {
+    margin-bottom: 0.1rem;
+}
+.certificate div div{
+    width: 100%;
+    background: rgba(110, 188, 220, 1);
+    border-radius:0.2rem;
+    border-top: 0.05rem solid  #A2E3FF;
+    border-left: 0.05rem solid  rgba(52, 141, 178, 1);
+    border-right: 0.05rem solid  rgba(52, 141, 178, 1);
+    border-bottom: 0.05rem solid  rgba(52, 141, 178, 1);
+
+}
+.certificate div  img {
+    margin-top: 0.2rem;
+    width: 3rem;
+}
+
+.certificate div p {
+    margin: 0rem;
+    color: #fff;
+    font-size: 0.2rem;
+    padding: 0.12rem 0;
+}
