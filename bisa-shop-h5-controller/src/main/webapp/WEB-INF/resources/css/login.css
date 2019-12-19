@@ -1,0 +1,67 @@
+.msg-wrap{
+    margin-bottom: 1rem;
+}
+.login-tabcontrolv2 {
+    border-right: 1px solid #999999;
+}
+
+.login-tabcontrolv2 span {
+    color: rgba(45, 110, 153, 1);
+    font-size: 1.8rem;
+}
+
+.login-tabcontrolv1 span {
+    color: rgba(102, 102, 102, 1);
+    font-size: 1.8rem;
+}
+
+.login-tabcontentv2 form input{
+    font-size: 1.5rem;
+}
+
+.t-nonehove{
+    font-size: 1.5rem;
+}
+.login_input{
+    line-height: 35px;
+    height: 35px;
+    
+}
+.form-group {
+    margin-bottom: 0;
+    height:  4.5rem;
+    margin-bottom: 2rem;
+}
+.form-group .input-group{
+    height:  4.5rem;
+}
+.form-group .input-group div{
+    height: 4.5rem;
+}
+.form-group .input-group input{
+    font-size: 1.5rem;
+}
+.col-999{
+font-size: 1.5rem;
+}
+#pwd-btn,#nopwd-btn{
+    font-size: 1.6rem;
+    height: 3.5rem;
+    background: #3886BA;
+    color: #FFFFFF;
+}
+.userphoneinput,#icode{
+    font-size: 1.5rem;
+}
+.sendMessagebtn{
+    background:rgba(53,146,208,1);color: #FFFFFF;
+    height: 4.5rem;
+    font-size: 1.5rem;
+}
+.input-group-addon, .input-group-btn {
+     width: 25%;
+}
+.input-group-addon select{
+    height: 4.5rem;
+   border: 1px solid rgba(153,153,153,1);
+}

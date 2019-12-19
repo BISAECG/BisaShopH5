@@ -1,0 +1,105 @@
+<style>
+
+    .head div:nth-child(1) img{
+        width: 0.4rem;
+        margin-top: 0.4rem;
+    }
+    .head div:nth-child(2) {
+        margin-bottom: 0.1rem;
+        margin-top: 0.1rem;
+    }
+
+    .head div:nth-child(3) i {
+        width: 0.36rem;
+        font-size: 0.60rem;
+        margin-top: 0.2rem;
+    }
+    .list {
+        background: rgba(0, 0, 0, 1);
+        opacity: 0.5;
+        width: 50%;
+        top: 0.90rem;
+    }
+
+    .list ul {
+        list-style: none;
+        padding-left: 0.20rem;
+    }
+
+    .list ul a {
+        color: rgba(255, 255, 255, 1);
+        font-size: 0.22rem;
+        text-decoration: none;
+    }
+
+    .list ul a li {
+        border-bottom: 0.01rem solid #9F9F9F;
+        padding: 0.08rem 0;
+
+    }
+
+    .list ul a i {
+        color: #fff;
+        font-size: 0.20rem;
+        float: right;
+        margin-right: 0.20rem;
+    }
+    .collapse{
+        position: absolute;
+        width: 100%;
+        z-index: 99;
+    }
+ 
+</style>
+<div class="container-fluid header">
+    <div class="row head">
+        <div class="col-xs-2">
+            <a data-toggle="collapse" aria-expanded="false" role="button" href="#collapseExample" aria-controls="collapseExample">
+                <img class="img-responsive center-block" src="../resources/img/index/nav_left.png">
+            </a>
+        </div>
+        <div class="col-xs-4 col-xs-offset-2">
+            <a href="index.html">
+                <img class="img-responsive center-block" src="../resources/img/index/logo.png">
+            </a>
+        </div>
+        <div class="col-xs-2 col-xs-offset-2 text-center">
+            <a href="login.html"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+        </div>
+    </div>
+</div>
+<!-- <nav id="bs-navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;"> -->
+
+<div class="container-fluid  collapse" id="collapseExample">
+    <div class="row">
+        <div class="list">
+            <ul>
+                <a href="index.html">
+                    <li>home page <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                </a>
+                <a href="shop.html">
+                    <li>All products<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                </a>
+                <a href="solution.html">
+                    <li>Solution<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                </a>
+                <a href="new.html">
+                    <li>News and information <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                </a>
+                <a href="QA.html">
+                    <li>Health questions and answers <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                </a>
+                <a href="download.html">
+                    <li>Download Center <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                </a>
+                <a href="certificate.html">
+                    <li>Product certificate <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                </a>
+                <li style="padding-bottom: 200px;">
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../resources/js/comm/bootstrap.js"></script>

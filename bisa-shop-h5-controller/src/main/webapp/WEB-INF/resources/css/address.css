@@ -1,0 +1,91 @@
+/*头部返回栏*/
+.return div:first-of-type a{
+    color:rgba(51,51,51,1);
+    font-size:0.2rem;
+}
+.return div:first-of-type a{
+    line-height:0.6rem;
+}
+.return div:last-of-type{
+    font-size: 0.2rem;
+}
+.return div:last-of-type span{
+    line-height:0.6rem;color:#333333;  font-size: 0.3rem;
+}
+/*收货信息*/
+label {
+    font-weight: 400;
+
+}
+
+.form-horizontal label {
+    font-size: 0.24rem;
+    color: #3c3c3c;
+    line-height:0.32rem;
+    padding-right: 0rem;
+
+
+}
+.form-horizontal .col-xs-9,.col-xs-8 {
+    padding-left: 0;
+}
+.form-horizontal input {
+    font-weight: 500;
+    font-size: 0.24rem;
+    color: #3c3c3c;
+    border: 0;
+    line-height:0.24rem;
+    height: 0.34rem;
+}
+.form-horizontal .form-group:nth-child(1){
+    margin-top: 0.2rem;
+}
+/* .form-horizontal .form-group:nth-child(3) label{
+    margin-top: 0.2rem;
+    padding-top: 0rem;
+} */
+.form-horizontal .form-group:last-of-type{
+    border:none;
+}
+.form-horizontal .form-group {
+    border-bottom: 0.01rem solid #F1F1F1;padding: 0.15rem 0;margin-bottom: 0;
+}
+.form-horizontal .form-group .areaOne{
+    margin-top: 10px;
+}
+.form-horizontal .form-group .area .checkbox-inline{
+    border: 1px solid #666;
+    text-align: center;
+    padding:2px 5px;
+}
+
+
+/* .form-horizontal .form-group:nth-child(3) label{
+    margin-top: 0.2rem;
+    padding-top: 0rem;
+} */
+.form-horizontal .form-group .form-control {
+    outline: none;
+    box-shadow: inset 0 0.01rem 0.01rem #fff;
+}
+.checkbox-inline{
+    padding-top: 0;
+}
+.checkbox-inline input{
+    margin-top: 0;
+}
+/*提交按钮*/
+.register_submit{
+    margin-top: 0.6rem;
+    width: 80%;
+    margin-left: 10%;
+    background:rgba(53,146,208,1);
+    box-shadow:0rem 0.01rem 0.08rem 0rem rgba(53,146,208,1);
+border-radius:0.05rem;
+}
+
+.register_submit a{
+    font-size:0.32rem;
+    color: #FFFFFF;text-decoration: none;font-weight: 500;
+   
+}
