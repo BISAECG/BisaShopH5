@@ -18,16 +18,14 @@
         list-style: none;
         padding-left: 0.20rem;
     }
-    .list ul a {
+    .list ul  li a{
         color: #333333;
-        font-size: 0.22rem;
+        font-size: 0.30rem;
         text-decoration: none;
         display: inline-block;
         width: 90%;
-    }
-    .list ul  li a{
         border-bottom: 0.01rem solid #C2C2C2;
-        padding: 0.10rem 0;
+        padding: 0.20rem 0;
 
     }
     .list ul li a i {
@@ -35,6 +33,36 @@
         font-size: 0.30rem;
         line-height: 0.31rem;
         float: right;
+    }
+    .fixedRight{
+        position:fixed;
+        right: 0;
+        z-index: 99;
+        top: 60%;
+    }
+    .fixedRight ul li{
+        list-style: none;
+    }
+    .fixedRight ul li a{
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        width: 0.9rem;
+        height: 0.9rem;
+        background: rgb(51, 122, 183);
+        border-radius: 0.1rem;
+        margin-bottom: 0.1rem;
+        color: #fff;
+    }
+    .fixedRight ul li a i{
+        display: block;
+        font-size:0.4rem;
+        line-height: 0.9rem;
+    }
+    #lang{     
+        margin-top: 0.12rem;  
+        font-size: 0.28rem; 
+        height: 0.68rem;
     }
 </style>
 <div class="container-fluid header">
@@ -49,10 +77,12 @@
                 <img class="img-responsive center-block" src="/resources/img/index/logo.png">
             </a>
         </div>
-        <div class="col-xs-2 col-xs-offset-2 text-center">
-            <a href="login.html">
-                <img style="margin-top: 0.12rem;"  class="img-responsive center-block" src="/resources/img/index/login.png">
-            </a>
+        <div class="col-xs-3 col-xs-offset-1 col-sm-2 col-sm-offset-2 text-center" style="padding-left: 0px;padding-right: 10px;">
+            <select id="lang" class="form-control">
+                <option value="/login?lang=zh_CN">Simplified</option>
+                <option value="/login?lang=zh_HK">Tradition</option>
+                <option value="/login?lang=en_US">English</option>
+            </select>
         </div>
     </div>
 </div>
@@ -61,13 +91,45 @@
         <div class="list">
             <ul>
                     <li><a  style="margin-top: 30px;" href="index.html">Home <i class="fa fa-angle-right " aria-hidden="true"></i></a></li>               
-                    <li><a href="shop.html">All Products<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>                              
-                    <li><a href="solution.html">Solution<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>                         
+                    <!-- <li><a href="shop.html">All Products<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>                              
+                    <li><a href="solution.html">Solution<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>                          -->
                     <li><a href="new.html">News<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>              
                     <li> <a href="QA.html">Health Q & A <i class="fa fa-angle-right " aria-hidden="true"></i> </a></li>                            
                     <li><a href="download.html">Download Center<i class="fa fa-angle-right" aria-hidden="true"></i></a></li>                           
                     <li><a href="certificate.html">Product Certificate<i class="fa fa-angle-right " aria-hidden="true"></i></a></li>
+                    <li><a href="login.html">Sign In<i class="fa fa-angle-right " aria-hidden="true"></i></a></li>
             </ul>
         </div>
     </div>
 </div>
+<div class="fixedRight">
+    <ul>
+        <li>
+            <a href="tel:0755-26880962"><i class="fa fa-volume-control-phone"></i></a>
+        </li>
+        <li>
+            <a><i class="fa fa-commenting-o" aria-hidden="true"></i></a>
+        </li>
+        <li class="toTop">
+            <a><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </li>
+    </ul>
+</div>
+<script>
+$(document).ready(function() {
+    /*返回顶部*/
+    $(".toTop").click(function() {
+        if ($('html').scrollTop()) {
+            $('html').animate({
+                scrollTop: 0
+            }, 1000);
+            return false;
+        }
+        $('body').animate({
+            scrollTop: 0
+        }, 1000);
+        return false;
+    });
+    /*返回顶部*/
+});
+</script>
