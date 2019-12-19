@@ -5,9 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="icon" href="Images/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon" />
-    <link rel="bookmark" href="Images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="bookmark" href="/favicon/favicon.ico" type="image/x-icon" />
     <meta http-equiv="Content-Type" content="text/html;" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -23,19 +23,6 @@
     <link href="/resources/css/index/index.css" rel="stylesheet">
     <link href="/resources/css/shop/shop.css" rel="stylesheet">
     <script src="/resources/js/comm/jquery.min.js"></script>
-    <style>
-        .spantitle{
-            color:rgba(153,153,153,1);
-            font-size:20px;
-            line-height:40px;
-            font-weight: 400;
-        }
-        .spanprice{
-            color:rgba(207,21,24,1);
-            line-height:40px;
-            font-size:28px;
-        }
-    </style>
 </head>
 
 <body>
@@ -47,15 +34,18 @@
 <!--ai报告购买页面-->
 <div class="container">
     <div class="row mt-40 shopBox">
-        <div class="col-md-4 col-md-offset-1 boxLeft">
-         	<img class="img-responsive" src="${goods.img_url}">
+		<div class="col-md-1" style="padding-left: 0;">
+			<img class="img-responsive" src="/resources/img/shop/hot.png">
+		</div>
+        <div class="col-md-5  boxLeft">
+         	<img class="img-responsive center-block" src="${goods.img_url}">
         </div>
-        <div class="col-md-5 col-md-offset-1 boxRight">
+        <div class="col-md-6 boxRight">
 	            <p class="shopTitle" style="margin-bottom: 12px">${goods.name}</p>
-	            <p style="font-size:16px;color:rgba(207,21,24,1);">${goods.description}</p>
+	            <p class="shopContent">${goods.description}</p>
 	            <p class="shopPrice">
 	                <span ><spring:message code="price"/>:</span>
-	                <span>¥${goods.price}</span>
+	                <span><spring:message code="pay.unit"/>${goods.price}</span>
 	            </p>
 	            <div class="row">
 					<div class="goods_num  col-md-12">
@@ -87,12 +77,12 @@
 		            </button>
 	            </a>
 	            </c:if>
-	             <c:if test="${goods.status==GoodsStatusEnum.SALE_OUT.getValue()}">
+				<c:if test="${goods.status==GoodsStatusEnum.SALE_OUT.getValue()}">
 		            <button class="Order" style="margin-top: 15px;font-size: 15px;color:#fff;background:#5bd1a1">
 		              		<spring:message code="sold.out"/>
 		            </button>
 	            </c:if>
-	             <c:if test="${goods.status==GoodsStatusEnum.INVALID.getValue()}">
+			    <c:if test="${goods.status==GoodsStatusEnum.INVALID.getValue()}">
 		            <button class="Order" style="margin-top: 15px;font-size: 15px;color:#fff;background:#5bd1a1">
 		              		 <spring:message code="off.shelves"/>
 		            </button>

@@ -16,6 +16,16 @@ public interface IPayDao extends IBaseDao<Pay>{
      */
     public Pay getPayById(int id);
     
+    
+    
+    
+    /**
+     * 
+     * @param order_num
+     * @return
+     */
+    public Pay getPatByOrderNum(String order_num);
+    
      
      /**
       * 支付分页

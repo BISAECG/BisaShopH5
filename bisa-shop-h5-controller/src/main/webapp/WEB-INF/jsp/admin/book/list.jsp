@@ -6,15 +6,15 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-CN">
 <head>
-    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon" />
-    <link rel="bookmark" href="favicon/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="bookmark" href="/favicon/favicon.ico" type="image/x-icon" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- necessary -->
     <title><spring:message code="admin.domain"/></title>
-    <meta name="keywords" content="<spring:message code="admin.domain"/>">
+    <meta name="keywords" content="<spring:message code="admin.keyword"/>">
     <meta name="description" content="<spring:message code="admin.description"/>">
     <!-- description -->
     <meta name="renderer" content="webkit">
@@ -32,11 +32,11 @@
     </script>
     <script type="text/html" id="msgType">
         {{# if(d.order_status=="1"){ }}
-       		<span style="color: #F581B1;">个人</span>
+       		<span style="color: #F581B1;"><spring:message code="6001"/></span>
         {{# }else if(d.order_status=="2"){ }}
-            <span style="color: #009688;">企业</span>
+            <span style="color: #009688;"><spring:message code="6002"/></span>
         {{#  }else{ }}
- 			<span style="color: #F581B1;">医院</span>
+ 			<span style="color: #F581B1;"><spring:message code="6003"/></span>
 		{{#  } }}
     </script>
 
@@ -56,20 +56,20 @@
         <div class="layui-body">
             <div style="padding: 50px;">
                 <p class="f-18 pt-15 pb-15 col-8d969d">
-                    搜索文章
+                    <spring:message code="seach"/>
                 </p>
                 <div class="clear pd-15 bg-fafafa bor bor-col-e8ebf2">
                     <!-- 这里用layui的数据表格的重载 -->
                     <form class="layui-form" lay-filter="form-opt">
                         <div class="layui-form-item mb-0" pane="">
-                            <label class="layui-form-label f-14">搜索：</label>
+                            <label class="layui-form-label f-14"><spring:message code="seach"/>：</label>
                             <div class="layui-input-block">
                                 <div class="layui-inline">
                                     <select name="searchabout" id="searchabout" lay-verify="required" lay-search="">
-                                        <option value="">请选择您要查询的内容</option>
-                                        <option value="mail">留言邮箱</option>
-                                        <option value="phone">留言手机</option>
-                                        <option value="name">留言名字</option>
+                                        <option value=""><spring:message code="seach.content.input"/></option>
+                                        <option value="mail"><spring:message code="6004"/></option>
+                                        <option value="phone"><spring:message code="6005"/></option>
+                                        <option value="name"><spring:message code="6006"/></option>
                                     </select>
                                 </div>
                                 <div class="layui-inline">
@@ -78,15 +78,15 @@
                                     </div>
                                 </div>
                                 <div class="layui-inline">
-                                    <button type="submit" class="layui-btn layui-btn-sm" lay-submit lay-filter="search">搜索</button>
-                                    <button type="button" class="layui-btn layui-btn-sm btn-refresh">刷新</button>
+                                    <button type="submit" class="layui-btn layui-btn-sm" lay-submit lay-filter="search"><spring:message code="seach"/></button>
+                                    <button type="button" class="layui-btn layui-btn-sm btn-refresh"><spring:message code="refresh"/></button>
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
                 <p class="f-18 pt-15 pb-15 mt-40 col-8d969d">
-                    	文章列表
+                    	<spring:message code="list"/>
                 </p>
                 <div class="clear pd-15 bg-fafafa bor bor-col-e8ebf2">
                     <table id="mTable" lay-filter="mTable"></table>
@@ -107,9 +107,9 @@
 		     <label class="layui-form-label"><spring:message code="category" /></label>
 		    <div class="layui-input-inline">
 		      <select name="message_type" id="message_type"  lay-verify="required" >
-		      	   <option value="1">个人</option>
-                    <option value="2">企业</option>
-                    <option value="3">医院</option>
+		      	   <option value="1"><spring:message code="6001"/></option>
+                    <option value="2"><spring:message code="6002"/></option>
+                    <option value="3"><spring:message code="6003"/></option>
 		      </select>
 		    </div>
 		  </div>
@@ -139,7 +139,7 @@
   <script src="/resources/ctrl/layui/layui.js"></script>
 	<script src="/resources/js/utils.js"></script>
     <script type="text/javascript">
-        //刷新  页面按钮
+        //<spring:message code="refresh"/>  页面按钮
   
      //加载layui
     layui.use(['element', 'table', 'form'], function () {
@@ -176,11 +176,11 @@
             cols: [
                 [ //标题栏
                         {field: 'id', title: 'ID', width: '5%', align: 'center'},
-                        {field: 'name', title: '留言姓名', width: '20%', align: 'center'},
-                        {field: 'phone', title: '留言手机', width: '10%', align: 'center'},
-                        {field: 'message_type', title: '询问类型', width: '10%', align: 'center',templet:'#msgType'},
-                        {field: 'message', title: '留言内容', width: '30%', align: 'center'},
-                        {field: 'c_time', title: '留言时间',width: '10%',  align: 'center'},
+                        {field: 'name', title: '<spring:message code="6006"/>', width: '20%', align: 'center'},
+                        {field: 'phone', title: '<spring:message code="6005"/>', width: '10%', align: 'center'},
+                        {field: 'message_type', title: '<spring:message code="6007"/>', width: '10%', align: 'center',templet:'#msgType'},
+                        {field: 'message', title: '<spring:message code="content"/>', width: '30%', align: 'center'},
+                        {field: 'c_time', title: '<spring:message code="time"/>',width: '10%',  align: 'center'},
                         {fixed: 'right', title: "<spring:message code='opt' />", width: '20%', align: 'center', toolbar: '#barDemo'}                  
                 ]
             ],
@@ -197,7 +197,10 @@
             if(layEvent == 'delete'){
                 // 删除这里有个BUG就是单页删除完后需要手动刷新
                 var id = data.id;
-                layer.confirm("<spring:message code='submit.delete' />", function (index) {
+                layer.confirm("<spring:message code='submit.delete' />", {
+        			  btn: ["<spring:message code='submit' />"] //按钮
+    			  ,title:"<spring:message code='tip'/>"
+    			},function (index) {
                     $.ajax({
                         url: '/admin/book/ajax/del/'+id,
                         type: "DELETE",

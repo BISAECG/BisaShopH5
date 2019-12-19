@@ -35,7 +35,7 @@ public class SysErrorCode {
 	 */
 	public final static String OptFail="670";
 	//##########################PAY################################
-	public final static String PayError="13000";
+	public final static String PayError="9002";
 	
 	//##########################特殊编码################################
 	/**
@@ -55,6 +55,11 @@ public class SysErrorCode {
 	 * 优惠券不可用
 	 */
 	public final static String NOT_COUPON="4003";
+	
+	
+	
+	
+	
 	
 	
 }

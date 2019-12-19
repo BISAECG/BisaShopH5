@@ -97,6 +97,13 @@
 			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
 			<version>3.0.4.RELEASE</version>
 		</dependency>
+				
+		<!-- 二维码 -->		
+		<dependency>
+	      <groupId>com.github.penggle</groupId>
+	      <artifactId>kaptcha</artifactId>
+	      <version>2.3.2</version>
+    	</dependency>
 	</dependencies>
 
 	<build>

@@ -27,6 +27,8 @@ public interface IRechargeCardDao extends IBaseDao<RechargeCard>{
     public RechargeCard getRechargeCardByNumAndPwd(String card_num,String card_pwd);
     
     
+    
+    
     /**
      * 根据订单号查询
      * @param order_num
@@ -41,6 +43,15 @@ public interface IRechargeCardDao extends IBaseDao<RechargeCard>{
       */
      public Pager<RechargeCard> getPageRechargeCard(String vKey, String vVal);
 
+     /**
+      * 
+      * @param offset
+      * @param userId
+      * @param vKey
+      * @param vVal
+      * @return
+      */
+     public Pager<RechargeCard> getPageRechargeCard(int offset,int userId,String vKey, String vVal);
     
     
     /**

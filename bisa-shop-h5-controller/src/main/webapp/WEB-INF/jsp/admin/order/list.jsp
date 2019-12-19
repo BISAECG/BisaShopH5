@@ -10,15 +10,15 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-CN">
 <head>
-    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon" />
-    <link rel="bookmark" href="favicon/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="bookmark" href="/favicon/favicon.ico" type="image/x-icon" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- necessary -->
     <title><spring:message code="admin.domain"/></title>
-    <meta name="keywords" content="<spring:message code="admin.domain"/>">
+    <meta name="keywords" content="<spring:message code="admin.keyword"/>">
     <meta name="description" content="<spring:message code="admin.description"/>">
     <!-- description -->
     <meta name="renderer" content="webkit">
@@ -42,15 +42,23 @@
         <a class="layui-btn layui-btn-sm layui-btn-danger" lay-event="ems"><spring:message code='3005' /></a>
     </script>
   
-    <script type="text/html" id="orderStatus">
+  
+     <script type="text/html" id="orderStatus">
         {{# if(d.order_status=="${OrderStatusEnum.UNSHIPPED.getValue()}"){ }}
-       		<span style="color: #F581B1;">未发货</span>
+       		<span style="color: #F581B1;"><spring:message code="unshipped"/></span>
         {{# }else if(d.order_status=="${OrderStatusEnum.DELIVERRY.getValue()}"){ }}
-            <span style="color: #009688;">已发货</span>
+            <span style="color: #009688;"><spring:message code="shipped"/></span>
  		{{# }else if(d.order_status=="${OrderStatusEnum.CANCEL.getValue()}"){ }}
-            <span style="color: #F581B1;">退货</span>
+            <span style="color: #F581B1;"><spring:message code="returns"/></span>
         {{#  }else{ }}
- 			<span style="color: #F581B1;">换货</span>
+ 			<span style="color: #F581B1;"><spring:message code="exchange"/></span>
+		{{#  } }}
+    </script>
+    <script type="text/html" id="orderIsPay">
+        {{# if(d.is_pay=="${PayEnum.PAY.getValue()}"){ }}
+       		<span style="color: #009688;"><spring:message code="paid"/></span>
+        {{#  }else{ }}
+ 			<span style="color: #F581B1;"><spring:message code="unpaid"/></span>
 		{{#  } }}
     </script>
  
@@ -64,23 +72,22 @@
         <div class="layui-body">
             <div style="padding: 50px;">
                 <p class="f-18 pt-15 pb-15 col-8d969d">
-                    搜索文章
+                    <spring:message code="seach"/>
                 </p>
                 <div class="clear pd-15 bg-fafafa bor bor-col-e8ebf2">
                     <!-- 这里用layui的数据表格的重载 -->
                     <form class="layui-form" lay-filter="form-opt">
                         <div class="layui-form-item mb-0" pane="">
-                            <label class="layui-form-label f-14">搜索：</label>
+                            <label class="layui-form-label f-14"><spring:message code="seach"/>：</label>
                             <div class="layui-input-block">
                                 <div class="layui-inline">
                                     <select name="searchabout" lay-verify="required" lay-search="">
-                                        <option value="">请选择您要查询的内容</option>
-                                        <option value="user_id">手机/邮箱/用户名</option>
-                                        <option value="order_num">订单编号</option>
-                                        <option value="order_address">发货地址</option>
-                                        <option value="order_phone">联系人</option>
-                                        <option value="c_time">订单时间</option>
-                                        <option value="user_id">用户</option>
+                                        <option value=""><spring:message code="seach.content.input"/></option>
+                                        <option value="user_id"><spring:message code="7003"/></option>
+                                        <option value="order_num"><spring:message code="3008"/></option>
+                                        <option value="order_name"><spring:message code="addressee"/></option>
+                                        <option value="order_phone"><spring:message code="addressee.phone"/></option>
+                                        <option value="c_time"><spring:message code="time"/></option>
                                         
                                     </select>
                                 </div>
@@ -90,15 +97,15 @@
                                     </div>
                                 </div>
                                 <div class="layui-inline">
-                                    <button type="submit" class="layui-btn layui-btn-sm" lay-submit lay-filter="search">搜索</button>
-                                    <button type="button" class="layui-btn layui-btn-sm btn-refresh">刷新</button>
+                                    <button type="submit" class="layui-btn layui-btn-sm" lay-submit lay-filter="search"><spring:message code="seach"/></button>
+                                    <button type="button" class="layui-btn layui-btn-sm btn-refresh"><spring:message code="refresh"/></button>
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
                 <p class="f-18 pt-15 pb-15 mt-40 col-8d969d">
-                    	文章列表
+                    	<spring:message code="list"/>
                 </p>
                 <div class="clear pd-15 bg-fafafa bor bor-col-e8ebf2">
                     <table id="mTable" lay-filter="mTable"></table>
@@ -114,101 +121,101 @@
 	                 <input name="address_id" id="address_id" type="hidden" readonly="readonly"  value="0" />
 	                 <input name="user_id" id="user_id" readonly="readonly"  type="hidden" value="0" />
 	                <div class="layui-form-item">
-	                    <label class="layui-form-label">商品编号</label>
+	                    <label class="layui-form-label"><spring:message code='2036'/></label>
 	                    <div class="layui-input-inline">
-	                    	<input type="text" readonly="readonly"  name="goods_num"  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+	                    	<input type="text" readonly="readonly"  name="goods_num"  lay-verify="required" placeholder="<spring:message code='3014'/>" autocomplete="off" class="layui-input">
 	                    </div>
-	                     <label class="layui-form-label">商品类型</label>
+	                     <label class="layui-form-label"><spring:message code='2025'/></label>
 	                    <div class="layui-input-inline">
 	                             <select id="goods_type" name="type" lay-verify="required">
-	                            	<option value="${GoodsTypeEnum.REAL.getValue()}">实体</option>
-	                            	<option value="${GoodsTypeEnum.VIRTUAL.getValue()}">虚拟</option>
+	                            	<option value="${GoodsTypeEnum.REAL.getValue()}"><spring:message code='2009'/></option>
+	                            	<option value="${GoodsTypeEnum.VIRTUAL.getValue()}"><spring:message code='2010'/></option>
 	                            </select>
 	                    </div>
 	             
 	                </div>
 	                  <div class="layui-form-item ">
-	                  	 <label class="layui-form-label">商品价格</label>
+	                  	 <label class="layui-form-label"><spring:message code='2026'/></label>
 	                    <div class="layui-input-inline">
-	                         <input readonly="readonly"  type="text" name="goods_price"  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+	                         <input readonly="readonly"  type="text" name="goods_price"  lay-verify="required"  autocomplete="off" class="layui-input">
 	                    </div>
-	                    <label class="layui-form-label layui-col-md3">商品数量</label>
+	                    <label class="layui-form-label layui-col-md3"><spring:message code='2015'/></label>
 	                    <div class="layui-input-inline">
-	                         <input readonly="readonly"  type="text" name="goods_count"  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+	                         <input readonly="readonly"  type="text" name="goods_count"  lay-verify="required"  autocomplete="off" class="layui-input">
 	                    </div>
 	                </div>
 	                <div class="layui-form-item ">
-	                    <label class="layui-form-label layui-col-md3">订单编号</label>
+	                    <label class="layui-form-label layui-col-md3"><spring:message code='3008'/></label>
 	                    <div class="layui-input-inline">
-	                        <input readonly="readonly"  type="text" name="order_num"  lay-verify="required" placeholder="请输入商品价格"  class="layui-input">
+	                        <input readonly="readonly"  type="text" name="order_num"  lay-verify="required"  class="layui-input">
 	                    </div>
-	                      <label class="layui-form-label layui-col-md3">订单时间</label>
+	                      <label class="layui-form-label layui-col-md3"><spring:message code='time'/></label>
 	                    <div class="layui-input-inline">
-	                         <input readonly="readonly"  type="text" name="c_time"  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+	                         <input readonly="readonly"  type="text" name="c_time"  lay-verify="required"  autocomplete="off" class="layui-input">
 	                    </div>
 	                
 	                </div>
 	                  <div class="layui-form-item ">
-	                  	 <label class="layui-form-label">订单状态</label>
+	                  	 <label class="layui-form-label"><spring:message code='status'/></label>
 	                    <div class="layui-input-inline">
 	                    	<select  id="order_status" name="order_status" lay-verify="required">
-	                            <option value="${OrderStatusEnum.UNSHIPPED.getValue()}">未发货</option>
-	                            <option value="${OrderStatusEnum.DELIVERRY.getValue()}">已发货</option>
-	                            <option value="${OrderStatusEnum.CANCEL.getValue()}">退货</option>
-	                            <option value="${OrderStatusEnum.EXCHANGE.getValue()}">换货</option>
+	                            <option value="${OrderStatusEnum.UNSHIPPED.getValue()}"><spring:message code='unshipped'/></option>
+	                            <option value="${OrderStatusEnum.DELIVERRY.getValue()}"><spring:message code='shipped'/></option>
+	                            <option value="${OrderStatusEnum.CANCEL.getValue()}"><spring:message code='returns'/></option>
+	                            <option value="${OrderStatusEnum.EXCHANGE.getValue()}"><spring:message code='exchange'/></option>
 	                        </select>
 	                    </div>
-	                    <label class="layui-form-label layui-col-md3">支付状态</label>
+	                    <label class="layui-form-label layui-col-md3"><spring:message code='paid.statut'/></label>
 	                    <div class="layui-input-inline">
 	                    	<select   id="is_pay" name="is_pay" lay-verify="required">
-	                    		<option value="${PayEnum.PAY.getValue()}">已付</option>
-	                            <option value="${PayEnum.NOT_PAY.getValue()}">未付</option>
+	                    		<option value="${PayEnum.PAY.getValue()}"><spring:message code='paid'/></option>
+	                            <option value="${PayEnum.NOT_PAY.getValue()}"><spring:message code='unpaid'/></option>
 	                        </select>
 	                    </div>
 	                </div>
 	                <div class="layui-form-item ">
-	                    <label class="layui-form-label layui-col-md3">订单实际金额</label>
+	                    <label class="layui-form-label layui-col-md3"><spring:message code='3015'/></label>
 	                    <div class="layui-input-inline">
-	                         <input readonly="readonly"  type="text" name="order_price"  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+	                         <input readonly="readonly"  type="text" name="order_price"  lay-verify="required" " autocomplete="off" class="layui-input">
 	                    </div>
-	                      <label class="layui-form-label layui-col-md3">订单总价</label>
+	                      <label class="layui-form-label layui-col-md3"><spring:message code='2018'/></label>
 	                    <div class="layui-input-inline">
-	                    	<input readonly="readonly"  type="text" name="order_total"  lay-verify="required" placeholder="请输入商品价格"  class="layui-input">
+	                    	<input readonly="readonly"  type="text" name="order_total"  lay-verify="required"  class="layui-input">
 	                    </div>
 	                </div>
 	                <div class="layui-form-item ">
-	                <label class="layui-form-label layui-col-md3">优惠号码</label>
+	                <label class="layui-form-label layui-col-md3"><spring:message code='4025'/></label>
 	                    <div class="layui-input-block">
-	                         <input readonly="readonly"  type="text" name="coupon_num"  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+	                         <input readonly="readonly"  type="text" name="coupon_num"  lay-verify="required"  autocomplete="off" class="layui-input">
 	                    </div>
 	                </div>
 	                  <div class="layui-form-item ">
-	                  	 <label class="layui-form-label">是否优惠</label>
+	                  	 <label class="layui-form-label"><spring:message code='3016'/></label>
 	                    <div class="layui-input-inline">
 	                    	<select  id="is_coupon" name="is_coupon" lay-verify="required">
-	                    		<option value="${CouponEnum.COUPON.getValue()}">已优惠</option>
-	                            <option value="${CouponEnum.NOT_COUPON.getValue()}">未优惠</option>
+	                    		<option value="${CouponEnum.COUPON.getValue()}"><spring:message code='3017'/></option>
+	                            <option value="${CouponEnum.NOT_COUPON.getValue()}"><spring:message code='3018'/></option>
 	                         </select>
 	                    </div>
-	                     <label class="layui-form-label">优惠价格</label>
+	                     <label class="layui-form-label"><spring:message code='3019'/></label>
 	                    <div class="layui-input-inline">
-	                    	<input readonly="readonly"  type="text" name="coupon_price"  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+	                    	<input readonly="readonly"  type="text" name="coupon_price"  lay-verify="required" autocomplete="off" class="layui-input">
 	                    </div>
 	                </div>
 	       			<div class="layui-form-item ">
-	       				<label class="layui-form-label">联系电话</label>
+	       				<label class="layui-form-label"><spring:message code='addressee.phone'/></label>
 	                    <div class="layui-input-inline">
-	  							<input readonly="readonly"  type="text" name="order_phone"  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+	  							<input readonly="readonly"  type="text" name="order_phone"  lay-verify="required" autocomplete="off" class="layui-input">
 	                    </div>
-	                	<label class="layui-form-label layui-col-md3">快递单号</label>
+	                	<label class="layui-form-label layui-col-md3"><spring:message code='3020'/></label>
 	                    <div class="layui-input-inline">
-	                         <input readonly="readonly"  type="text" name="ems_num"  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+	                         <input readonly="readonly"  type="text" name="ems_num"  lay-verify="required"  autocomplete="off" class="layui-input">
 	                    </div>
 	                </div>
 	                <div class="layui-form-item ">
-	                	<label class="layui-form-label layui-col-md3">快递地址</label>
+	                	<label class="layui-form-label layui-col-md3"><spring:message code='3021'/></label>
 	                    <div class="layui-input-block">
-	                         <input readonly="readonly"  type="text" name="order_address"  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+	                         <input readonly="readonly"  type="text" name="order_address"  lay-verify="required"  autocomplete="off" class="layui-input">
 	                    </div>
 	                </div>
 	            </form>
@@ -222,16 +229,16 @@
 	          	 <form class="layui-form"  id="address-form" lay-filter="address-form">
 	                <input name="id" type="hidden" value="0" />
 	                <div class="layui-form-item ">
-	                    <label class="layui-form-label">邮寄地址</label>
+	                    <label class="layui-form-label"><spring:message code='address'/></label>
 	                    <div class="layui-input-block">
-	                        <input type="text" name="order_address"  lay-verify="required" placeholder="请输入商品分类名"  class="layui-input">
+	                        <input type="text" name="order_address"  lay-verify="required"   class="layui-input">
 	                    </div>
 	                </div>
 	                <div class="layui-form-item ">
 	                  
-	                    <label class="layui-form-label">邮寄电话</label>
+	                    <label class="layui-form-label"><spring:message code='addressee.phone'/></label>
 	                    <div class="layui-input-inline">
-	                        <input type="text" name="order_phone"  lay-verify="required" placeholder="请输入商品分类名"  class="layui-input">
+	                        <input type="text" name="order_phone"  lay-verify="required"  class="layui-input">
 	                    </div>
 	                </div>
 	               
@@ -251,18 +258,18 @@
 	          	 <form class="layui-form"  id="ems-form" lay-filter="ems-form">
 	                <input name="id" type="hidden" value="0" />
 	                <div class="layui-form-item ">
-	                    <label class="layui-form-label">物流状态</label>
+	                    <label class="layui-form-label"><spring:message code='3022'/></label>
 	                    <div class="layui-input-inline">
 	                       	<select  id="order_status" name="order_status" lay-filter="ems_status" lay-verify="required">
-	                            <option value="${OrderStatusEnum.UNSHIPPED.getValue()}">未发货</option>
-	                            <option value="${OrderStatusEnum.DELIVERRY.getValue()}">已发货</option>
-	                            <option value="${OrderStatusEnum.CANCEL.getValue()}">退货</option>
-	                            <option value="${OrderStatusEnum.EXCHANGE.getValue()}">换货</option>
+	                           <option value="${OrderStatusEnum.UNSHIPPED.getValue()}"><spring:message code='unshipped'/></option>
+	                            <option value="${OrderStatusEnum.DELIVERRY.getValue()}"><spring:message code='shipped'/></option>
+	                            <option value="${OrderStatusEnum.CANCEL.getValue()}"><spring:message code='returns'/></option>
+	                            <option value="${OrderStatusEnum.EXCHANGE.getValue()}"><spring:message code='exchange'/></option>
 	                        </select>
 	                    </div>
-	                    <label class="layui-form-label">物流单号</label>
+	                    <label class="layui-form-label"><spring:message code='3020'/></label>
 	                    <div class="layui-input-inline">
-	                        <input type="text" name="ems_num"  placeholder="请输入商品分类名"  class="layui-input">
+	                        <input type="text" name="ems_num"  placeholder="<spring:message code='3023'/>"  class="layui-input">
 	                    </div>
 	                </div>
 	               
@@ -280,7 +287,7 @@
   <script src="/resources/ctrl/layui/layui.js"></script>
 	<script src="/resources/js/utils.js"></script>
     <script type="text/javascript">
-        //刷新  页面按钮
+        //<spring:message code="refresh"/>  页面按钮
   
      //加载layui
     layui.use(['element', 'table', 'upload','form'], function () {
@@ -395,14 +402,15 @@
             cols: [
                 [ //标题栏
                         {field: 'id', title: 'ID', width: '5%', align: 'center'},
-                        {field: 'order_num', title: '订单号码', width: '10%', align: 'center'},
-                        {field: 'order_status', title: '订单状态',width: '10%', sort:true, align: 'center' ,templet:'#orderStatus'},
-                        {field: 'is_pay', title: '支付状态',width: '8%',  sort:true,align: 'center'},
-                        {field: 'coupon_price', title: '优惠价格',width: '8%',  align: 'center'},
-                        {field: 'goods_price', title: '单价', width: '10%', align: 'center'},
-                        {field: 'goods_count', title: '商品数量', width: '10%', align: 'center'},
-                        {field: 'order_total', title: '总价',width: '10%',  align: 'center'},
-                        {field: 'c_time', title: '订单时间', width: '12%',sort:true, align: 'center'},
+                        {field: 'order_num', title: '<spring:message code="3008"/>', width: '10%', align: 'center'},
+                        {field: 'order_status', title: '<spring:message code="status"/>',width: '10%', sort:true, align: 'center' ,templet:'#orderStatus'},
+                        {field: 'is_pay', title: '<spring:message code="paid.statut"/>',width: '8%',  sort:true,align: 'center',templet:'#orderIsPay'},
+                        {field: 'coupon_price', title: '<spring:message code="3019"/>',width: '8%',  align: 'center'},
+                        {field: 'goods_price', title: '<spring:message code="2026"/>', width: '10%', align: 'center'},
+                        {field: 'goods_count', title: '<spring:message code="2035"/>', width: '10%', align: 'center'},
+                        {field: 'order_total', title: '<spring:message code="2018"/>',width: '10%',  align: 'center'},
+                        {field: 'order_price', title: '<spring:message code="3015"/>',width: '10%',  align: 'center'},
+                        {field: 'c_time', title: '<spring:message code="time"/>', width: '12%',sort:true, align: 'center'},
                         {fixed: 'right', title: "<spring:message code='opt' />", width: '25%', align: 'center', toolbar: '#barDemo'}                  
                 ]
             ],
@@ -426,9 +434,9 @@
         	
             	if(isOk){
             	
-            		layer.confirm('此商品已经发货确认修改？',{
+            		layer.confirm("<spring:message code='3024' />",{
           			  btn: ["<spring:message code='submit' />"] //按钮
-          			  ,title:"警告"
+          			  ,title:"<spring:message code="warning"/>"
           			}, function(index){
           				 openEms(data);
           				layer.close(index);

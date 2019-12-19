@@ -58,6 +58,7 @@ public interface IGoodsService {
 	 * @return
 	 */
 	public Goods loadById(int id);
+
 	/**
 	 * 保存商品
 	 * @param goods

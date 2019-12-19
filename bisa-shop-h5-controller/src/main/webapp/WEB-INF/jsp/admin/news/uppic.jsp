@@ -1,18 +1,14 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.bisa.health.shop.entity.SysStatusCode" %>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-CN">
 <head>
-<link rel="icon" href="Images/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon" />
-<link rel="bookmark" href="Images/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
+<link rel="bookmark" href="/favicon/favicon.ico" type="image/x-icon" />
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +16,7 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 <!-- necessary -->
     <title><spring:message code="admin.domain"/></title>
-    <meta name="keywords" content="<spring:message code="admin.domain"/>">
+    <meta name="keywords" content="<spring:message code="admin.keyword"/>">
     <meta name="description" content="<spring:message code="admin.description"/>">
 <!-- description -->
 <meta name="renderer" content="webkit">
@@ -41,7 +37,7 @@
 
 			<div class="pt-50">
 				<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-				  <legend>图片上传</legend>
+				  <legend><spring:message code="img.up"/>图片上传</legend>
 				</fieldset>
 				
 				<div class="layui-container">  
@@ -51,13 +47,13 @@
 				    </div>
 				    <div class="layui-col-md4">
 				      	<div class="layui-upload">
-								<button type="button" class="layui-btn" id="upFile">多图片上传</button>
+								<button type="button" class="layui-btn" id="upFile"><spring:message code="img.up"/></button>
 							</div>
 				    </div>
 				  </div>
                  
                    	<blockquote class="layui-elem-quote layui-quote-nm"style="margin-top: 10px;">
-						预览图：
+						<spring:message code="preview"/>：
 						<div class="layui-upload-list">
 							 <img class="layui-upload-img" id="imgView">
 						</div>
@@ -66,7 +62,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="resources/ctrl/layui/layui.js"></script>
+	<script src="/resources/ctrl/layui/layui.js"></script>
 	<script type="text/javascript">
 		layui.use([ 'form', 'upload' ], function() {
 			var form = layui.form, upload = layui.upload,$=layui.jquery;

@@ -9,9 +9,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-CN">
 <head>
-    <link rel="icon" href="Images/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon" />
-    <link rel="bookmark" href="Images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="bookmark" href="/favicon/favicon.ico" type="image/x-icon" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -55,11 +55,11 @@
     </script>
     <script type="text/html" id="goodStatus">
         {{# if(d.status == "${GoodsStatusEnum.IN_SALE.getValue()}"){ }}
-       		<span style="color: #009688;">上架</span>
+       		<span style="color: #009688;"><spring:message code="2020" /></span>
         {{# }else if(d.status == "${GoodsStatusEnum.SALE_OUT.getValue()}"){ }}
-            <span style="color: #F581B1;">下架</span>
+            <span style="color: #F581B1;"><spring:message code="2021" /></span>
         {{#  }else{ }}
- 			<span style="color: #F581B1;">售罄</span>
+ 			<span style="color: #F581B1;"><spring:message code="2022" /></span>
 		 {{#  } }}
 
     </script>
@@ -76,14 +76,14 @@
                 <div class="layui-form-item mb-0" pane="">
                     <div class="layui-input-block">
                         <div class="layui-inline">
-                        	<button type="button" id="addPage" class="layui-btn">新增商品</button>
+                        	<button type="button" id="addPage" class="layui-btn"><spring:message code="2002" /></button>
                         </div>
                     </div>
                 </div>
         </div>
         <div style="padding:0px 30px 30px 30px;">
             <p class="f-18 pt-15 pb-15  col-8d969d">
-                	商品分类列表
+                	<spring:message code="list" />
             </p>
             <div class="clear pd-15 bg-fafafa bor bor-col-e8ebf2 min-w-1200">
                  <table id="table" lay-filter="table"></table>
@@ -97,27 +97,27 @@
 	                 <input name="number" id="number" type="hidden" value="0" />
 	                 <input name="category_name" id="category_name" type="hidden" value="0" />
 	                <div class="layui-form-item">
-	                    <label class="layui-form-label">商品名</label>
+	                    <label class="layui-form-label"><spring:message code="2023" /></label>
 	                    <div class="layui-input-inline">
-	                    	<input type="text" name="name" required="" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+	                    	<input type="text" name="name" required="" lay-verify="required" placeholder="<spring:message code="2024" />" autocomplete="off" class="layui-input">
 	                    </div>
-	                    <label class="layui-form-label">商品状态</label>
+	                    <label class="layui-form-label"><spring:message code="status" /></label>
 	                    <div class="layui-input-inline">
 	                         <select id="status" name="status" lay-verify="required">
-	                         		<option value="${GoodsStatusEnum.IN_SALE.getValue()}">上架</option>
-	                         		<option value="${GoodsStatusEnum.SALE_OUT.getValue()}">下架</option>
-	                            	<option value="${GoodsStatusEnum.INVALID.getValue()}">售罄</option>
+	                         		<option value="${GoodsStatusEnum.IN_SALE.getValue()}"><spring:message code="2020" /></option>
+	                         		<option value="${GoodsStatusEnum.SALE_OUT.getValue()}"><spring:message code="2021" /></option>
+	                            	<option value="${GoodsStatusEnum.INVALID.getValue()}"><spring:message code="2022" /></option>
 	                         </select>
 	                    </div>
 	             
 	                </div>
 	                  <div class="layui-form-item ">
-	                  	 <label class="layui-form-label">商品分类</label>
+	                  	 <label class="layui-form-label"><spring:message code="2003" /></label>
 	                    <div class="layui-input-inline">
 	                         <select id="category_num" name="category_num" lay-verify="required">
 	                         </select>
 	                    </div>
-	                    <label class="layui-form-label layui-col-md3">语言</label>
+	                    <label class="layui-form-label layui-col-md3"><spring:message code='lang' /></label>
 	                    <div class="layui-input-inline">
 	                            <select id="language" name="language" lay-filter="language" lay-verify="required">
 	                            </select>
@@ -125,23 +125,23 @@
 	                </div>
 	         
 	                <div class="layui-form-item ">
-	                    <label class="layui-form-label layui-col-md3">商品类型</label>
+	                    <label class="layui-form-label layui-col-md3"><spring:message code="2025" /></label>
 	                    <div class="layui-input-inline">
-	                            <select id="goods_type" placeholder="请输入标题"  lay-filter="goods_type"  name="type" lay-verify="required">
-	                            	<option value="${GoodsTypeEnum.REAL.getValue()}">实体</option>
-	                            	<option value="${GoodsTypeEnum.VIRTUAL.getValue()}">虚拟</option>
+	                            <select id="goods_type"  lay-filter="goods_type"  name="type" lay-verify="required">
+	                            	<option value="${GoodsTypeEnum.REAL.getValue()}"><spring:message code="2009" /></option>
+	                            	<option value="${GoodsTypeEnum.VIRTUAL.getValue()}"><spring:message code="2010" /></option>
 	                            </select>
 	                    </div>
 	                   
-	                        <label class="layui-form-label layui-col-md3">商品价格</label>
+	                        <label class="layui-form-label layui-col-md3"><spring:message code="2026" /></label>
 		                    <div class="layui-input-inline">
-		                        <input type="text" name="price"  lay-verify="required" placeholder="请输入商品价格"  class="layui-input">
+		                        <input type="text" name="price"  lay-verify="required" placeholder="<spring:message code="2027" />"  class="layui-input">
 		                    </div>
 		           
 	                </div>
 	                
 	               <div class="layui-form-item div-service dis-n">
-		                    <label class="layui-form-label layui-col-md3">虚拟服务</label>
+		                    <label class="layui-form-label layui-col-md3"><spring:message code="virtual.service" /></label>
 		                    <div class="layui-input-inline">
 		                            <select id="service_token" name="service_token" lay-verify="required">
 		                            </select>
@@ -149,34 +149,34 @@
 	                </div>
 	                
 	                 <div class="layui-form-item ">
-	                   <label class="layui-form-label" >商品预览图</label>
+	                   <label class="layui-form-label" ><spring:message code="2028" /></label>
 	                    <div class="layui-input-inline">
 	                    	<input type="text" name="img_url"  id="img_url" readonly="readonly" lay-verify="required " autocomplete="off"  class="layui-inline img_url layui-input">
 	                     
 	                    </div>
 	                    <div class="layui-input-inline">
 							<button type="button" onclick="upPreviewFile()"  class="layui-btn">
-			  					<i class="layui-icon">&#xe67c;</i>上传预览
+			  					<i class="layui-icon">&#xe67c;</i><spring:message code="2022" /><spring:message code="2029" />
 							</button>
 	                    </div>
 	              
 	                </div>
 	                <div class="layui-form-item ">
-	                    <label class="layui-form-label">商品描述</label>
+	                    <label class="layui-form-label"><spring:message code="2030" /></label>
 	                    <div class="layui-input-block">
-	                        <textarea name="description" placeholder="请输入内容"  lay-verify="required" class="layui-textarea"></textarea>
+	                        <textarea name="description" placeholder="<spring:message code="2031" />"  lay-verify="required" class="layui-textarea"></textarea>
 	                    </div>
 	                </div>
 	                
 	                <div class="layui-form-item ">
-	                    <label class="layui-form-label" >商品详情</label>
+	                    <label class="layui-form-label" ><spring:message code="2032" /></label>
 	                    <div class="layui-input-inline">
-	                    	<input type="text" name="detail_body" placeholder="请输入商品详情"  id="detail_body" readonly="readonly" lay-verify="required " autocomplete="off"  class="layui-inline detail_body layui-input">
+	                    	<input type="text" name="detail_body" placeholder="<spring:message code="2033" />"  id="detail_body" readonly="readonly" lay-verify="required " autocomplete="off"  class="layui-inline detail_body layui-input">
 	                     
 	                    </div>
 	                    <div class="layui-input-inline">
 							<button type="button" onclick="upFile()"  class="layui-btn">
-			  					<i class="layui-icon">&#xe67c;</i>上传图片
+			  					<i class="layui-icon">&#xe67c;</i><spring:message code="2034" />
 							</button>
 	                    </div>
 	                    
@@ -359,13 +359,13 @@
             cols: [
                 [ //标题栏
                         {field: 'id', title: 'ID', width: '5%', align: 'center'},
-                        {field: 'status', title: '状态',width: '10%',  align: 'center',templet:'#goodStatus'},
-                        {field: 'number', title: '商品编号', width: '10%', align: 'center'},
-                        {field: 'type', title: '商品类型', width: '10%', align: 'center',templet:'#goodType'},
-                        {field: 'language', title: '语言', width: '10%', align: 'center'},
-                        {field: 'price', title: '商品价格', width: '10%', align: 'center'},
-                        {field: 'name', title: '商品名',width: '10%',  align: 'center'},
-                        {fixed: 'right', title: "<spring:message code='opt' />", width: '35%', align: 'center', toolbar: '#barDemo'}                  
+                        {field: 'status', title: '<spring:message code="status" />',width: '10%',  align: 'center',templet:'#goodStatus'},
+                        {field: 'number', title: '<spring:message code="number" />', width: '10%', align: 'center'},
+                        {field: 'type', title: '<spring:message code="type" />', width: '10%', align: 'center',templet:'#goodType'},
+                        {field: 'language', title: '<spring:message code='lang' />', width: '10%', align: 'center'},
+                        {field: 'price', title: '<spring:message code="price" />', width: '10%', align: 'center'},
+                        {field: 'name', title: '<spring:message code="2023" />',width: '10%',  align: 'center'},
+                        {fixed: 'right', title: "<spring:message code='opt' />", width: 'auto', align: 'center', toolbar: '#barDemo'}                  
                 ]
             ],
             done: function (res, curr, count) {
@@ -392,7 +392,10 @@
             if(layEvent == 'delete'){
                 // 删除这里有个BUG就是单页删除完后需要手动刷新
                 var id = data.id;
-                layer.confirm("<spring:message code='submit.delete' />", function (index) {
+                layer.confirm("<spring:message code='submit.delete' />", {
+      			  btn: ["<spring:message code='submit' />"] //按钮
+  			  ,title:"<spring:message code='warning'/>"
+  			},function (index) {
                     $.ajax({
                         url: '/admin/goods/ajax/del/'+id,
                         type: "DELETE",
@@ -543,7 +546,7 @@
 		     	,url: '/admin/common/upload'
 		     	,accept: 'file'
 		     	,exts: 'jpg|png'
-		        ,data:{'suffix':'jpg'}
+		        ,data:{'suffix':'jpg','width':369,'height':332}
 		     	,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
 		         	    layer.load(); //上传loading
 		         	

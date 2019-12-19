@@ -7,9 +7,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-CN">
 <head>
-    <link rel="icon" href="Images/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon" />
-    <link rel="bookmark" href="Images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="bookmark" href="/favicon/favicon.ico" type="image/x-icon" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -58,14 +58,14 @@
                 <div class="layui-form-item mb-0" pane="">
                     <div class="layui-input-block">
                         <div class="layui-inline">
-                        	<button type="button" id="addPage" class="layui-btn">新增新闻内联</button>
+                        	<button type="button" id="addPage" class="layui-btn"><spring:message code="5027" /></button>
                         </div>
                     </div>
                 </div>
         </div>
         <div style="padding:0px 30px 30px 30px;">
             <p class="f-18 pt-15 pb-15  col-8d969d">
-                	新闻内联列表
+                	<spring:message code="list" />
             </p>
             <div class="clear pd-15 bg-fafafa bor bor-col-e8ebf2 min-w-1200">
                  <table id="table" lay-filter="table"></table>
@@ -77,27 +77,27 @@
 	            <form class="layui-form"  id="serverForm" lay-filter="form"  method="post">
 	                <input name="id" type="hidden" value="0" />
 	                <div class="layui-form-item ">
-	                    <label class="layui-form-label">内联中文</label>
+	                    <label class="layui-form-label"><spring:message code="5028" /></label>
 	                    <div class="layui-input-block">
-	                        <input type="text" name="inner_chain_text_CN"  lay-verify="required" placeholder="请输入内联中文"  class="layui-input">
+	                        <input type="text" name="inner_chain_text_CN"  lay-verify="required" placeholder="<spring:message code="5029" />"  class="layui-input">
 	                    </div>
 	                </div>
 	                 <div class="layui-form-item ">
-	                    <label class="layui-form-label">内联英文</label>
+	                    <label class="layui-form-label"><spring:message code="5030" /></label>
 	                    <div class="layui-input-block">
-	                        <input type="text" name="inner_chain_text_EN"  lay-verify="required" placeholder="请输入内联英文"  class="layui-input">
+	                        <input type="text" name="inner_chain_text_EN"  lay-verify="required" placeholder="<spring:message code="5031" />"  class="layui-input">
 	                    </div>
 	                </div>
 	                 <div class="layui-form-item ">
-	                    <label class="layui-form-label">内联繁体</label>
+	                    <label class="layui-form-label"><spring:message code="5032" /></label>
 	                    <div class="layui-input-block">
-	                        <input type="text" name="inner_chain_text_HK"  lay-verify="required" placeholder="请输入内联繁体"  class="layui-input">
+	                        <input type="text" name="inner_chain_text_HK"  lay-verify="required" placeholder="<spring:message code="5033" />"  class="layui-input">
 	                    </div>
 	                </div>
 	                  <div class="layui-form-item ">
-	                    <label class="layui-form-label">内联地址</label>
+	                    <label class="layui-form-label"><spring:message code="5034" /></label>
 	                    <div class="layui-input-block">
-	                        <input type="text" name="inner_chain_url"  lay-verify="required" placeholder="请输入要内联地址"  class="layui-input">
+	                        <input type="text" name="inner_chain_url"  lay-verify="required" placeholder="<spring:message code="5035" />"  class="layui-input">
 	                    </div>
 	                </div>
 	                <div class="layui-form-item">
@@ -159,12 +159,12 @@
             cols: [
                 [ //标题栏
                     {type: 'numbers'},
-                    {field: 'inner_chain_text_CN', title: '内链中文文本', width: '15%', align: 'center'},
-                    {field: 'inner_chain_text_EN', title: '内链英文文本', width: '15%', align: 'center'},
-                    {field: 'inner_chain_text_HK', title: '内链繁体文本', width: '15%', align: 'center'},
-                    {field: 'inner_chain_url', title: '内链路径', width: '27%',  align: 'center'},
+                    {field: 'inner_chain_text_CN', title: '<spring:message code="5028" />', width: '15%', align: 'center'},
+                    {field: 'inner_chain_text_EN', title: '<spring:message code="5030" />', width: '15%', align: 'center'},
+                    {field: 'inner_chain_text_HK', title: '<spring:message code="5032" />', width: '15%', align: 'center'},
+                    {field: 'inner_chain_url', title: '<spring:message code="5034" />', width: '27%',  align: 'center'},
                     {field: 'create_time', title: "<spring:message code='create.time' />", width: '10%', sort: true, align: 'center'},
-                    {fixed: 'right', title: '操作', width: '15%', align: 'center', toolbar: '#barDemo'}
+                    {fixed: 'right', title: '<spring:message code="opt" />', width: '15%', align: 'center', toolbar: '#barDemo'}
                 ]
             ],
             done: function (res, curr, count) {
@@ -182,7 +182,10 @@
             var where=null;
            if(layEvent == 'delete'){
                 // 删除这里有个BUG就是单页删除完后需要手动刷新
-                layer.confirm("<spring:message code='submit.delete' />", function (index) {
+                layer.confirm("<spring:message code='submit.delete' />",{
+        			  btn: ["<spring:message code='submit' />"] //按钮
+    			  ,title:"<spring:message code='warning'/>"
+    			}, function (index) {
                     $.ajax({
                         url: '/admin/news/inlink/ajax/delect/'+data.id,
                         type: "DELETE",

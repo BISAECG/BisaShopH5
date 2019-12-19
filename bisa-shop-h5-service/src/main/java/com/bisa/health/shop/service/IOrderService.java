@@ -15,6 +15,15 @@ public interface IOrderService {
      */
     public Order getOrderById(int id);
     
+	
+	
+	/**
+	 * 根据PAYID查找
+	 * @param id
+	 * @return
+	 */
+	public Order loadByPyaID(String pay_id);
+    
     /**
      * 订单表的编号,加载订单数据
      * @param id
@@ -27,6 +36,20 @@ public interface IOrderService {
       * @return
       */
      public Pager<Order> getPageOrder(int offset,String vKey, String vVal);
+     
+     
+    /**
+     * 
+     * @param offset
+     * @param userId 
+     * @param vKey
+     * @param vVal
+     * @return
+     */
+     public Pager<Order> getPageOrder(int offset,int userId,String vKey, String vVal);
+     
+     
+     
     
     /**
      * 查询所有

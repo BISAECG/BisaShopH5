@@ -38,6 +38,16 @@ public interface IRechargeCardService {
       * @return
       */
      public Pager<RechargeCard> getPageRechargeCard(int offset,String vKey, String vVal);
+     
+     /**
+      * 
+      * @param offset
+      * @param userId
+      * @param vKey
+      * @param vVal
+      * @return
+      */
+     public Pager<RechargeCard> getPageRechargeCard(int offset,int userId,String vKey, String vVal);
     
     /**
      * 查询所有

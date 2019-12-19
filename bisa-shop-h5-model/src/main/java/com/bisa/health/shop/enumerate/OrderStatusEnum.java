@@ -6,6 +6,8 @@ package com.bisa.health.shop.enumerate;
  */
 public enum OrderStatusEnum {
 	
+	
+	
 	/**
 	 * 未发货
 	 */
@@ -21,7 +23,14 @@ public enum OrderStatusEnum {
 	/**
 	 * 换货
 	 */
-	EXCHANGE(3);//换货
+	EXCHANGE(3),
+	
+	/**
+	 * 已收货
+	 */
+	RECEIVED(4);
+	
+	
     private int value;
 
     public int getValue() {

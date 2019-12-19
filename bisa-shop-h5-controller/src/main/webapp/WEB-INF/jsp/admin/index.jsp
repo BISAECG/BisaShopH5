@@ -9,9 +9,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-CN">
 <head>
-<link rel="icon" href="favicon/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon" />
-<link rel="bookmark" href="favicon/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
+<link rel="bookmark" href="/favicon/favicon.ico" type="image/x-icon" />
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
