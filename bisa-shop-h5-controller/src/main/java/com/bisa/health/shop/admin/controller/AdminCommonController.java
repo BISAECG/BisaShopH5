@@ -8,6 +8,7 @@ import com.bisa.health.shop.component.InternationalizationUtil;
 import com.bisa.health.shop.entity.SysErrorCode;
 import com.bisa.health.shop.entity.SysStatusCode;
 import com.bisa.health.shop.model.Goods;
+import com.bisa.health.shop.utils.ImageKit;
 
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresRoles;
@@ -48,16 +49,32 @@ public class AdminCommonController {
      */
     @RequestMapping(value = "/upload", method = RequestMethod.POST,produces = "application/json; charset=utf-8")
     @ResponseBody
-    public ResponseEntity<ResultData> newsPictureUpload(@RequestParam(required=true) MultipartFile file,@RequestParam(required=true) String suffix) {
+    public ResponseEntity<ResultData> newsPictureUpload(@RequestParam(required=true) MultipartFile file,@RequestParam(required=true) String suffix,@RequestParam(required=false,defaultValue="0") int height,@RequestParam(required=false,defaultValue="0") int width) {
 
-        String filename = UUID.randomUUID().toString() + "."+suffix;
-        String url;
-		try {
-			url = fastDFSClient.uploadFile(filename,file.getBytes());
-		} catch (IOException e) {
-			 return  new ResponseEntity<ResultData>(ResultData.success(SysStatusCode.FAIL, i18nUtil.i18n(SysErrorCode.OptFail)), HttpStatus.OK);
-		}
-        return  new ResponseEntity<ResultData>(ResultData.success(SysStatusCode.SUCCESS, i18nUtil.i18n(SysErrorCode.OptSuccess),url), HttpStatus.OK);
+		 String filename = UUID.randomUUID().toString() + "."+suffix;
+	     String url;
+    	if(width!=0&&height!=0&&(suffix.toLowerCase().equals("jpg")||suffix.toLowerCase().equals("png"))){
+ 	
+ 			try {
+ 				
+ 				int[] wh=ImageKit.getSizeInfo(file.getInputStream());
+ 				byte[] imgBytes=ImageKit._resize(file.getInputStream(), width, height, wh[0], wh[1]);
+ 				url = fastDFSClient.uploadFile(filename,imgBytes);
+ 			} catch (Exception e) {
+ 				 return  new ResponseEntity<ResultData>(ResultData.success(SysStatusCode.FAIL, i18nUtil.i18n(SysErrorCode.OptFail)), HttpStatus.OK);
+ 			}
+ 			return  new ResponseEntity<ResultData>(ResultData.success(SysStatusCode.SUCCESS, i18nUtil.i18n(SysErrorCode.OptSuccess),url), HttpStatus.OK);
+
+    	}else{
+			try {
+				url = fastDFSClient.uploadFile(filename,file.getBytes());
+			} catch (IOException e) {
+				 return  new ResponseEntity<ResultData>(ResultData.success(SysStatusCode.FAIL, i18nUtil.i18n(SysErrorCode.OptFail)), HttpStatus.OK);
+			}
+			return  new ResponseEntity<ResultData>(ResultData.success(SysStatusCode.SUCCESS, i18nUtil.i18n(SysErrorCode.OptSuccess),url), HttpStatus.OK);
+    	}
+     
+        
     }
     
 }

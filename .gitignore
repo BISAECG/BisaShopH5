@@ -12,6 +12,7 @@ target/
 *.jar
 logs/
 **/config/
-**/resources.properties
-**/pay.properties
-**/fdfs_client.properties
+**/*.properties
+**/*.conf
+**/cropper/
+**/*.html

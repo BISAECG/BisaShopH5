@@ -51,7 +51,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping(value = "/admin/page")
-@RequiresRoles(value = {"ROLE_ADMIN", "ROLE_CUSTOMER", "ROLE_STORE"}, logical = Logical.OR)
+@RequiresRoles(value = {"ROLE_ADMIN", "ROLE_CUSTOMER"},  logical = Logical.OR)
 public class AdminPageController {
 
     @Autowired
@@ -75,19 +75,15 @@ public class AdminPageController {
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String UpPageContent(Integer id,Model model) {
     	
-    	try{
-    	 	String fileUrl = this.getClass().getClassLoader().getResource("/ftl/html/zh_CN").getPath();
-        	File file=new File(fileUrl);
-        	File[] files=file.listFiles();
-        	List<String> list=new ArrayList<String>();
-        	for(File f: files){
-        		if(!f.isDirectory())
-        			list.add((f.getName().split("\\."))[0]);
-        	}
-        	model.addAttribute("list", list);
-    	}catch (Exception e) {
-    		logger.error(e.getMessage());
-		}
+    	String fileUrl = this.getClass().getClassLoader().getResource("/ftl/html/zh_CN").getPath();
+    	File file=new File(fileUrl);
+    	File[] files=file.listFiles();
+    	List<String> list=new ArrayList<String>();
+    	for(File f: files){
+    		if(!f.isDirectory())
+    			list.add((f.getName().split("\\."))[0]);
+    	}
+    	model.addAttribute("list", list);
     	
         return "admin/config/page";
     }

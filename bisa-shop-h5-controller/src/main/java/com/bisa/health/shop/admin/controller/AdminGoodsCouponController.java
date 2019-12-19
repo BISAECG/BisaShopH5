@@ -48,7 +48,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping(value = "/admin/coupon")
-@RequiresRoles(value = {"ROLE_ADMIN", "ROLE_CUSTOMER", "ROLE_STORE"}, logical = Logical.OR)
+@RequiresRoles(value = {"ROLE_ADMIN"}, logical = Logical.OR)
 public class AdminGoodsCouponController {
 	
 
@@ -117,8 +117,8 @@ public class AdminGoodsCouponController {
 	@ResponseBody
 	public ResponseEntity<ResultData> sendCoupon(@RequestParam String selectpicker,@RequestParam String number,String phone,String email) {
 		
-		GoodsCoupon goodsCoupon=goodsCouponService.getGoodsCouponByNum(number);
-		if(goodsCoupon==null||goodsCoupon.getCoupon_status()!=ActivateEnum.ACTIVATE.getValue()){
+		GoodsCoupon goodsCoupon=goodsCouponService.getGoodsCouponByNum(number,ActivateEnum.ACTIVATE.getValue());
+		if(goodsCoupon==null){
 			return new ResponseEntity<ResultData>(
 					ResultData.success(SysStatusCode.FAIL, i18nUtil.i18n(SysErrorCode.OptFail)),
 					HttpStatus.OK);

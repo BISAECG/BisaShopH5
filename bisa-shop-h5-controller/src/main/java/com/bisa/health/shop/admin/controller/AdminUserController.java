@@ -22,7 +22,6 @@ import com.bisa.health.shop.entity.SysStatusCode;
 
 @Controller
 @RequestMapping(value = "/admin/user")
-@RequiresRoles(value = {"ROLE_ADMIN", "ROLE_CUSTOMER", "ROLE_STORE"}, logical = Logical.OR)
 public class AdminUserController {
 	
 
@@ -40,7 +39,7 @@ public class AdminUserController {
 		User user = remoteService.loadUser(username);
 		if (user!=null) {
 			return new ResponseEntity<ResultData>(
-					ResultData.success(SysStatusCode.SUCCESS, i18nUtil.i18n(SysErrorCode.OptSuccess), user),
+					ResultData.success(SysStatusCode.SUCCESS, i18nUtil.i18n(SysErrorCode.OptSuccess), username),
 					HttpStatus.OK);
 		}
 		return new ResponseEntity<ResultData>(

@@ -37,6 +37,7 @@ import com.bisa.health.shop.entity.SysErrorCode;
 import com.bisa.health.shop.entity.SysStatusCode;
 import com.bisa.health.shop.entity.WebException;
 import com.bisa.health.shop.enumerate.ActivateEnum;
+import com.bisa.health.shop.enumerate.CouponEnum;
 import com.bisa.health.shop.enumerate.CouponTypeEnum;
 import com.bisa.health.shop.enumerate.GoodsTypeEnum;
 import com.bisa.health.shop.enumerate.ONOFFEnum;
@@ -110,7 +111,7 @@ public class OrderController {
 		double disprice = 0;
 		GoodsCoupon goodsCoupon=null;
 		if(!StringUtils.isEmpty(order.getCoupon_num())){//优惠券
-			goodsCoupon=goodsCouponService.getGoodsCouponByNum(order.getCoupon_num());
+			goodsCoupon=goodsCouponService.getGoodsCouponByNum(order.getCoupon_num(),ActivateEnum.ACTIVATE.getValue());
 			if (goodsCoupon.getCoupon_type() == CouponTypeEnum.TOTAL.getValue()) {
 				if (order_total >= goodsCoupon.getCoupon_total()) {
 					disprice = goodsCoupon.getCoupon_disprice();
@@ -120,7 +121,7 @@ public class OrderController {
 			} else if (goodsCoupon.getCoupon_type() == CouponTypeEnum.DISPRICE.getValue()) {
 
 			}
-			
+			order.setIs_coupon(CouponEnum.COUPON.getValue());
 		}
 		
 		double order_price=order_total-disprice+emd_postage;
@@ -138,16 +139,42 @@ public class OrderController {
 		}
 		order.setOrder_name(address.getConsignee());
 		order.setOrder_phone(address.getPhone());
-		order.setIs_coupon(ActivateEnum.ACTIVATE.getValue());
+		order.setOrder_area(address.getArea());
 		order.setIs_pay(PayEnum.NOT_PAY.getValue());
 		order.setOrder_status(OrderStatusEnum.UNSHIPPED.getValue());
 		order.setOrder_num(RandomUtils.RandomOfMillisecond());
 		order.setUser_id(user.getUser_guid());
+		order.setStatus(ActivateEnum.ACTIVATE.getValue());
 		if(orderService.addOrder(order)!=null&&goodsCoupon!=null){//更新优惠券状态
 			goodsCoupon.setCoupon_status(ActivateEnum.INACTIVATED.getValue());
 			goodsCoupon.setVersion(goodsCoupon.getVersion()+1);
 			goodsCouponService.updateGoodsCoupon(goodsCoupon);
 		}
+		mModel.addAttribute("orderNum", order.getOrder_num());
+		mModel.addAttribute("timestamp", System.currentTimeMillis());
+		return "redirect:/html/"+language+"/pay";
+	}
+	
+	/**
+	 * 重新支付
+	 * @param request
+	 * @param mModel
+	 * @param user
+	 * @param language
+	 * @param order_num
+	 * @return
+	 */
+	@RequestMapping(value = "/html/{language}/order_reset", method = RequestMethod.GET)
+	public String index(HttpServletRequest request, RedirectAttributes  mModel,@CurrentUser User user, @PathVariable String language,@RequestParam String order_num) {
+		Order order=orderService.getOrderByNum(order_num);
+		if(order==null){
+			throw new WebException(SysErrorCode.SystemError);
+		}
+		
+		order.setOrder_num(RandomUtils.RandomOfMillisecond());
+		order.setUser_id(user.getUser_guid());
+		order.setVersion(order.getVersion()+1);
+		orderService.updateOrder(order);
 		mModel.addAttribute("orderNum", order.getOrder_num());
 		mModel.addAttribute("timestamp", System.currentTimeMillis());
 		return "redirect:/html/"+language+"/pay";
@@ -165,29 +192,14 @@ public class OrderController {
 		return "order/details";
 	}
 
-	@RequestMapping(value = "/html/order/address", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-	@ResponseBody
-	public ResponseEntity<ResultData> address(@CurrentUser User user) {
-		List<Address> list = addressService.listAddress(user.getUser_guid());
-		if (list.size() > 0) {
-			return new ResponseEntity<ResultData>(
-					ResultData.success(SysStatusCode.SUCCESS, i18nUtil.i18n(SysErrorCode.OptSuccess), list.get(0)),
-					HttpStatus.OK);
-		}
 
-		return new ResponseEntity<ResultData>(
-				ResultData.success(SysStatusCode.FAIL, i18nUtil.i18n(SysErrorCode.OptFail), list.get(0)),
-				HttpStatus.OK);
-
-	}
-
-	@RequestMapping(value = "/html/order/coupan", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	@RequestMapping(value = "/order/ajax/coupan", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public ResponseEntity<ResultData> coupan(@RequestParam(required=true) String coupon_num, @RequestParam(required=true) double order_total) {
 
 		double disprice = 0;
 
-		GoodsCoupon goodsCoupon = goodsCouponService.getGoodsCouponByNum(coupon_num);
+		GoodsCoupon goodsCoupon = goodsCouponService.getGoodsCouponByNum(coupon_num,ActivateEnum.ACTIVATE.getValue());
 		if (goodsCoupon != null) {
 			if (goodsCoupon.getCoupon_type() == CouponTypeEnum.TOTAL.getValue()) {
 				if (order_total >= goodsCoupon.getCoupon_total()) {
@@ -210,7 +222,25 @@ public class OrderController {
 				ResultData.success(SysStatusCode.FAIL, i18nUtil.i18n(SysErrorCode.NOT_COUPON), disprice),
 				HttpStatus.OK);
 	}
-	@RequestMapping(value = "/html/order/address", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+	
+
+	@RequestMapping(value = "/order/ajax/address", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public ResponseEntity<ResultData> address(@CurrentUser User user) {
+		List<Address> list = addressService.listAddress(user.getUser_guid());
+		if (list.size() > 0) {
+			return new ResponseEntity<ResultData>(
+					ResultData.success(SysStatusCode.SUCCESS, i18nUtil.i18n(SysErrorCode.OptSuccess), list.get(0)),
+					HttpStatus.OK);
+		}
+
+		return new ResponseEntity<ResultData>(
+				ResultData.success(SysStatusCode.FAIL, i18nUtil.i18n(SysErrorCode.OptFail)),
+				HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/order/ajax/address", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public ResponseEntity<ResultData> addAjaxAddress(@CurrentUser User user, @Validated Address address,
 			BindingResult br, Model model) {
@@ -230,6 +260,8 @@ public class OrderController {
 			addressService.update(address);
 
 		return new ResponseEntity<ResultData>(
-				ResultData.success(SysStatusCode.SUCCESS, i18nUtil.i18n(SysErrorCode.OptSuccess)), HttpStatus.OK);
+				ResultData.success(SysStatusCode.SUCCESS, i18nUtil.i18n(SysErrorCode.OptSuccess),address), HttpStatus.OK);
 	}
+	
+	
 }

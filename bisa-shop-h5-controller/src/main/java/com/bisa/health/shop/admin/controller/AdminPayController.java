@@ -51,7 +51,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/admin/pay")
-@RequiresRoles(value = {"ROLE_ADMIN", "ROLE_CUSTOMER", "ROLE_STORE"}, logical = Logical.OR)
+@RequiresRoles(value = {"ROLE_ADMIN", "ROLE_CUSTOMER"}, logical = Logical.OR)
 public class AdminPayController {
 	
 

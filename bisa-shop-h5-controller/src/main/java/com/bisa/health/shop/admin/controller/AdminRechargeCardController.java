@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = "/admin/card")
-@RequiresRoles(value = { "ROLE_ADMIN", "ROLE_CUSTOMER", "ROLE_STORE" }, logical = Logical.OR)
+@RequiresRoles(value = { "ROLE_ADMIN", "ROLE_CUSTOMER" }, logical = Logical.OR)
 public class AdminRechargeCardController {
 
 	@Autowired
@@ -102,7 +102,7 @@ public class AdminRechargeCardController {
 				mCard.setCard_num(RandomUtils.RandomOfDateChar(8));
 				mCard.setCard_pwd(RandomUtils.getRandomChar(6));
 				mCard.setCreator(user.getUser_guid());
-				mCard.setCard_desc(service.getName());
+				mCard.setCard_desc(service.getDesc());
 				mCard.setOrder_num("0");
 				rechargeCardService.addRechargeCard(mCard);
 			}
@@ -114,9 +114,9 @@ public class AdminRechargeCardController {
 
 	@RequestMapping(value = "/ajax/list", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public ResponseEntity<Pager<RechargeCard>> lsitAjaxGoods(@RequestParam(required = false) String vKey,
+	public ResponseEntity<Pager<RechargeCard>> lsitAjaxGoods(@CurrentUser User user,@RequestParam(required = false) String vKey,
 			@RequestParam(required = false) String vVal) {
-		Pager<RechargeCard> list = rechargeCardService.getPageRechargeCard(SystemContext.getPageOffset(), vKey, vVal);
+		Pager<RechargeCard> list = rechargeCardService.getPageRechargeCard(SystemContext.getPageOffset(),user.getUser_guid(),vKey, vVal);
 		return new ResponseEntity<Pager<RechargeCard>>(list, HttpStatus.OK);
 	}
 
@@ -144,7 +144,7 @@ public class AdminRechargeCardController {
 	
 	@RequestMapping(value = "/ajax/activation", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public ResponseEntity<ResultData> activation(@RequestParam String username,@RequestParam String mUsername,@RequestParam String is_activation, @RequestParam String card_num,@RequestParam String card_pwd) {
+	public ResponseEntity<ResultData> activation(@RequestParam String username,@RequestParam String mUsername,@RequestParam(defaultValue="off") String is_activation, @RequestParam String card_num,@RequestParam String card_pwd) {
 
 		
 		RechargeCard rechargeCard = rechargeCardService.getRechargeCardByNumAndPwd(card_num, card_pwd);

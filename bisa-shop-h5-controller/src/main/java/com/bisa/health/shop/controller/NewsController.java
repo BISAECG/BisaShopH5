@@ -52,7 +52,7 @@ public class NewsController {
     }
     
     
-    @RequestMapping(value = "/news/top4", method = RequestMethod.GET,produces = "application/json; charset=utf-8")
+    @RequestMapping(value = "/news/ajax/top4", method = RequestMethod.GET,produces = "application/json; charset=utf-8")
     @ResponseBody
     public ResponseEntity<List<News>> ajaxListTop4(HttpServletRequest request,Model model,@RequestParam(required=false) String vKey,@RequestParam(required=false)String vVal) {
     	List<News> list=mNewsServiceImpl.getTop4ListNews(i18nUtil.lang());
@@ -60,7 +60,7 @@ public class NewsController {
     }
     
     
-    @RequestMapping(value = "/news/page", method = RequestMethod.GET,produces = "application/json; charset=utf-8")
+    @RequestMapping(value = "/news/ajax/page", method = RequestMethod.GET,produces = "application/json; charset=utf-8")
     @ResponseBody
     public ResponseEntity<Pager<News>> ajaxList(HttpServletRequest request,Model model,@RequestParam(required=false) String vKey,@RequestParam(required=false)String vVal) {
     	Pager<News> pager=mNewsServiceImpl.getPageNews(i18nUtil.lang(), vKey, vVal,SystemContext.getPageOffset());

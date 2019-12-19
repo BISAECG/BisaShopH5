@@ -79,7 +79,8 @@ public class FreemarkerComponent {
         	Map<String,Object> root=new HashMap<String,Object>();
         	root.put("news_keyWord", nn.getHtml_keyWord());
         	root.put("news_description", nn.getHtml_description());
-        	root.put("news_title", nn.getNews_title());
+        	root.put("news_title", nn.getHtml_title());
+        	root.put("title", nn.getNews_title());
         	root.put("release_time", nn.getRelease_time());
         	root.put("read_quantity", nn.getRead_quantity());
         	root.put("news_content", nn.getNews_content());
