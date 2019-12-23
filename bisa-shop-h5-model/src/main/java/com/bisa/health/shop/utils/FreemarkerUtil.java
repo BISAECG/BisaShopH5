@@ -34,8 +34,8 @@ public class FreemarkerUtil {
 			return cfg.getTemplate(fname);
 		} catch (IOException e) {
 			e.printStackTrace();
+			return null;
 		}
-		return null;
 	}
 	/**
 	 * 通过标准输出流输出模板的结果
@@ -45,8 +45,11 @@ public class FreemarkerUtil {
 	public void sprint(Map<String,Object> root,String fname) {
 		try {
 			Template template  = getTemplate(fname);
-			template.setEncoding("utf-8");
-			template.process(root, new PrintWriter(System.out));
+			if(template!=null){
+				template.setEncoding("utf-8");
+				template.process(root, new PrintWriter(System.out));
+			}
+		
 		} catch (TemplateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -64,8 +67,11 @@ public class FreemarkerUtil {
 	public void fprint(Map<String,Object> root,String fname,String outpath) {
 		try {
 			Template template  = getTemplate(fname);
-			template.setEncoding("utf-8");
-			template.process(root, new FileWriterWithEncoding(outpath, "utf-8"));
+			if(template!=null){
+				template.setEncoding("utf-8");
+				template.process(root, new FileWriterWithEncoding(outpath, "utf-8"));
+			}
+		
 		} catch (TemplateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

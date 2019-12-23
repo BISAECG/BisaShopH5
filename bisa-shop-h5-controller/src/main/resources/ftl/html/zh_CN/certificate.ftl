@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>产品证书</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+   <meta name="keywords" content="${html_description}">
+    <meta name="description" content="${html_keyWord}">
+    <title>${html_title}</title>
     <link href="/resources/ctrl/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/resources/ctrl/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="/resources/css/public.css" rel="stylesheet">
@@ -20,7 +20,7 @@
 <body>
     <div id="header"></div>
     <script>
-        $("#header").load("head.html");
+        $("#header").load("header.html");
     </script>
     <div class="content">
         <div class="container-full">
@@ -29,7 +29,7 @@
             </div>
             <div class="row" style="margin:0.15rem  0  0 0;">
                 <div class="col-xs-12 text-center" style="margin-bottom:0.15rem;">
-                    <img src="/resources/img/certificate/chanpintitle.png" class="center-block ">
+                    <img src="/resources/img/certificate/chanpintitle.png" class="center-block img-responsive">
                 </div>
             </div>
         </div>
@@ -98,7 +98,7 @@
                 </div>
                 <div class="col-xs-6">
                     <div>
-                        <a href="/resources/img/index/chanpin.png" target="_blank">
+                        <a href="/resources/img/certificate/SCZ.png" target="_blank">
                             <img src="/resources/img/index/chanpin.png" class="center-block" alt="医疗器械生产许可证">
                             <p class="text-center ">
                                 医疗器械生产许可证
@@ -111,7 +111,7 @@
     </div>
     <div id="footer"></div>
     <script>
-        $("#footer").load("foot.html");
+        $("#footer").load("footer.html");
     </script>
 </body>
 

@@ -3,111 +3,88 @@
 <%@ page import="com.bisa.health.shop.enumerate.GoodsStatusEnum" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
-    <link rel="bookmark" href="/favicon/favicon.ico" type="image/x-icon" />
-    <meta http-equiv="Content-Type" content="text/html;" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <!-- necessary -->
-    <title><spring:message code="admin.domain"/>${goods.name}</title>
-    <meta name="keywords" content="<spring:message code="admin.domain"/>${goods.name}">
-    <meta name="description" content="<spring:message code="admin.domain"/>${goods.description}">
-    <!-- description -->
-    <meta name="renderer" content="webkit">
-    <!-- base -->
-    <link href="/resources/css/comm/base.css" rel="stylesheet">
-    <link href="/resources/css/index/index.css" rel="stylesheet">
-    <link href="/resources/css/shop/shop.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><spring:message code='admin.domain'/></title>
+    <meta name="keywords" content="<spring:message code='admin.keyword'/>">
+    <meta name="description" content="<spring:message code='admin.description'/>">
+    <link href="/resources/ctrl/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/css/public.css" rel="stylesheet">
+    <link href="/resources/ctrl/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/resources/css/details.css" rel="stylesheet">
     <script src="/resources/js/comm/jquery.min.js"></script>
+    <script src="/resources/ctrl/bootstrap/js/bootstrap.js"></script>
+    <script src="/resources/js/rootFont.js"></script>
 </head>
 
 <body>
-<div id="header"></div>
-<script>
-    $("#header").load("header.html");
-</script>
-
-<!--ai报告购买页面-->
-<div class="container">
-    <div class="row mt-40 shopBox">
-		<div class="col-md-1" style="padding-left: 0;">
-			<img class="img-responsive" src="/resources/img/shop/hot.png">
-		</div>
-        <div class="col-md-5  boxLeft">
-         	<img class="img-responsive center-block" src="${goods.img_url}">
+    <div class="content">
+        <div class="container-full" style="background:rgba(248,248,248,1);">
+            <div class="row" style="margin:0;">
+                <div class="col-xs-12 return">
+                    <i class="fa fa-chevron-left"></i>
+                    <a href="shop.html">返回</a>
+                </div>
+            </div>
+            <div class="row" style="margin:0;">
+                <div class="col-xs-12">
+                    <img class="img-responsive shopImg center-block pb-30" src="/resources/img/shop/xixin1.png">
+                </div>
+            </div>
         </div>
-        <div class="col-md-6 boxRight">
-	            <p class="shopTitle" style="margin-bottom: 12px">${goods.name}</p>
-	            <p class="shopContent">${goods.description}</p>
-	            <p class="shopPrice">
-	                <span ><spring:message code="price"/>:</span>
-	                <span><spring:message code="pay.unit"/>${goods.price}</span>
-	            </p>
-	            <div class="row">
-					<div class="goods_num  col-md-12">
-						<span class="num_name  pull-left "><spring:message code="total"/>:</span>
-						<div class="num_add pull-left pos-r text-center">
-							<a href="javascript:;" class="minus fr pos-a">-</a> 
-							<input readonly='true' type="text" id="goods_count" name="goods_count"class="num_show fl text-center" value="1">
-							 <a href="javascript:;" class="add fr pos-a">+</a>
-						</div>
-					</div>
-	            	<input readonly="true" type="hidden" name="goods_id"  value="${goods.id}">
-	            </div>
-	            <div class="recommend">
-	                <span class=" pull-left"><spring:message code="recommend"/>:</span>
-	                   <c:forEach items="${list}" var="item">
-	                <div class="pull-left cur-p" style="border: 1px solid #ccc;margin-left: 5px;margin-top: 5px;">
-	                    <a   href="/html/${language}/goods.html?id=${item.id}" style="padding: 2px;font-size:18px;color:rgba(102,102,102,1);">
-	                      ${item.name}
-	                    </a>
-	                </div>
-	                </c:forEach>
-	                
-	            </div>
-	            <div style="clear: both;" ></div>
-	            <c:if test="${goods.status==GoodsStatusEnum.IN_SALE.getValue()}">
-	             <a  href="javascript:order();">
-		            <button class="Order" style="margin-top: 15px;font-size: 15px;color:#fff">
-		              		 <spring:message code="buy.now"/>
-		            </button>
-	            </a>
-	            </c:if>
-				<c:if test="${goods.status==GoodsStatusEnum.SALE_OUT.getValue()}">
-		            <button class="Order" style="margin-top: 15px;font-size: 15px;color:#fff;background:#5bd1a1">
-		              		<spring:message code="sold.out"/>
-		            </button>
-	            </c:if>
-			    <c:if test="${goods.status==GoodsStatusEnum.INVALID.getValue()}">
-		            <button class="Order" style="margin-top: 15px;font-size: 15px;color:#fff;background:#5bd1a1">
-		              		 <spring:message code="off.shelves"/>
-		            </button>
-	            </c:if>
-	            <p></p>
-	            <button class="now" >
-	                <i class="fa fa-phone" style="font-size: 15px;">
-	                	<spring:message code="contact.us"/>
-	                </i>
-	               
-	            </button>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p class="product_title">悉心动态心电仪</p>
+                    <p class="product_Introduction">世界首创三导联无线携带式心电记录仪 </p>
+                    <p class="product_price">
+                        <span>￥1280</span>
+                        <span>￥1800</span>
+                    </p>
+                    <div class="goods_num clearfix mb-10">
+                        <span class="num_name  span_title ">数 量：</span>
+                        <div class="gw_num">
+                            <em class="less">-</em>
+                            <input id="goods_count" type="text" value="1" class="num" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="3" />
+                            <em class="add">+</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </div>
-</div>
-<div class="container-fluid" style="padding: 0px;margin-top: 68px;">
-    <div class="row center-block">
-          <img class="img-responsive center-block" src="${goods.detail_body}">
-    </div>
+        <div class="container-full">
+            <div class="row" style="background:rgba(241,241,241,1); width:100%;height:10px;margin:0;">
 
-</div>
+            </div>
+            <div class="row" style="margin:0;">
+                <div class="col-xs-12 buy" style="padding:13px 0px;">
+                    <button class="pull-right">
+                        <a  href="buy.html">
+                                提交订单
+                        </a>
 
-<div id="footer"></div>
-<script>
-    $("#footer").load("footer.html");
-</script>
+                    </button>
+                    <button class="pull-right ">
+                        <a>
+                             电话咨询
+                        </a>
+
+                    </button>
+                </div>
+            </div>
+
+            <div class="row center-block">
+                <img class="img-responsive" src="/resources/img/shop/ecg.png">
+            </div>
+
+        </div>
+
+    </div>
+</body>
 <script type="text/javascript">
 	//加号
 	var num = parseInt($('#goods_count').val());
@@ -117,7 +94,7 @@
 		$('#goods_count').val(num);
 	});
 	//当购物车数量减少的时候
-	$('.minus').click(function() {
+	$('.less').click(function() {
 		if (num > 1) {
 			num--;
 			$('#goods_count').val(num);
@@ -126,9 +103,7 @@
 	
 	function order(){
 		var goods_count=$('#goods_count').val();
-		 location.href="/html/${language}/order.html?goods_id=${goods.id}&goods_count="+goods_count;
+		 location.href="/html/zh_CN/order.html?goods_id=10&goods_count="+goods_count;
 	}
 </script>
-</body>
-
 </html>

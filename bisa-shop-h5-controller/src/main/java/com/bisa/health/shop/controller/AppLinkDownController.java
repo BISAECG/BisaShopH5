@@ -43,6 +43,12 @@ public class AppLinkDownController {
     public String shareIndex(){
     	return "app/share/index";
     }
+    
+    @RequestMapping(value = "/app/share/taobao", method = RequestMethod.GET)
+    public String taobao(){
+    	return "app/share/taobao";
+    }
+    
 
     /**
      * 安卓apk下载接口

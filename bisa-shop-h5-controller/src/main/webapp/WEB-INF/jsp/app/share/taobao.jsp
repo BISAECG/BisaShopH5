@@ -46,25 +46,8 @@
 			}
 		 }else{
 			
-			if(isIphone){
-				var loadDateTime = new Date();  
-				  window.setTimeout(function() {  
-				   var timeOutDateTime = new Date();  
-				   if (timeOutDateTime - loadDateTime < 5000) {  
-				    window.location = "https://itunes.apple.com/cn/app//id1309450042?mt=8";  
-				   } else {  
-				    window.close();  
-				   }  
-				  },  
-				  25);  
-				  window.location = "smarthealthcare://";  
-			}else if(isAndroid){
-				
-				window.location.href = "xixin://www.bisahealth.com";
-		          setTimeout(function(){
-		                    window.location.href = "<%=request.getContextPath() %>/app/android";
-		          },2000)
-			
+			if(isIphone||isAndroid){
+	           window.location.href = "https://shop194684580.taobao.com/?spm=a230r.7195193.1997079397.2.6815114b089AGi";	        
 			}
 			
 		} 

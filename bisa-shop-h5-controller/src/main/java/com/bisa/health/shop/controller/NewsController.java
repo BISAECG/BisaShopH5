@@ -43,7 +43,7 @@ public class NewsController {
 	
     @RequestMapping(value = "/html/{language}/news", method = RequestMethod.GET)
     public String index(HttpServletRequest request,Model model, @PathVariable String language) {
-    	List<News> list=mNewsServiceImpl.getTop4ListNews(language);
+    	List<News> list=mNewsServiceImpl.getTop4ListNews(language,1);
     	model.addAttribute("list", list);
     	model.addAttribute("language",language);
     	List<NewsClassify> listClassify=mNewsClassifyService.listAllByLanguage(language);
@@ -55,7 +55,7 @@ public class NewsController {
     @RequestMapping(value = "/news/ajax/top4", method = RequestMethod.GET,produces = "application/json; charset=utf-8")
     @ResponseBody
     public ResponseEntity<List<News>> ajaxListTop4(HttpServletRequest request,Model model,@RequestParam(required=false) String vKey,@RequestParam(required=false)String vVal) {
-    	List<News> list=mNewsServiceImpl.getTop4ListNews(i18nUtil.lang());
+    	List<News> list=mNewsServiceImpl.getTop4ListNews(i18nUtil.lang(),1);
     	return new ResponseEntity<List<News>>(list, HttpStatus.OK);
     }
     
@@ -63,7 +63,7 @@ public class NewsController {
     @RequestMapping(value = "/news/ajax/page", method = RequestMethod.GET,produces = "application/json; charset=utf-8")
     @ResponseBody
     public ResponseEntity<Pager<News>> ajaxList(HttpServletRequest request,Model model,@RequestParam(required=false) String vKey,@RequestParam(required=false)String vVal) {
-    	Pager<News> pager=mNewsServiceImpl.getPageNews(i18nUtil.lang(), vKey, vVal,SystemContext.getPageOffset());
+    	Pager<News> pager=mNewsServiceImpl.getPageNews(i18nUtil.lang(), vKey, vVal,1,SystemContext.getPageOffset());
     	model.addAttribute("pager", pager);
     	return new ResponseEntity<Pager<News>>(pager, HttpStatus.OK);
     }

@@ -28,7 +28,7 @@ public interface INewsDao extends IBaseDao<News>{
      * 上一篇，本文，下一篇文章
      * @return
      */
-    List<News> getTop4ListNews(String language);
+    List<News> getTop4ListNews(String language,int is_pc);
 
     /**
      * 获取所有的新闻
@@ -52,6 +52,8 @@ public interface INewsDao extends IBaseDao<News>{
     public News getNewsById(int id);
     
     
+    
+    
     /**
      *  新闻ID和语言ID
      * @param news_id
@@ -72,6 +74,13 @@ public interface INewsDao extends IBaseDao<News>{
      * @return
      */
      public Pager<News> getPageNews(String language,String vKey,String vVal);
+     
+     /**
+      * 新闻分页区分移动端和PC端
+      * @param language
+      * @return
+      */
+      public Pager<News> getPageNews(String language,String vKey,String vVal,int is_pc);
      
      /**
       * 新闻分页

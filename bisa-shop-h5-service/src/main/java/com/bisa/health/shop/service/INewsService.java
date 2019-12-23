@@ -91,7 +91,7 @@ public interface INewsService {
      * @return
      * @param language
      */
-    List<News> getTop4ListNews(String language);
+    List<News> getTop4ListNews(String language,int is_pc);
 
     
     /**
@@ -117,7 +117,15 @@ public interface INewsService {
      */
     public Pager<News> getPageNews(String language, String vKey, String vVal,int offset);
 
-
+    /**
+     * 区分移动端
+     * @param language
+     * @param vKey
+     * @param vVal
+     * @param is_pc
+     * @return
+     */
+    public Pager<News> getPageNews(String language, String vKey, String vVal, int is_pc,int offset);
 
     /**
      * 获取所有的新闻

@@ -81,7 +81,7 @@
                         </div>
                         
                         <div class="layui-form-item">
-                            <label class="layui-form-label "><spring:message code="5011" />作者：</label>
+                            <label class="layui-form-label "><spring:message code="5011" />:</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="author" id="author" lay-verify="required" placeholder="<spring:message code='5012' />" autocomplete="off" class="layui-input">
                             </div>
@@ -136,6 +136,14 @@
                             <div class="layui-input-block">
                                 <input type="radio" name="news_roofPlacement" value="1" title="<spring:message code='5020' />">
                                 <input type="radio" name="news_roofPlacement" value="0" title="<spring:message code='5021' />" checked>
+                            </div>
+                        </div>
+                        
+                         <div class="layui-form-item">
+                            <label class="layui-form-label "><spring:message code='type' />：</label>
+                            <div class="layui-input-block">
+                                <input type="radio" name="is_pc" value="1" title="PHONE">
+                                <input type="radio" name="is_pc" value="0" title="PC" checked>
                             </div>
                         </div>
                     </div>

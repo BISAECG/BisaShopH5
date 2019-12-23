@@ -229,8 +229,9 @@ public class AdminPageController {
     @RequestMapping(value = "/ajax/generate/footer", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<ResultData> GenerateFooterHTML(){
+    	 List<HtmlInfo> list = adminHtmlInfoService.selectHtmlInfo(1);
         CompanyInfo companyInfo =  companyInfoService.loadByUnId(1);
-        freemarkerComponent.generateBottom(companyInfo);
+        freemarkerComponent.generateBottom(list,companyInfo);
         return new ResponseEntity<ResultData>(
 				ResultData.success(SysStatusCode.SUCCESS, i18nUtil.i18n(SysErrorCode.OptSuccess)), HttpStatus.OK);
     }

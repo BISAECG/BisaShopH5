@@ -45,6 +45,13 @@
         {{#  } }}
      </script>
 
+     <script type="text/html" id="is_pc">
+        {{# if(d.is_pc == 0){ }}
+       		<span style="color: #009688;">PC</span>
+        {{# }else{ }}
+            <span style="color: #F581B1;">PHONE</span>
+        {{#  } }}
+     </script>
 </head>
 
 <body class="layui-layout-body">
@@ -156,7 +163,7 @@
                         {field: 'author', title: '<spring:message code="5011" />', width: '5%', align: 'center'},
                         {field: 'news_title', title: '<spring:message code="5006" />', width: '10%', align: 'center'},
                         {field: 'language', title: '<spring:message code="lang" />', width: '10%', align: 'center'},
-                        {field: 'read_quantity', title: '<spring:message code="reading" />', width: '5%', sort: true, align: 'center'},
+                        {field: 'is_pc', title: '<spring:message code="type" />', width: '5%', sort: true, align: 'center',templet:'#is_pc'},
                         {field: 'html_keyWord', title: '<spring:message code="1070" />', width: '10%', align: 'center'},
                         {field: 'html_description', title: '<spring:message code="1072" />', width: '10%', align: 'center'},
                         {field: 'html_title', title: '<spring:message code="1068" />', width: '10%', align: 'center'},

@@ -11,6 +11,7 @@ import com.bisa.health.shop.model.News;
 
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -34,6 +35,9 @@ public class IndexController {
 
 	@Autowired
 	private InternationalizationUtil i18nUtil;
+	
+	@Value("${h5.domain}")
+	private String h5Domain;
 
     /**
      * 商城首页   http://localhost:8080/health-shop/index
@@ -43,11 +47,9 @@ public class IndexController {
     public String index(HttpServletRequest request,Model model) {
     	String userAgent = request.getHeader("user-agent");
     	String jumStr="/html/";
-    	if(PhoneTypeUtil.phoneType(userAgent)){
-    		//jumStr="/h5/";
-    		jumStr="/html/";
+    	if(!PhoneTypeUtil.phoneType(userAgent)){
+    		return "redirect:"+h5Domain;
     	}
-    	
     	model.addAttribute("lang",jumStr+i18nUtil.lang());
         return "/index";
     }
@@ -75,26 +77,4 @@ public class IndexController {
     }
  
 
-    /**
-     *手机版
-     */
-    @RequestMapping(value = "/m_index", method = RequestMethod.GET)
-    public String m_index() {
-        return "m/m_index";
-    }
-
-    @RequestMapping(value = "/m_product", method = RequestMethod.GET)
-    public String m_product() {
-        return "m/m_product";
-    }
-
-    @RequestMapping(value = "/m_choose_payment", method = RequestMethod.GET)
-    public String m_choose_payment() {
-        return "m/m_choose_payment";
-    }
-
-    @RequestMapping(value = "/m_serviceCard", method = RequestMethod.GET)
-    public String m_serviceCard() {
-        return "m/m_serviceCard";
-    }
 }

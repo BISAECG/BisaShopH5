@@ -47,25 +47,28 @@ public class FreemarkerComponent {
 		
 	}
 	
-	public void generateBottom(CompanyInfo companyInfo) {
+	public void generateBottom(List<HtmlInfo> list,CompanyInfo companyInfo) {
 		
 		//中文
 		Map<String,Object> root = new HashMap<String,Object>();
 		root.put("company_name",companyInfo.getCompany_name_CN());
 		root.put("company_address",companyInfo.getCompany_address_CN());
 		root.put("company_phone",companyInfo.getCompany_phone());
+		root.put("empList", list);
 		util.fprint(root, "/html/zh_CN/footer.ftl", SystemContext.getRealPath()+outPath+"/zh_CN/footer.html");
 		//繁体
 		root = new HashMap<String,Object>();
 		root.put("company_name",companyInfo.getCompany_name_HK());
 		root.put("company_address",companyInfo.getCompany_name_HK());
 		root.put("company_phone",companyInfo.getCompany_phone());
+		root.put("empList", list);
 		util.fprint(root, "/html/zh_HK/footer.ftl", SystemContext.getRealPath()+outPath+"/zh_HK/footer.html");
 		//英文
 		root = new HashMap<String,Object>();
 		root.put("company_name",companyInfo.getCompany_name_US());
 		root.put("company_address",companyInfo.getCompany_address_US());
 		root.put("company_phone",companyInfo.getCompany_phone());
+		root.put("empList", list);
 		util.fprint(root, "/html/en_US/footer.ftl", SystemContext.getRealPath()+outPath+"/en_US/footer.html");
 	}
 	

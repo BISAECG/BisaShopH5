@@ -15,9 +15,9 @@ public class NewsDaoImpl extends BaseDao<News> implements INewsDao {
 	
 
 	@Override
-	public List<News> getTop4ListNews(String language) {
-		String sql = "SELECT * FROM s_news where language=? AND news_roofPlacement=1 ORDER BY release_time DESC LIMIT 0,4";
-		return super.listBySql(sql, new Object[] { language }, News.class);
+	public List<News> getTop4ListNews(String language,int is_pc) {
+		String sql = "SELECT * FROM s_news where language=? AND is_pc=? AND news_roofPlacement=1 ORDER BY release_time DESC LIMIT 0,4";
+		return super.listBySql(sql, new Object[] { language,is_pc}, News.class);
 	}
 
 	@Override
@@ -87,6 +87,17 @@ public class NewsDaoImpl extends BaseDao<News> implements INewsDao {
 		}
 		return super.findBySql(sql, new Object[] { language }, News.class, true);
 	}
+	
+	@Override
+	public Pager<News> getPageNews(String language, String vKey, String vVal, int is_pc) {
+		String sql = "SELECT * " + "FROM s_news " + "WHERE language=? AND is_pc=?";
+
+		if (!StringUtils.isEmpty(vKey)) {
+			sql = "SELECT * FROM s_news WHERE language=? AND is_pc=? AND  " + vKey + " LIKE '%" + vVal + "%'";
+
+		}
+		return super.findBySql(sql, new Object[] { language,is_pc}, News.class, true);
+	}
 
 	@Override
 	public Pager<News> selectNewsByArticleTitle(String incontent) {
@@ -105,5 +116,7 @@ public class NewsDaoImpl extends BaseDao<News> implements INewsDao {
 		String sql = "SELECT * FROM s_news";
 		return super.listBySql(sql, null, News.class);
 	}
+
+
 
 }

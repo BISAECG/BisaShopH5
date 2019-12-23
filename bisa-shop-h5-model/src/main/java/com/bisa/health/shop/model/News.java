@@ -65,7 +65,8 @@ public class News  implements Serializable{
     @NotBlank(message=SysErrorCode.RequestFormat)
     private String language;
     
-    
+    @Range(min=0,max=1,message=SysErrorCode.RequestFormat)
+    private int is_pc;//是否是移动端
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -188,14 +189,27 @@ public class News  implements Serializable{
         this.html_title = html_title;
     }
 
-    public News() {
+    
+    public int getIs_pc() {
+		return is_pc;
+	}
+
+	public void setIs_pc(int is_pc) {
+		this.is_pc = is_pc;
+	}
+
+	public News() {
         super();
     }
 
-	public News(String news_num, String news_title, String news_subhead, int read_quantity, String news_content,
+
+	
+	public News(int id, String news_num, String news_title, String news_subhead, int read_quantity, String news_content,
 			String img_url, Date release_time, String author, String news_classify_num, String html_keyWord,
-			String news_describe, int news_roofPlacement, String html_description, String html_title, String language) {
+			String news_describe, int news_roofPlacement, String html_description, String html_title, String language,
+			int is_pc) {
 		super();
+		this.id = id;
 		this.news_num = news_num;
 		this.news_title = news_title;
 		this.news_subhead = news_subhead;
@@ -211,8 +225,8 @@ public class News  implements Serializable{
 		this.html_description = html_description;
 		this.html_title = html_title;
 		this.language = language;
+		this.is_pc = is_pc;
 	}
-
 
 	
 	@Override
@@ -222,7 +236,7 @@ public class News  implements Serializable{
 				+ img_url + ", release_time=" + release_time + ", author=" + author + ", news_classify_num="
 				+ news_classify_num + ", html_keyWord=" + html_keyWord + ", news_describe=" + news_describe
 				+ ", news_roofPlacement=" + news_roofPlacement + ", html_description=" + html_description
-				+ ", html_title=" + html_title + ", language=" + language + "]";
+				+ ", html_title=" + html_title + ", language=" + language + ", is_pc=" + is_pc + "]";
 	}
 
 	public void toNews(News news){
@@ -240,6 +254,7 @@ public class News  implements Serializable{
 		this.setNews_subhead(news.getNews_subhead());
 		this.setNews_title(news.getHtml_title());
 		this.setRead_quantity(news.getRead_quantity());
+		this.setIs_pc(news.is_pc);
 	}
 
    

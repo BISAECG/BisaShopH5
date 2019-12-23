@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <meta name="keywords" content="${html_description}">
+     <meta name="keywords" content="${html_description}">
     <meta name="description" content="${html_keyWord}">
     <title>${html_title}</title>
     <link href="/resources/ctrl/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,9 +28,9 @@
             <div class="row" style="margin: 0;">          
                     <img class="img-responsive center-block" src="/resources/img/news/banner.png">
                     <div>
-                        <p>健康资讯</p>
-                        <p><span>关注健康 </span><span>关注碧沙康健</span></p>
-                        <p>给家一个悉心的呵护</p>
+                        <p>健康資訊</p>
+                        <p><span>關註健康 </span><span>關註碧沙康健</span></p>
+                        <p>給家壹個悉心的呵護</p>
                         <img class=" img-responsive center-block" src="/resources/img/news/downlogo.png" >
                     </div>            
             </div>
@@ -39,128 +39,128 @@
             <div class="row">
                 <div class="col-xs-12 title">
                     <span></span>
-                    <span>健康资讯</span>
+                    <span>健康資訊</span>
                 </div>
             </div>
             <div class="row " style="margin: 0;">
                 <div class="col-xs-12 box">
                     <p class="question" style="  padding: 0.1rem 0;">
-                        <span>问：</span>
-                        <span>心电图波形紊乱</span>
+                        <span>問：</span>
+                        <span>心電圖波形紊亂</span>
                     </p>
                     <p class="reason">
                         <span>答：</span>
                         <span>可能原因: </span>
-                        <span class="text-left">电极与皮肤粘贴不良、出汗电极脱落、重复使用电极。</span>
+                        <span class="text-left">電極與皮膚粘貼不良、出汗電極脫落、重復使用電極。</span>
                     </p>
                     <p class="answer" style="  padding-bottom: 0.1rem;">
                         <span>排除方法: </span>
-                        <span>确保胸口皮肤干燥清洁再更换新的电极。</span>
+                        <span>確保胸口皮膚幹燥清潔再更換新的電極。</span>
                     </p>
                 </div>
                 <div class="col-xs-12 box">
                     <p class="question" style="  padding: 0.1rem 0;">
-                        <span>问：</span>
-                        <span>心电图文件名中的时间错误</span>
+                        <span>問：</span>
+                        <span>心電圖文件名中的時間錯誤</span>
                     </p>
                     <p class="reason">
                         <span>答：</span>
                         <span>可能原因: </span>
-                        <span>心电仪电池耗尽，导致机内时钟归零出错</span>
+                        <span>心電儀電池耗盡，導致機內時鐘歸零出錯</span>
                     </p>
                     <p class="answer" style="  padding-bottom: 0.1rem;">
                         <span>排除方法: </span>
-                        <span>给心电仪HC3A250充电后,连接电脑在测试软件的设置窗口,重新设置心电仪的时间。</span>
+                        <span>給心電儀HC3A250充電後,連接電腦在測試軟件的設置窗口,重新設置心電儀的時間。</span>
                     </p>
                 </div>
                 <div class="col-xs-12 box">
                     <p class="question" style="  padding: 0.1rem 0;">
-                        <span>问：</span>
-                        <span>心电仪与计算机连接上，但不会出现盘符</span>
+                        <span>問：</span>
+                        <span>心電儀與計算機連接上，但不會出現盤符</span>
                     </p>
                     <p class="reason">
                         <span>答：</span>
                         <span>可能原因: </span>
-                        <span>计算机未安装心电仪的USB驱动程序</span>
+                        <span>計算機未安裝心電儀的USB驅動程序</span>
                     </p>
                     <p class="answer" style="  padding-bottom: 0.1rem;">
                         <span>排除方法: </span>
-                        <span>安装心电仪的USB驱动程序</span>
+                        <span>安裝心電儀的USB驅動程序</span>
                     </p>
                 </div>
                 <div class="col-xs-12 box">
                     <p class="question" style="  padding: 0.1rem 0;">
-                        <span>问：</span>
-                        <span>心电仪与计算机连接不上</span>
+                        <span>問：</span>
+                        <span>心電儀與計算機連接不上</span>
                     </p>
                     <p class="reason">
                         <span>答：</span>
                         <span>可能原因: </span>
-                        <span>数据线损坏、USB与电脑接触不良</span>
+                        <span>數據線損壞、USB與電腦接觸不良</span>
                     </p>
                     <p class="answer" style="  padding-bottom: 0.1rem;">
                         <span>排除方法: </span>
-                        <span>更换新的资料数据线、拔下USB数据线与电脑的链接重新连接（对于台式电脑建议直接使用机箱背面的USB口）</span>
+                        <span>更換新的資料數據線、拔下USB數據線與電腦的鏈接重新連接（對於臺式電腦建議直接使用機箱背面的USB口）</span>
                     </p>
                 </div>
                 <div class="col-xs-12 box">
                     <p class="question" style="  padding: 0.1rem 0;">
-                        <span>问：</span>
-                        <span>心电仪发出‘嘀’声</span>
+                        <span>問：</span>
+                        <span>心電儀發出‘嘀’聲</span>
                     </p>
                     <p class="reason">
                         <span>答：</span>
                         <span>可能原因: </span>
-                        <span>心电仪处于低电压状态，提示用户充满电再使用</span>
+                        <span>心電儀處於低電壓狀態，提示用戶充滿電再使用</span>
                     </p>
                     <p class="answer" style="  padding-bottom: 0.1rem;">
                         <span>排除方法: </span>
-                        <span>给心电仪充满电再使用</span>
+                        <span>給心電儀充滿電再使用</span>
                     </p>
                 </div>
                 <div class="col-xs-12 box">
                     <p class="question" style="  padding: 0.1rem 0;">
-                        <span>问：</span>
-                        <span>是否苹果手机(iphone)支持OTGUSB在线载数据</span>
+                        <span>問：</span>
+                        <span>是否蘋果手機(iphone)支持OTGUSB在線載數據</span>
                     </p>
                     <p class="reason">
                         <span>答：</span>
                         <span>可能原因: </span>
-                        <span>苹果手机(Iphone)不支持OTGUSB在线数据</span>
+                        <span>蘋果手機(Iphone)不支持OTGUSB在線數據</span>
                     </p>
                     <p class="answer" style="  padding-bottom: 0.1rem;">
                         <span>排除方法: </span>
-                        <span>建议用计算机上载数据</span>
+                        <span>建議用計算機上載數據</span>
                     </p>
                 </div>
                 <div class="col-xs-12 box">
                     <p class="question" style="  padding: 0.1rem 0;">
-                        <span>问：</span>
-                        <span>手机不能用microOTGUSB和PECG联机</span>
+                        <span>問：</span>
+                        <span>手機不能用microOTGUSB和PECG聯機</span>
                     </p>
                     <p class="reason">
                         <span>答：</span>
                         <span>可能原因: </span>
-                        <span>智能手机不支援micro USB OTG线Some of smart</span>
+                        <span>智能手機不支援micro USB OTG線Some of smart</span>
                     </p>
                     <p class="answer" style="  padding-bottom: 0.1rem;">
                         <span>排除方法: </span>
-                        <span>建议使用能支持micro USB OTG线的智能手机</span>
+                        <span>建議使用能支持micro USB OTG線的智能手機</span>
                     </p>
                 </div>
                 <div class="col-xs-12 box">
                     <p class="question" style="  padding: 0.1rem 0;">
-                        <span>问：</span>
-                        <span>除下电极片身上有红圏印或過敏</span>
+                        <span>問：</span>
+                        <span>除下電極片身上有紅圏印或過敏</span>
                     </p>
                     <p class="reason">
                         <span>答：</span>
                         <span>可能原因: </span>
-                        <span>因皮肤长时间贴上电极片</span>
+                        <span>因皮膚長時間貼上電極片</span>
                     </p>
                     <p class="answer" style="  padding-bottom: 0.1rem;">
                         <span>排除方法: </span>
-                        <span>是正常现象，一般过几天会自动消失，如过敏未消失建议去看医生。</span>
+                        <span>是正常現象，壹般過幾天會自動消失，如過敏未消失建議去看醫生。</span>
                     </p>
                 </div>
                 <div class="col-xs-12">
@@ -172,152 +172,152 @@
                 </div>
                 <div class="col-xs-12 box dis-n">
                     <p class="question" style="  padding: 0.1rem 0;">
-                        <span>问：</span>
-                        <span>手机不能用蓝牙和PECG配对</span>
+                        <span>問：</span>
+                        <span>手機不能用藍牙和PECG配對</span>
                     </p>
                     <p class="reason">
                         <span>答：</span>
                         <span>可能原因: </span>
-                        <span>PECG或手机电池用量不足</span>
+                        <span>PECG或手機電池用量不足</span>
                     </p>
                     <p class="answer" style="  padding-bottom: 0.1rem;">
                         <span>排除方法: </span>
-                        <span>PECG和手机确保充满电和重新启动软件程序及重新开启PECG配对</span>
+                        <span>PECG和手機確保充滿電和重新啟動軟件程序及重新開啟PECG配對</span>
                     </p>
                 </div>
                 <div class="col-xs-12 box dis-n">
                     <p class="question" style="  padding: 0.1rem 0;">
-                        <span>问：</span>
-                        <span>手机蓝牙和连接不上PECG</span>
+                        <span>問：</span>
+                        <span>手機藍牙和連接不上PECG</span>
                     </p>
                     <p class="reason">
                         <span>答：</span>
                         <span>可能原因: </span>
-                        <span>PECG配对时, 与机身代码不对称</span>
+                        <span>PECG配對時, 與機身代碼不對稱</span>
                     </p>
                     <p class="answer" style="  padding-bottom: 0.1rem;">
                         <span>排除方法: </span>
-                        <span>尋找正確的S/N碼, 检查印在PECG机背上的机身代码S/N或扫描PECG正面的二维码, 是否是相同</span>
+                        <span>尋找正確的S/N碼, 檢查印在PECG機背上的機身代碼S/N或掃描PECG正面的二維碼, 是否是相同</span>
                     </p>
                 </div>
                 <div class="col-xs-12 box dis-n">
                     <p class="question" style="  padding: 0.1rem 0;">
-                        <span>问：</span>
-                        <span>手机安装不到悉心健康app不成功</span>
+                        <span>問：</span>
+                        <span>手機安裝不到悉心健康app不成功</span>
                     </p>
                     <p class="reason">
                         <span>答：</span>
                         <span>可能原因: </span>
-                        <span>手机规格未达悉心健康app应用要求</span>
+                        <span>手機規格未達悉心健康app應用要求</span>
                     </p>
                     <p class="answer" style="  padding-bottom: 0.1rem;">
                         <span>排除方法: </span>
-                        <span>建议是使用智能手机和Android4.3或以上版本,及顕示屏5吋或以上</span>
+                        <span>建議是使用智能手機和Android4.3或以上版本,及顕示屏5吋或以上</span>
                     </p>
                 </div>
                 <div class="col-xs-12 box dis-n">
                     <p class="question" style="  padding: 0.1rem 0;">
-                        <span>问：</span>
-                        <span>PECG可否和其他电子产品一起使用</span>
+                        <span>問：</span>
+                        <span>PECG可否和其他電子產品壹起使用</span>
                     </p>
                     <p class="reason">
                         <span>答：</span>
                         <span>可能原因: </span>
-                        <span>其他电子产品一起使用时可能会产生干扰</span>
+                        <span>其他電子產品壹起使用時可能會產生幹擾</span>
                     </p>
                     <p class="answer" style="  padding-bottom: 0.1rem;">
                         <span>排除方法: </span>
-                        <span>除了使用PECG软件程序的手机，不建议同时使用其他电子产品。</span>
+                        <span>除了使用PECG軟件程序的手機，不建議同時使用其他電子產品。</span>
                     </p>
                 </div>
                 <div class="col-xs-12 box dis-n">
                     <p class="question" style="  padding: 0.1rem 0;">
-                        <span>问：</span>
-                        <span>悉心健康app注册时收不到验证码</span>
+                        <span>問：</span>
+                        <span>悉心健康app註冊時收不到驗證碼</span>
                     </p>
                     <p class="reason">
                         <span>答：</span>
                         <span>可能原因: </span>
-                        <span>1.手机没有连接到互联网2.国家区号不对3.使用号码不对4.悉心健康APP没有更新</span>
+                        <span>1.手機沒有連接到互聯網2.國家區號不對3.使用號碼不對4.悉心健康APP沒有更新</span>
                     </p>
                     <p class="answer" style="  padding-bottom: 0.1rem;">
                         <span>排除方法: </span>
-                        <span>设置手机WIFI连接或打开手机数据网络使手机连接到互联网</span>
+                        <span>設置手機WIFI連接或打開手機數據網絡使手機連接到互聯網</span>
                     </p>
                 </div>
                 <div class="col-xs-12 box dis-n">
                     <p class="question" style="  padding: 0.1rem 0;">
-                        <span>问：</span>
-                        <span> 当按下PECG发出紧急求救, 紧急联络人收不到手机短信或电邮</span>
+                        <span>問：</span>
+                        <span> 當按下PECG發出緊急求救, 緊急聯絡人收不到手機短信或電郵</span>
                     </p>
                     <p class="reason">
                         <span>答：</span>
                         <span>可能原因: </span>
-                        <span>没有填上紧急联络人手机号码和电邮或预付卡没有足够金钱</span>
+                        <span>沒有填上緊急聯絡人手機號碼和電郵或預付卡沒有足夠金錢</span>
                     </p>
                     <p class="answer" style="  padding-bottom: 0.1rem;">
                         <span>排除方法: </span>
-                        <span>1.沒有在悉心健康app内的个人中心填上紧急联络人手机号码和电邮2.填寫的資料有誤3.悉心健康app之我的服务内预付卡存入足够金钱</span>
+                        <span>1.沒有在悉心健康app內的個人中心填上緊急聯絡人手機號碼和電郵2.填寫的資料有誤3.悉心健康app之我的服務內預付卡存入足夠金錢</span>
                     </p>
                 </div>
                 <div class="col-xs-12 box dis-n">
                     <p class="question" style="  padding: 0.1rem 0;">
-                        <span>问：</span>
-                        <span> 当按下PECG发出紧急求救, 紧急联络人收不到手机或电邮</span>
+                        <span>問：</span>
+                        <span> 當按下PECG發出緊急求救, 緊急聯絡人收不到手機或電郵</span>
                     </p>
                     <p class="reason">
                         <span>答：</span>
                         <span>可能原因: </span>
-                        <span>用者悉心健康app离开了有大圏点的画面</span>
+                        <span>用者悉心健康app離開了有大圏點的畫面</span>
                     </p>
                     <p class="answer" style="  padding-bottom: 0.1rem;">
                         <span>排除方法: </span>
-                        <span>使用者可收少画面，但仍要保持悉心健康app在运行</span>
+                        <span>使用者可收少畫面，但仍要保持悉心健康app在運行</span>
                     </p>
                 </div>
                 <div class="col-xs-12 box dis-n">
                     <p class="question" style="  padding: 0.1rem 0;">
-                        <span>问：</span>
-                        <span>心电仪可在高潮湿环境下工作吗?</span>
+                        <span>問：</span>
+                        <span>心電儀可在高潮濕環境下工作嗎?</span>
                     </p>
                     <p class="reason">
                         <span>答：</span>
                         <span>可能原因: </span>
-                        <span>没有参考包装盒上说明</span>
+                        <span>沒有參考包裝盒上說明</span>
                     </p>
                     <p class="answer" style="  padding-bottom: 0.1rem;">
                         <span>排除方法: </span>
-                        <span>包装盒上说明心电仪可在相对湿度10-95%下工作。</span>
+                        <span>包裝盒上說明心電儀可在相對濕度10-95%下工作。</span>
                     </p>
                 </div>
                 <div class="col-xs-12 box dis-n">
                     <p class="question" style="  padding: 0.1rem 0;">
-                        <span>问：</span>
-                        <span>胸部受伤可以用心电仪吗?</span>
+                        <span>問：</span>
+                        <span>胸部受傷可以用心電儀嗎?</span>
                     </p>
                     <p class="reason">
                         <span>答：</span>
                         <span>可能原因: </span>
-                        <span>胸部受伤可能会影响伤口复原</span>
+                        <span>胸部受傷可能會影響傷口復原</span>
                     </p>
                     <p class="answer" style="  padding-bottom: 0.1rem;">
                         <span>排除方法: </span>
-                        <span>不建议使用心电仪</span>
+                        <span>不建議使用心電儀</span>
                     </p>
                 </div>
                 <div class="col-xs-12 box dis-n">
                     <p class="question" style="  padding: 0.1rem 0;">
-                        <span>问：</span>
-                        <span>PECG可否可和心臓起搏器一起使用</span>
+                        <span>問：</span>
+                        <span>PECG可否可和心臓起搏器壹起使用</span>
                     </p>
                     <p class="reason">
                         <span>答：</span>
                         <span>可能原因: </span>
-                        <span>和心臓起搏器一起使用时可能会产生干扰</span>
+                        <span>和心臓起搏器壹起使用時可能會產生幹擾</span>
                     </p>
                     <p class="answer" style="  padding-bottom: 0.1rem;">
                         <span>排除方法: </span>
-                        <span>不建议使用心臓起搏器的人士使用PECG。如要使用请先咨询有关医生或心藏起搏器供货商</span>
+                        <span>不建議使用心臓起搏器的人士使用PECG。如要使用請先咨詢有關醫生或心藏起搏器供貨商</span>
                     </p>
                 </div>
             </div>

@@ -47,22 +47,36 @@
     <Loggers>
         
         <!-- 项目整体默认日志配置，此处最低级别为 debug -->
-        <Root level="DEBUG">
+        <Root level="info">
             <AppenderRef ref="ConsoleDebugLog" />
             <AppenderRef ref="InfoRollingFileLog" />
             <AppenderRef ref="ErrorRollingFileLog" />
         </Root>
+        
         
         <!-- 针对指定的 source package 代码配置（若比默认配置的日志级别高，则相当于忽略默认配置的级别打印，实现去除“不必要”的日志）--> 
         <logger name="org.springframework.amqp.rabbit.listener" level="ERROR" additivity="false">
             <AppenderRef ref="ConsoleInfoLog" />
             <AppenderRef ref="ErrorRollingFileLog" />
         </logger> 
+        <logger name="org.apache.shiro.session.mgt" level="INFO" additivity="false">
+            <AppenderRef ref="ConsoleErrorLog" />
+            <AppenderRef ref="ErrorRollingFileLog" />
+        </logger>
           <logger name=" org.springframework.data.redis" level="ERROR" additivity="false">
             <AppenderRef ref="ConsoleInfoLog" />
             <AppenderRef ref="ErrorRollingFileLog" />
         </logger> 
-       
+            <logger name=" org.quartz" level="DEBUG" additivity="false">
+            <AppenderRef ref="ConsoleInfoLog" />
+            <AppenderRef ref="ErrorRollingFileLog" />
+        </logger> 
+              <logger name="redis.clients.jedis" level="ERROR" additivity="false">
+            <AppenderRef ref="ConsoleErrorLog" />
+            <AppenderRef ref="ErrorRollingFileLog" />
+        </logger>
+      
+
          <logger name="net.sf" level="ERROR" additivity="false">
             <AppenderRef ref="ConsoleErrorLog" />
             <AppenderRef ref="ErrorRollingFileLog" />
@@ -71,32 +85,19 @@
             <AppenderRef ref="ConsoleErrorLog" />
             <AppenderRef ref="ErrorRollingFileLog" />
         </logger>
-        <logger name="redis.clients.jedis" level="ERROR" additivity="false">
-            <AppenderRef ref="ConsoleErrorLog" />
-            <AppenderRef ref="ErrorRollingFileLog" />
-        </logger>
         
         <logger name="pringfox.documentation" level="ERROR" additivity="false">
             <AppenderRef ref="ConsoleErrorLog" />
             <AppenderRef ref="ErrorRollingFileLog" />
         </logger>
-       	<logger name="org.springframework.amqp" level="ERROR" additivity="false">
-            <AppenderRef ref="ConsoleInfoLog" />
-            <AppenderRef ref="ErrorRollingFileLog" />
-        </logger>
-		<logger name="org.apache.http" level="DEBUG" additivity="false">
-            <AppenderRef ref="ConsoleInfoLog" />
-            <AppenderRef ref="ErrorRollingFileLog" />
-        </logger>
-        <logger name=" org.quartz" level="ERROR" additivity="false">
+        
+        
+        
+      <logger name="org.apache.http" level="DEBUG" additivity="false">
             <AppenderRef ref="ConsoleInfoLog" />
             <AppenderRef ref="ErrorRollingFileLog" />
         </logger> 
-              <logger name="redis.clients.jedis" level="ERROR" additivity="false">
-            <AppenderRef ref="ConsoleErrorLog" />
-            <AppenderRef ref="ErrorRollingFileLog" />
-        </logger>
-        
+
     </Loggers>
 
 </Configuration>

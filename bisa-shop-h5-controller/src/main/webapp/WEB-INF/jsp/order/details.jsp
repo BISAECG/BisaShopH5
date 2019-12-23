@@ -6,299 +6,163 @@
 <%@ page import="com.bisa.health.shop.enumerate.GoodsTypeEnum" %>
 <%@ page import="com.bisa.health.shop.enumerate.PayTypeEnum" %>
 <!DOCTYPE html>
-<html>
-<head>
-<link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
-<link rel="bookmark" href="/favicon/favicon.ico" type="image/x-icon" />
-<meta http-equiv="Content-Type" content="text/html;" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta charset="utf-8">
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-<!-- necessary -->
- <title><spring:message code="admin.domain" /></title>
- <meta name="keywords" content="<spring:message code="admin.keyword" />">
- <meta name="description" content="<spring:message code="admin.description" />">
-<!-- description -->
-<meta name="renderer" content="webkit">
-<!-- base -->
-  <style type="text/css">
-  	.layui-form-label{
-  		width:110px !important;
-  	}
-    
-  </style>
-<link href="/resources/css/comm/base.css" rel="stylesheet">
-<link href="/resources/css/index/index.css" rel="stylesheet">
-<link href="/resources/css/shop/payment.css" rel="stylesheet">
-<link href="/resources/ctrl/layui/css/layui.css" rel="stylesheet">
-<script src="/resources/js/comm/jquery.min.js"></script>
-<script src="/resources/ctrl/layui/layui.js"></script>
-</head>
-<body>
-	<div id="header"></div>
-	<script>
-		$("#header").load("header.html");
-	</script>
-	<div class="container payBox">
-		<form  class="layui-form" id="orderForm" action="/html/${language}/order" method="post">
-			<div class="row">
-				<div class="col-md-4 col-md-offset-1 mt-60 mb-60">
-					<img class="img-responsive center-block"
-						src="${goods.img_url}">
-				</div>
-				<div class="col-md-4 col-md-offset-2 payRight">
-					<p class="payTitle" style="margin-bottom: 10px;">${goods.name}</p>
-					<p class="payPrice">
-						<span><spring:message code="price" />:</span> <span class="redInfo" ><spring:message code="pay.unit"/>${goods.price}<input type="hidden" id="goods_price" name="goods_price" value="${goods.price}" ></span>
-						<input type="hidden" name="goods_num" value="${goods.number}">
-						<input type="hidden" name="goods_id" value="${goods.id}">
-					</p>
-					<p class="payPrice">
-						<span><spring:message code="2015" />:</span><span class="redInfo">${goods_count}</span>
-						<input type="hidden" id="goods_count" name="goods_count" value="${goods_count}">
-					</p>
-					<p class="payPrice">
-						<span><spring:message code="2016" />:</span><span class="xPrice redInfo">￥${goods.price}</span>
-						<input type="hidden" id="order_total" name="order_total" value="0">
-					</p>
-					<p class="payNum">
-						<span><spring:message code="coupon" />:</span> <input type="text" id="coupon_num" name="coupon_num" autocomplete="off">
-					</p>
-					<p class="payInfo dis-n">
-						<span><spring:message code="2017" />:</span> <span id="xCoupan" class="redInfo"></span>
-						<input type="hidden" name="coupon_price" id="coupon_price" value="0">
-					</p>
-					<c:if test="${goods.type==GoodsTypeEnum.REAL.getValue()}">
-					<p class="payPostage">
-						<span><spring:message code="postage" />:</span> <span class="redInfo"><spring:message code="pay.unit"/>50</span>
-						<input type="hidden" id="emd_postage" name="emd_postage" value="50">
-					</p>
-					</c:if>
-					<c:if test="${goods.type==GoodsTypeEnum.VIRTUAL.getValue()}">
-					<p class="payPostage">
-						<input type="hidden" id="emd_postage" name="emd_postage" value="0">
-					</p>
-					</c:if>
-					<p class="totalPrice">
-						<span><spring:message code="2018" />:</span> <span id="xTotal" class="redInfo"></span><input type="hidden" id="order_price" name="order_price" value="0"></span>
-					</p>
-				     <p class="payNum">
-				     	<input type="hidden" id="address_id" name="address_id" value="0">
-						<span><spring:message code="address" />:</span> <input type="text" lay-reqText="<spring:message code='address.empty' />" lay-verify="required" readonly="readonly" autocomplete="off" name="order_address" id="order_address" placeholder="<spring:message code='address.input' />">
-					</p>
-					  <button lay-submit lay-filter="submitOrder" class="payMode f-20 col-white">
-			                	<spring:message code="submit.order" />
-			            </button>
-				
-				</div>
-			</div>
-		</form>
-	</div>
-	
-	<!-- 弹框 -->
-	<div class="address-form dis-n mg-20" id="address-form">
-		<form class="layui-form" id="addressMain"  lay-filter="address-filter" >
-			
-		  <div class="layui-form-item">
-		    <label class="layui-form-label"><spring:message code="addressee" /></label>
-		    <div class="layui-input-block">
-		       <input type="hidden" name="id" value="0">
-		       <input type="hidden" name="user_id" value="0">
-		       <input type="hidden" name="country" value="">
-		       <input type="hidden" name="province" value="">
-		       <input type="hidden" name="county" value="">
-		       <input type="hidden" name="town" value="">
-		        <input type="hidden" name="is_default"  value="1">
-		         <input type="hidden" name="address_label"  value="1">
-		      <input type="text" name="consignee" required  lay-verify="required" lay-reqText="<spring:message code='addressee.empty' />" placeholder='<spring:message code="addressee.input" />' autocomplete="off" class="layui-input">
-		    </div>
-		  </div>
-		  
-		  <div class="layui-form-item">
-		   <label class="layui-form-label"><spring:message code="area" /></label>
-		    <div class="layui-input-inline">
-		      <select name="area" id="selectpicker"  lay-verify="required" >
-		      </select>
-		    </div>
-		      <label class="layui-form-label"><spring:message code="tell" /></label>
-		    <div class="layui-input-inline">
-		      <input type="text" name="phone" lay-verify="required" lay-reqText="<spring:message code='tell.empty' />"  placeholder="<spring:message code="tell.input" />" autocomplete="off" class="layui-input">
-		    </div>
-		  </div>
-		  
-		  <div class="layui-form-item">
-		    <label class="layui-form-label"><spring:message code="city" /></label>
-		    <div class="layui-input-block">
-		      <select name="city" id="city" lay-reqText="<spring:message code='city.empty' />" lay-verify="required" >
-		      </select>
-		    </div>
-		  </div>
-		 
-		  <div class="layui-form-item layui-form-text">
-		    <label class="layui-form-label"><spring:message code="address.details" /></label>
-		    <div class="layui-input-block">
-		      <textarea name="detail_address" lay-verify="required" lay-reqText="<spring:message code="address.details.empty" />" placeholder="<spring:message code="address.details.input" />" class="layui-textarea"></textarea>
-		    </div>
-		  </div>
-		  <div class="layui-form-item">
-		    <div class="layui-input-block">
-		      <button class="layui-btn" lay-submit lay-filter="saveAddress"><spring:message code="submit.now" /></button>
-		      <button type="reset" class="layui-btn layui-btn-primary"><spring:message code="reset" /></button>
-		    </div>
-		  </div>
-		</form>
-	</div>
-	<!-- end 弹框 -->
+<html lang="en">
 
-	<div id="footer"></div>
-	<script>
-		$("#footer").load("footer.html");
-	</script>
-	<script type="text/javascript">
-		//加载layui
-		layui.use([ 'element', 'table', 'form' ],function() {
-			var layer = layui.layer, 
-			element = layui.element, 
-			table = layui.table,
-			form = layui.form,
-			$ = layui.jquery;
-			var addIndex;
-			
-			var msg="${msg}";
-			if(msg!=null&&msg!=""){
-				layer.msg(msg);
-			}
-			
-			function address(){
-				
-				var index=layer.load();
-				$('#addressMain')[0].reset();
-				var city=<spring:message code="city.lang" />;
-				$('#city').empty();
-				$(city).each(function(index,element){
-					$('#city').append("<option value="+element+">"+element+"</option>");
-				});
-				
-				form.render('select'); 
-				$.ajax({
-					type : "GET",
-					dataType: "json",
-					url : '/order/ajax/address',
-					async:false,
-					success : function(data) {
-						layer.close(index);
-						if(data.code=="${SysStatusCode.SUCCESS}"){
-							console.log(data.data);
-							form.val('address-filter', data.data);
-							form.render(''); 
-						}
-					},error:function(){
-						layer.close(index);
-					}
-				});
-				addIndex=layer.open({
-	                  title: "<spring:message code='address' />"//弹框标题
-	                  , content:$('#address-form')//也可以是一个html
-	                  , area: ['700px', '420px']
-	  		         ,closeBtn: 1
-	  		         ,shadeClose:true
-	  		         ,type: 1
-	  		      	,shade: 0.5
-	              });
-			  
-			   }
-			//添加地址
-			form.on('submit(saveAddress)', function(data){
-				var index=layer.load();
-		 		$.ajax({
-					type : "POST",
-					dataType: "json",
-					//contentType: "application/json;charset=UTF-8",
-					url : '/order/ajax/address',
-					data : data.field,
-					success : function(obj) {
-						layer.close(index);
-						layer.close(addIndex);
-						if(obj.code=="${SysStatusCode.SUCCESS}"){
-							$('#order_address').val(obj.data.city+obj.data.detail_address);
-							$('#address_id').val(obj.data.id);
-						}
-					},error:function(){
-						layer.close(index);
-					}
-				});
-		 		return false;
-			});
-			
-			
-			$('#order_address').click(function(){
-				address();
-				
-			});
-			
-			form.on('submit(submitOrder)', function(data){				
-				return true; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
-			});
-			
-		
-			function ShopCart(xCoupan){
-				var goods_price=$('#goods_price');//单价
-				var goods_count=$('#goods_count');//数量
-				var coupon_price=$('#coupon_price');//优惠价
-				var emd_postage=$('#emd_postage');//邮费
-				var order_price=$('#order_price');//实际金额
-				var order_total=$('#order_total');//订单总价
-				
-				var xPrice=$('.xPrice');//商品总价
-				var xTotal=$('#xTotal');//总价
-				
-				var a=parseFloat(goods_price.val());
-				var c=parseFloat(emd_postage.val());
-				var d=parseFloat(order_price.val());
-				var z=parseFloat(goods_count.val());
-				order_total.val((a*z));
-				xPrice.html("<spring:message code="pay.unit"/>"+(a*z));
-				xTotal.html("<spring:message code="pay.unit"/>"+(a*z-xCoupan+c))
-				order_price.val(a*z-xCoupan+c);
-			}
-			//优惠券
-			$("#coupon_num").blur(function(){
-				
-				var goods_price=$('#goods_price').val();//单价
-				var goods_count=$('#goods_count').val();//数量
-				var order_total=goods_price*goods_count;
-				var coupon_num=$('#coupon_num').val();
-				var index=layer.load();
-				$.ajax({
-					type : "GET",
-					dataType: "json",
-					//contentType: "application/json;charset=UTF-8",
-					url : '/order/ajax/coupan',
-					data : {coupon_num:coupon_num,order_total:order_total},
-					success : function(obj) {
-						layer.close(index);
-						if(obj.code=="${SysStatusCode.SUCCESS}"){
-							$('#coupon_price').val(obj.data);
-							$('#xCoupan').html('<spring:message code="pay.unit"/>-'+obj.data);
-							$('.payInfo').removeClass("dis-n");
-							ShopCart(obj.data);
-						}else{
-							$('.payInfo').addClass("dis-n");
-							layer.msg(obj.msg);
-						}
-					},error:function(){
-						layer.close(index);
-					}
-				});
-					 
-			});
-			
-			ShopCart(0);
-			
-		});
-		
-	</script>
-	<script src="/resources/js/utils.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><spring:message code="admin.domain" /></title>
+    <meta name="keywords" content="<spring:message code="admin.keyword" />">
+    <meta name="description" content="<spring:message code="admin.description" />">
+    <link href="/resources/ctrl/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/css/public.css" rel="stylesheet">
+    <link href="/resources/ctrl/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/resources/css/buy.css" rel="stylesheet">
+    <script src="/resources/js/comm/jquery.min.js"></script>
+    <script src="/resources/js/rootFont.js"></script>
+
+</head>
+
+<body>
+    <div class="content">
+        <div class="container">
+            <div class="row return">
+                <div class="col-xs-1 text-center">
+                    <a href="details.html">
+                        <i class="fa fa-chevron-left"></i>
+                    </a>
+                </div>
+                <div class="col-xs-10  text-center">
+                    <span>提交訂單</span>
+                </div>
+            </div>
+        </div>
+        <div class="container-full">
+            <div class="row" style="height:20px;background:rgba(241,241,241,1);margin: 0;">
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1 info">
+                    <div class="row">
+                        <div class="col-sm-10 col-sm-offset-2 col-xs-12 Personal_info">
+                            <span class="default">默認</span>
+                            <span class="username">胡新</span>
+                            <span class="phone">13666666666</span>
+                        </div>
+                    </div>
+                    <div class="row address">
+                        <div class="col-xs-2">
+                            <img class="img-responsive center-block" src="/resources/img/shop/logo.png">
+                        </div>
+                        <div class="col-xs-8">
+                            <span>廣東省深圳市寶安區全誌科技園10E碧沙科技</span>
+                        </div>
+                        <div class="col-xs-2 text-right">
+                            <a href="address.html"><i class="fa fa-chevron-right "></i></a>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1 info_two">
+                    <div class="row">
+                        <div class=" col-xs-4 col-xs-offset-1 product_img">
+                            <img class="center-block img-responsive" src="/resources/img/shop/xixin.png">
+                        </div>
+                        <div class="col-xs-7">
+                            <p class="product_title">悉心動態心電儀</p>
+                            <p class="product_Introduction">世界首創三導聯無線攜帶式心電記錄儀 </p>
+                            <div class="product_price">
+                                <span class="col-red originalPrice">￥</span><span class="col-red originalPrice">1280</span>
+                                <span class="col-666 discountedPrices">￥</span><span class="col-666 discountedPrices">1800</span>
+                                <span class="col-666 quantityLeft">x</span><span class="col-666 quantityRight">1</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-10 col-xs-offset-1 board">
+                                <p>我們將盡快為您安排發貨</p>
+                                <p><span>買家留言:</span><input type="text" placeholder="給我們留言，最多140個字 " maxlength="140"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1 info">
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1 pay">
+                            <div class="row">
+                                <span>購買數量</span>
+                                <div class="goods_num clearfix pull-right">
+                                    <div class="gw_num">
+                                        <em class="less">-</em>
+                                        <input id="goods_count" type="text" value="1" class="num" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="3" />
+                                        <em class="add">+</em>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <span>郵費</span>
+                                <span class="pull-right col-red">￥</span><span class="col-red pull-right">10</span>
+                            </div>
+                            <div class="row">
+                                <span>優惠券</span>
+                                <input class="pull-right" type="text" placeholder="請輸入兌換碼">
+                            </div>
+                            <div class="row">
+                                <span>總價</span>
+                                <span class="pull-right col-red">￥</span><span class="pull-right col-red">1220</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-11 col-xs-offset-1">                  
+                        <div class="col-xs-12 buy">
+                            <button class="pull-right">
+                                <a href="order.html">
+                                   立即下單
+                                </a>
+                            </button>
+                            <button class=" pull-right">
+                                <a href="#">
+                                    電話咨詢
+                                </a>
+                            </button>
+                        </div>
+               
+                </div>
+            </div>
+        </div>
+
+
+    </div>
 </body>
+<script type="text/javascript">
+	//加號
+	var num = parseInt($('#goods_count').val());
+	//當購物車數量增加的時候
+	$('.add').click(function() {
+		num++;
+		$('#goods_count').val(num);
+	});
+	//當購物車數量減少的時候
+	$('.less').click(function() {
+		if (num > 1) {
+			num--;
+			$('#goods_count').val(num);
+		}
+	});
+	function order(){
+		var goods_count=$('#goods_count').val();
+		 location.href="/html/zh_CN/order.html?goods_id=10&goods_count="+goods_count;
+	}
+</script>
 </html>

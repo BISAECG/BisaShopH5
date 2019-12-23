@@ -97,12 +97,18 @@ public class NewsServiceImpl implements INewsService {
         Pager<News> pagerNews = iNewsDao.getPageNews(language, vKey, vVal);
         return pagerNews;
     }
-
+	@Override
+	   @Cacheable(key = "targetClass.name+methodName+#language+#vKey+#vVal+#is_pc+#offset")
+	public Pager<News> getPageNews(String language, String vKey, String vVal, int is_pc, int offset) {
+		 //获取的是新闻表的数据，在查询过程中已经国际化
+        Pager<News> pagerNews = iNewsDao.getPageNews(language, vKey, vVal,is_pc);
+        return pagerNews;
+	}
 
     @Override
-    @Cacheable(key = "targetClass.name+methodName+#language")
-    public List<News> getTop4ListNews(String language) {
-        List<News> listNews = iNewsDao.getTop4ListNews(language);
+    @Cacheable(key = "targetClass.name+methodName+#language+#is_pc")
+    public List<News> getTop4ListNews(String language,int is_pc) {
+        List<News> listNews = iNewsDao.getTop4ListNews(language,is_pc);
         return listNews;
     }
 
@@ -155,5 +161,6 @@ public class NewsServiceImpl implements INewsService {
 	public Pager<News> selectAllNews(Integer page, Integer limit, String incontent, String searchabout) {
 		return null;
 	}
+
 
 }

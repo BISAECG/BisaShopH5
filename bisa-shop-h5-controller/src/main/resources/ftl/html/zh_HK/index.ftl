@@ -21,7 +21,7 @@
 <body>
     <div id="header"></div>
     <script>
-        $("#header").load("head.html");
+        $("#header").load("header.html");
     </script>
     <div class="content">
         <div class="container-fluid">
@@ -50,7 +50,10 @@
                 </div>
             </div>
             <div class="row indexVideo">
-                <div class="col-xs-12">
+                <div class="col-xs-12" style="padding: 0;">
+                    <video width="100%" id="audio" controls="controls" >
+                        <source src="https://bisa-hk-comm-data.oss-cn-hongkong.aliyuncs.com/video/PECG_zh_HK.mp4" type="video/mp4">
+                    </video>
                 </div>
             </div>
         </div>
@@ -64,12 +67,16 @@
             </div>
             <div class="row certificate">
                 <div class=" text-center col-xs-6">
-                    <img src="/resources/img/index/chanpin.png">
-                    <p>醫療器械生產許可證</p>
+                    <a href="/resources/img/certificate/SCZ.png">
+                        <img src="/resources/img/index/chanpin.png">
+                        <p>醫療器械生產許可證</p>
+                    </a>
                 </div>
                 <div class=" text-center col-xs-6">
-                    <img src="/resources/img/index/chanpin1.png">
-                    <p>CFDA註冊證</p>
+                    <a  href="/resources/img/certificate/zcz.png">
+                        <img src="/resources/img/index/chanpin1.png">
+                        <p>CFDA註冊證</p>
+                    </a>
                 </div>
             </div>
             <div class="row" style="margin-top: 0.38rem;">
@@ -87,46 +94,12 @@
 
             <div class="row">
                 <div class="col-xs-12" style="padding: 0;">
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                <!-- Indicators -->
-                                <!--<ol class="carousel-indicators">-->
-                                    <!--<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>-->
-                                    <!--<li data-target="#carousel-example-generic" data-slide-to="1"></li>-->
-                                    <!--<li data-target="#carousel-example-generic" data-slide-to="2"></li>-->
-                                <!--</ol>-->
-                                <!--Wrapper for slides-->
-                                <div class="carousel-inner" role="listbox">
-                                    <div class="item active">
-                                        <div class="row indexNews">
-                                            <div class="col-xs-5">
-                                                <img class="img-responsive center-block" src="/resources/img/index/chanpin.png">
-                                            </div>
-                                            <div class="col-xs-7">
-                                                <p>香港國際醫療及保健展參展圓滿結束</p>
-                                                <p>香港國際醫療及香港國際醫療及香港國際醫療及保健展參展圓滿結束香香港國際醫療及保健展參展圓滿結束港國際醫療及香港國際醫療及保健展參展圓滿結束保健展參展圓滿結束香港國際醫療及保健展參展圓滿結束香港國際醫療及保健展參展圓滿結束</p>
-                                                <p>
-                                                    <span>日期:</span>
-                                                    <span>2019-06-18 11:10:45</span>
-                                                    <span>閱讀:</span>
-                                                    <span>100</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <img src="">
-                                        <div class="carousel-caption">
-                                            ...
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <img src="">
-                                        <div class="carousel-caption">
-                                            ...
-                                        </div>
-                                    </div>
+                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-ride="carousel" data-interval="10000">
+                              
+            					   <!--Wrapper for slides-->
+                                <div class="carousel-inner" id="newsBox" role="listbox">
+                                    
                                 </div>
-            
                                 <!-- Controls -->
                                 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
                                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -143,19 +116,65 @@
 
             </div>
             <div class="row Offer">
-                    <img class="img-responsive center-block" src="/resources/img/index/offer.png">
-            </div>
+                <img class="img-responsive center-block" src="/resources/img/index/offer-hk.gif">
+                <div>
+                    <a href="/app/share/taobao" >淘寶</a>
+                    <a href="https://mall.jd.com/index-10103348.html">京東</a>
+                </div> 
+        </div>
         </div>
     </div>
     <div id="footer"></div>
     <script>
-        $("#footer").load("foot.html");
+        $("#footer").load("footer.html");
     </script>
 </body>
 <script>
-    $('.carousel').carousel({
-        interval: 1000000
-    })
-</script>
+    $(document).ready(function () {
+        //新闻内容获取
+        function indexNew() {
+
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "/news/ajax/top4",
+                success: function (data) {
+                   
+                    $.each(data, function (i, item) {
+                    	var active="";
+                    	if(i==0){
+                    		active="active";
+                    	}
+                    	
+                    	$("#newsBox").append(
+                    	     '<div class="item '+active+'">'+
+                                '<div class="row indexNews">'+
+                                 	'<div class="col-xs-5">'+
+                                     	'<img class="img-responsive center-block" src="'+item.img_url+'">'+
+                                    '</div>'+
+                                    '<div class="col-xs-7">'+
+                                        '<p>'+item.news_title+'</p>'+
+                                        '<p>'+item.news_describe+'</p>'+
+                                        '<p>'+
+                                            '<span>日期:</span>'+
+                                            '<span>'+item.release_time+'</span>'+
+                                            '<span><br/>閱讀量:</span>'+
+                                            '<span>'+item.read_quantity+'</span>'+
+                                        '</p>'+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>'		
+                    	);
+                    	
+                       
+                    });
+                }
+            });
+        }
+
+        indexNew();
+        
+    });
+    </script>
 
 </html>

@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>解决方案</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+     <meta name="keywords" content="${html_description}">
+    <meta name="description" content="${html_keyWord}">
+    <title>${html_title}</title>
     <link href="/resources/ctrl/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/resources/ctrl/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="/resources/css/public.css" rel="stylesheet">
@@ -20,15 +20,15 @@
 <body>
     <div id="header"></div>
     <script>
-        $("#header").load("head.html");
+        $("#header").load("header.html");
     </script>
     <div class="content">
         <div class="container-fluid">
             <div class="row shopGo">
-                <img class="img-responsive center-block" src="/resources/img/solution/banner.png" alt="碧沙心电仪解决方案">
+                <img class="img-responsive center-block" src="/resources/img/solution/banner.png" alt="BisaHealth Solution">
                 <div class="shop">
-                    <a href="https://shop194684580.taobao.com/?spm=a230r.7195193.1997079397.2.6815114b089AGi" >taobao</a>
-                    <a href="https://mall.jd.com/index-10103348.html">jigndong</a>
+                    <a href="/app/share/taobao" >TB</a>
+                    <a href="https://mall.jd.com/index-10103348.html">JD</a>
                     <!-- <a>Shopping</a> -->
                 </div>
             </div>
@@ -95,7 +95,7 @@
     </div>
     <div id="footer"></div>
     <script>
-        $("#footer").load("foot.html");
+        $("#footer").load("footer.html");
     </script>
 </body>
 
