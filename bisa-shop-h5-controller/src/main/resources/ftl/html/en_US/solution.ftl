@@ -25,8 +25,8 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row shopGo">
-                <img class="img-responsive center-block" src="/resources/img/solution/banner.png" alt="BisaHealth Solution">
-                <div class="shop">
+                <img class="img-responsive center-block" src="/resources/img/solution/banner-us.png" alt="BisaHealth Solution">
+                <div class="shop" style="bottom: 4%;">
                     <a href="/app/share/taobao" >TB</a>
                     <a href="https://mall.jd.com/index-10103348.html">JD</a>
                     <!-- <a>Shopping</a> -->

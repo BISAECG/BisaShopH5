@@ -25,7 +25,7 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row shopGo">
-                <img class="img-responsive center-block" src="/resources/img/solution/banner.png" alt="碧沙心電儀解決方案">
+                <img class="img-responsive center-block" src="/resources/img/solution/banner-hk.png" alt="碧沙心電儀解決方案">
                 <div class="shop">
                     <a href="/app/share/taobao" >淘寶</a>
                     <a href="https://mall.jd.com/index-10103348.html">京東</a>

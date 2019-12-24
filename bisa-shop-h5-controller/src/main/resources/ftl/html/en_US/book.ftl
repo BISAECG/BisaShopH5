@@ -37,7 +37,7 @@
 
 					</p>
 					<p class="mb-20">
-						<span>(Hongkong):</span> <span>(852) 24230600</span>
+						<span>(Hong kong):</span> <span>(852) 24230600</span>
 					</p>
 					<p class="mb-20">
 						<span>Fax:</span> <span>(852) 2423 0148</span>
