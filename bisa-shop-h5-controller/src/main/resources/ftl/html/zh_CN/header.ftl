@@ -105,6 +105,9 @@
 <div class="fixedRight">
     <ul>
         <li>
+            <a href="instructions.html">使用视屏</a>
+        </li>
+        <li>
             <a href="tel:+8675526880962"><i class="fa fa-volume-control-phone"></i></a>
         </li>
         <li>
