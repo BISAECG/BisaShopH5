@@ -76,7 +76,7 @@
 
     <!-- 配置SessionLocaleResolver用于将Locale对象存储于Session中供后续使用 默认是繁体 -->
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
-        <property name="defaultLocale" value="zh_CN"></property>
+        <property name="defaultLocale" value="zh_HK"></property>
     </bean>
 
     <mvc:interceptors>
