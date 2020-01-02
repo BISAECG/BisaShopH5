@@ -34,7 +34,7 @@
         <div class="container-full">
                 <div class="row down" >
                         <div class="text-center col-xs-6 col-xs-offset-3">
-                                <p >Bisa Kangjian APP</p>
+                                <p >BisaHealth APP</p>
                                 <p >Lets you measure your ECG without leaving home</p>
                                 <p>Keep you indoors for ECG measurements</p>
                                 <img  class="img-responsive center-block  downImg"  src="/resources/img/download/qr.png">

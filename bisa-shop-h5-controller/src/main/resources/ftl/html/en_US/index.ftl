@@ -31,7 +31,7 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-                <p class="title-p">Why choose Bisa Dynamic ECG Recorder</p>
+                <p class="title-p">Why choose Bisa PECG Recorder</p>
                 <div class="line">
                     <p class="line-top"></p>
                     <p class="line-btm"></p>
@@ -43,7 +43,7 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-                <p class="title-p">Bisa video display</p>
+                <p class="title-p">Bisa video show</p>
                 <div class="line">
                     <p class="line-top"></p>
                     <p class="line-btm"></p>
