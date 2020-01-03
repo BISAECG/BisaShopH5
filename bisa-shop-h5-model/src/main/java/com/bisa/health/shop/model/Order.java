@@ -52,6 +52,11 @@ public class Order implements Serializable {
 	 */
 	@NotBlank(message=SysErrorCode.RequestFormat)
 	private String goods_num;
+	
+	/**
+	 * 产品内部编号
+	 */
+	private String goods_pattern;
 	/**
 	 * 商品类型
 	 */
@@ -355,19 +360,26 @@ public class Order implements Serializable {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	
+	
+	public String getGoods_pattern() {
+		return goods_pattern;
+	}
+	public void setGoods_pattern(String goods_pattern) {
+		this.goods_pattern = goods_pattern;
+	}
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", user_id=" + user_id + ", goods_id=" + goods_id + ", goods_num=" + goods_num
-				+ ", goods_type=" + goods_type + ", goods_price=" + goods_price + ", goods_count=" + goods_count
-				+ ", order_num=" + order_num + ", order_total=" + order_total + ", order_price=" + order_price
-				+ ", order_status=" + order_status + ", address_id=" + address_id + ", order_address=" + order_address
-				+ ", order_phone=" + order_phone + ", order_area=" + order_area + ", order_name=" + order_name
-				+ ", is_pay=" + is_pay + ", pay_type=" + pay_type + ", is_coupon=" + is_coupon + ", coupon_num="
-				+ coupon_num + ", coupon_price=" + coupon_price + ", ems_num=" + ems_num + ", ems_name=" + ems_name
-				+ ", emd_postage=" + emd_postage + ", pay_id=" + pay_id + ", status=" + status + ", version=" + version
-				+ ", c_time=" + c_time + "]";
+				+ ", goods_pattern=" + goods_pattern + ", goods_type=" + goods_type + ", goods_price=" + goods_price
+				+ ", goods_count=" + goods_count + ", order_num=" + order_num + ", order_total=" + order_total
+				+ ", order_price=" + order_price + ", order_status=" + order_status + ", address_id=" + address_id
+				+ ", order_address=" + order_address + ", order_phone=" + order_phone + ", order_area=" + order_area
+				+ ", order_name=" + order_name + ", is_pay=" + is_pay + ", pay_type=" + pay_type + ", is_coupon="
+				+ is_coupon + ", coupon_num=" + coupon_num + ", coupon_price=" + coupon_price + ", ems_num=" + ems_num
+				+ ", ems_name=" + ems_name + ", emd_postage=" + emd_postage + ", pay_id=" + pay_id + ", status="
+				+ status + ", version=" + version + ", c_time=" + c_time + "]";
 	}
-	
 	
 	
 }
