@@ -43,6 +43,10 @@ public class Goods implements Serializable {
 	private String number;
 	
 	/**
+	 * 产品内部编号
+	 */
+	private String pattern;
+	/**
 	 * 商品状态
 	 */
 	private int status;
@@ -88,8 +92,6 @@ public class Goods implements Serializable {
 	/**
 	 * 创建时间
 	 */
-
-	
 	private Date c_time;
 	
     @Id
@@ -197,17 +199,20 @@ public class Goods implements Serializable {
 	public void setImg_url(String img_url) {
 		this.img_url = img_url;
 	}
+	
+	public String getPattern() {
+		return pattern;
+	}
+	public void setPattern(String pattern) {
+		this.pattern = pattern;
+	}
 	@Override
 	public String toString() {
-		
-		return "Goods [id=" + id + ", number=" + number + ", name=" + name + ", description=" + description + ", type="
-				+ type + ", price=" + price + ", language=" + language + ", detail_body=" + detail_body
-				+ ", category_num=" + category_num + ", c_time=" + c_time + "]";
+		return "Goods [id=" + id + ", number=" + number + ", pattern=" + pattern + ", status=" + status + ", name="
+				+ name + ", description=" + description + ", type=" + type + ", price=" + price + ", language="
+				+ language + ", detail_body=" + detail_body + ", category_num=" + category_num + ", img_url=" + img_url
+				+ ", service_token=" + service_token + ", c_time=" + c_time + "]";
 	}
 
-	
-	
-
-	
 	
 }

@@ -27,6 +27,7 @@ import com.bisa.health.shop.entity.SysErrorCode;
 import com.bisa.health.shop.entity.WebException;
 import com.bisa.health.shop.enumerate.ActivateEnum;
 import com.bisa.health.shop.enumerate.GoodsTypeEnum;
+import com.bisa.health.shop.enumerate.OrderStatusEnum;
 import com.bisa.health.shop.enumerate.PayEnum;
 import com.bisa.health.shop.enumerate.PayTypeEnum;
 import com.bisa.health.shop.model.Goods;
@@ -115,6 +116,8 @@ public class CallPayController {
             		card.setService_token(service.getStoken());
             		card.setStatus(ActivateEnum.ACTIVATE.getValue());
             		cardService.addRechargeCard(card);
+            		//虚拟商品无需发货
+            		order.setOrder_status(OrderStatusEnum.DELIVERRY.getValue());
             	}
                 	
             	order.setPay_type(PayTypeEnum.VISA.getValue());
@@ -182,6 +185,8 @@ public class CallPayController {
         		card.setService_token(service.getStoken());
         		card.setStatus(ActivateEnum.ACTIVATE.getValue());
         		cardService.addRechargeCard(card);
+        		
+        		order.setOrder_status(OrderStatusEnum.DELIVERRY.getValue());
         	}
             	
         	order.setPay_type(PayTypeEnum.VISA.getValue());

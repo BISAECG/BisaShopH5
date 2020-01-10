@@ -96,10 +96,17 @@
 	                <input name="id" type="hidden" value="0" />
 	                 <input name="number" id="number" type="hidden" value="0" />
 	                 <input name="category_name" id="category_name" type="hidden" value="0" />
-	                <div class="layui-form-item">
-	                    <label class="layui-form-label"><spring:message code="2023" /></label>
-	                    <div class="layui-input-inline">
+	                <div class="layui-form-item ">
+	                  	 <label class="layui-form-label"><spring:message code="2023" /></label>
+	                    <div class="layui-input-block">
 	                    	<input type="text" name="name" required="" lay-verify="required" placeholder="<spring:message code="2024" />" autocomplete="off" class="layui-input">
+	                    </div>
+	                </div>
+	                 
+	                <div class="layui-form-item">
+	                    <label class="layui-form-label"><spring:message code="2037" /></label>
+	                    <div class="layui-input-inline">
+	                    	<input type="text" name="pattern" required="" lay-verify="required" placeholder="<spring:message code="2038" />" autocomplete="off" class="layui-input">
 	                    </div>
 	                    <label class="layui-form-label"><spring:message code="status" /></label>
 	                    <div class="layui-input-inline">
