@@ -21,6 +21,7 @@
      <script src="/resources/ctrl/bootstrap/js/bootstrap.js"></script>
     <script src="/resources/js/rootFont.js"></script>
     <script src="/resources/ctrl/layui/layui.js"></script>
+
 </head>
 
 <body>
@@ -113,11 +114,11 @@
     	      $.get('/news/ajax/page?page='+page+'&limit=10', function(res){
     	        //假设你的列表返回在data集合中
     	        layui.each(res.data, function(index, item){
-    	          lis.push('<a href="'+item.id+'.html"><div class="col-xs-12 " style="  margin-top: 0.24rem;   border-bottom: 0.01rem solid #ECECEC;padding-bottom: 0.1rem;">'+
-    	                    '<div class="col-xs-5 timeOrdinary">'+
+    	          lis.push('<a href="'+item.id+'.html"><div class="col-xs-12 " style=" margin-top:0.24rem;border-bottom: 0.01rem solid #ECECEC;padding-bottom: 0.1rem;">'+
+    	                    '<div class="col-xs-3 timeOrdinary">'+
     	                        '<span class="new_time ">'+item.release_time+'</span>'+
     	                    '</div>'+
-    	                    '<div class="col-xs-6" style="padding: 0;">'+
+    	                    '<div class="col-xs-8" style="padding:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+
     	                        '<span class="new_title titleOrdinary">'+item.news_title+'</span>'+
     	                    '</div>'+
     	                    '<div class="col-xs-1 more" style="padding: 0;">'+

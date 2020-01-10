@@ -77,7 +77,7 @@
                 <img class="img-responsive center-block" src="/resources/img/index/logo.png">
             </a>
         </div>
-        <div class="col-xs-3 col-xs-offset-1 col-sm-2 col-sm-offset-2 text-center" style="padding-left: 0px;padding-right: 10px;">
+        <div class="col-xs-4 col-sm-3 col-sm-offset-1 text-center" >
             <select id="lang" class="form-control">
                 <option value="/index?lang=zh_CN">Simplified</option>
                 <option value="/index?lang=zh_HK">Tradition</option>

@@ -88,7 +88,7 @@
 .titleTopping {
     color: rgba(51, 51, 51, 1);
     font-size: 0.22rem;
-    font-weight: bold;
+    font-weight: 500;
     line-height: 0.4rem;
     margin-bottom: 0.16rem;
 }
@@ -149,4 +149,7 @@
 }
 .f-rem025{
 	font-size: 0.25rem;
+}
+.layui-flow-more a cite{
+    margin-top:0.2rem;
 }
